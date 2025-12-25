@@ -1,0 +1,9 @@
+smug/.config/smug/gnp.yml filter=git-crypt diff=git-crypt
+smug/.config/smug/hbi.yml filter=git-crypt diff=git-crypt
+smug/.config/smug/hbl.yml filter=git-crypt diff=git-crypt
+smug/.config/smug/hlg.yml filter=git-crypt diff=git-crypt
+smug/.config/smug/hmd.yml filter=git-crypt diff=git-crypt
+smug/.config/smug/hnn.yml filter=git-crypt diff=git-crypt
+
+pipe-viewer/.config/pipe-viewer/subscribed_channels.txt filter=git-crypt diff=git-crypt
+pipe-viewer/.config/pipe-viewer/watched.txt filter=git-crypt diff=git-crypt
