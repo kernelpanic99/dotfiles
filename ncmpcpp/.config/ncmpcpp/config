@@ -1,0 +1,64 @@
+# Nord Theme for ncmpcpp
+# Based on Nord Color Palette
+
+# Main colors
+main_window_color = "white"
+header_window_color = "cyan"
+volume_color = "green"
+state_line_color = "yellow"
+state_flags_color = "red"
+
+# Progress bar
+progressbar_color = "white"
+progressbar_elapsed_color = "blue"
+
+# Statusbar
+statusbar_color = "white"
+statusbar_time_color = "cyan"
+
+# Alternative UI
+alternative_ui_separator_color = "blue"
+
+# Current item
+current_item_prefix = "$(blue)$r"
+current_item_suffix = "$/r$(end)"
+
+# Selected items
+selected_item_prefix = "$(magenta)$r"
+selected_item_suffix = "$/r$(end)"
+
+# Window border
+window_border_color = "blue"
+active_window_border = "red"
+
+# Visualizer
+visualizer_color = "blue, cyan, green, yellow, magenta, red"
+
+# Now playing
+now_playing_prefix = "$b"
+now_playing_suffix = "$/b"
+
+# Colors for different elements
+color1 = "white"
+color2 = "green"
+
+# Browser colors
+browser_playlist_prefix = "$2playlist$9 "
+browser_sort_mode = "name"
+browser_sort_format = "{%a - }{%t}|{%f} {(%l)}"
+
+# Song format colors - using Nord palette
+song_status_format = "{(%l) }{%a - }{%t}|{%f}"
+song_library_format = "{%n - }{%t}|{%f}"
+song_window_title_format = "Ncmpcpp"
+
+# Additional Nord-specific tweaks
+empty_tag_color = "magenta"
+header_text_scrolling = "yes"
+cyclic_scrolling = "no"
+mouse_support = "yes"
+
+# Display modes
+playlist_display_mode = "columns"
+browser_display_mode = "columns"
+search_engine_display_mode = "columns"
