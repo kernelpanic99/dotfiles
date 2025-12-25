@@ -9,29 +9,29 @@ windows:
     layout: main-horizontal
 
   - name: Hyprland
-    root: hypr/.config/hypr/
+    root: configs/hypr/.config/hypr/
     selected: true
     layout: main-horizontal
     commands:
       - nvim hyprland.conf
 
   - name: Neovim
-    root: nvim/.config/nvim/
+    root: configs/nvim/.config/nvim/
     selected: true
     layout: main-horizontal
     commands:
       - nvim init.lua
 
   - name: Waybar
-    root: waybar/.config/waybar/
+    root: configs/waybar/.config/waybar/
     selected: true
     layout: main-horizontal
     commands:
       - nvim config
 
   - name: Smug
-    root: smug/.config/smug/
+    root: configs/smug/.config/smug/
     selected: true
     layout: main-horizontal
     commands:
-      - nvim config
+      - nvim -c 'lua require("tfm").open()'
