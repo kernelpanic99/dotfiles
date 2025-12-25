@@ -1,0 +1,135 @@
+// vim: ft=jsonc
+{
+    "layer": "top",
+    "height": 24,
+    "spacing": 0,
+    "fixed-center": true,
+    "margin": 3,
+    "modules-left": [
+        "hyprland/workspaces"
+    ],
+    "modules-center": [
+        "custom/timew",
+        "clock",
+        "mpd"
+    ],
+    "modules-right": [
+        "tray",
+        "hyprland/language",
+        "privacy",
+        "pulseaudio",
+        "memory",
+        "cpu",
+        "battery"
+    ],
+    "power-profiles-daemon": {
+        "format": "{icon}"
+    },
+    "hyprland/workspaces": {
+        "format": "{windows}",
+        "format-window-separator": " ",
+        "window-rewrite-default": " ",
+        "window-rewrite": {
+            "title<Ncmpcpp>": " ",
+            "title<btop>": "󰊚 ",
+            "title<.*nvim.*>": " ",
+            "title<calcurse>":" ",
+            "title<t\\s.*>": " ",
+
+            "class<firefox>": " ",
+            "class<firefox> title<(.*Claude.*)|(.*ChatGPT.*)|(.*Lumo.*)|(.*Gemini.*)>": "AI",
+
+            "class<pcmanfm>": " ",
+            "class<org.pulseaudio.pavucontrol>": " ",
+            "class<foot>": " ",
+            "class<mpv>": "",
+            "class<FreeTube>": " ",
+            "class<steam>": " ",
+
+            "class<brave-browser>": " ",
+            "class<brave-browser> title<.*Slack.*>": " ",
+            "class<brave-browser> title<.*Teams.*>": "󰊻 ",
+            "class<brave-browser> title<.*Jira.*>": "󰌃 ",
+            "class<brave-browser> title<.*Confluence.*>": " ",
+            "class<brave-browser> title<(.*Outlook.*)|(.*Zoho Mail.*)|(.*Mail.*)>": "󰇮 ",
+
+            "class<chromium>": " ",
+            "class<chromium> title<.*Slack.*>": " ",
+            "class<chromium> title<.*Teams.*>": "󰊻 ",
+            "class<chromium> title<.*Jira.*>": "󰌃 ",
+            "class<chromium> title<.*Confluence.*>": " ",
+            "class<chromium> title<(.*Outlook.*)|(.*Zoho Mail.*)|(.*Mail.*)>": "󰇮 ",
+
+            "class<zen>": " ",
+            "class<zen> title<.*Slack.*>": " ",
+            "class<zen> title<.*Teams.*>": "󰊻 ",
+            "class<zen> title<.*Jira.*>": "󰌃 ",
+            "class<zen> title<.*Confluence.*>": " ",
+            "class<zen> title<(.*Outlook.*)|(.*Zoho Mail.*)|(.*Mail.*)>": "󰇮 ",
+
+            "class<ferdium>": "󰭹 ",
+
+            "class<cursor>": " ",
+            "class<obsidian>": " "
+
+        }
+    },
+    "custom/timew": {
+        "exec": "~/.config/waybar/timew.py",
+        "format": "{text}",
+        "interval": 1,
+        "return-type": "json",
+        "on-click": "~/.config/waybar/timew.py -t"
+    },
+    "clock": {
+        "format": " {:%a,%b %d <span color=\"#8bd5ca\"> %H:%M</span>}",
+        "on-click": "foot -T Calcurse -e sh -c 'sleep 0.05;calcurse'"
+    },
+    "mpd": {
+        "format": "{stateIcon}",
+        "format-stopped": "",
+        "on-click": "mpc toggle",
+        "on-scroll-up": "mpc prev",
+        "on-scroll-down": "mpc next",
+        "smooth-scrolling-threshold": 3,
+        "tooltip-format": "{artist} - {title}",
+        "state-icons": {
+            "playing": "",
+            "paused": ""
+        }
+    },
+    "hyprland/language": {
+        "format-en": "<span color=\"#7dc4e4\"> EN</span>",
+        "format-ru": "<span color=\"#ed8796\"> RU</span>",
+        "format-uk": "<span color=\"#eed49f\"> UA</span>"
+    },
+    "tray": {
+        "spacing": 8,
+        "format": "{icon} {tooltip}",
+        "icons": {
+            "nm-applet": "/home/kp/.config/waybar/icons/wifi.png",
+            "CopyQ_copyq": "/home/kp/.config/waybar/icons/clipboard.png",
+            "KeePassXC": "/home/kp/.config/waybar/icons/key.png",
+            "steam": "/home/kp/.config/waybar/icons/steam-logo.png"
+        }
+    },
+    "pulseaudio": {
+        "format": "{icon}{volume}%",
+        "on-click": "pavucontrol",
+        "format-icons": ["", " ", " "]
+    },
+    "memory": {
+        "format": " {used}/{total}",
+        "on-click": "pidof btop || foot -T btop -e btop "
+    },
+    "cpu": {
+        "format": " {usage}%"
+    },
+    "battery": {
+        "format": "{icon}{capacity}% {time}",
+        "format-charging": "",
+        "format-plugged": "",
+        "format-full": "",
+        "format-icons": [" ", " ", " ", " ", " "]
+    }
+}

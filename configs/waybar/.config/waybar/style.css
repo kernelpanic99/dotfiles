@@ -1,0 +1,174 @@
+/*
+Colors:
+- background: #1e2030
+- foreground: #cad3f5
+- teal: #8bd5ca
+- green: #a6da95
+- surface: #363a4f
+*/
+* {
+  font-family:
+    JetBrainsMono Nerd Font,
+    sans-serif;
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+}
+
+window#waybar {
+  color: #cad3f5;
+  background-color: transparent;
+  font-size: 13px;
+}
+
+/*Left Modules */
+.modules-left,
+.modules-right,
+.modules-center {
+  background-color: #1e2030;
+  box-shadow: 0 0 4px #2e3440;
+  border-radius: 10px;
+  padding: 0 10px;
+}
+
+#workspaces {
+  margin: 5px 0;
+}
+
+/*Workspaces*/
+#workspaces button {
+  background: #363a4f;
+  color: #b7bdf8;
+  border-radius: 5px;
+  padding: 3px 8px 3px 10px;
+  font-size: 13px;
+  margin: 0 5px;
+  box-shadow: 0px 0px 4px #2e3440;
+}
+
+/*
+#workspaces button.empty {
+  background-color: #ebcb8b;
+  color: #2e3440;
+}
+*/
+
+#workspaces button:hover {
+  box-shadow: inherit;
+  text-shadow: inherit;
+}
+
+#workspaces button.active {
+  color: #181926;
+  background-color: #f4dbd6;
+}
+
+#workspaces button.urgent {
+  background-color: #ed8796;
+  color: #181926;
+}
+
+/*Center widgets*/
+
+#custom-timew {
+  margin: 5px 5px;
+  padding: 0 8px;
+  border-radius: 10px;
+  font-size: 10px;
+  font-weight: 800;
+  box-shadow: 0px 0px 4px #181926;
+}
+
+#custom-timew.active {
+  /* green */
+  background-color: #a6da95;
+  color: #24273a;
+}
+
+#custom-timew.paused {
+  background-color: #8aadf4;
+  color: #24273a;
+}
+
+#custom-timew.idle {
+  background-color: #363a4f;
+  color: #8087a2;
+}
+
+#custom-timeblocks {
+  margin: 5px 5px;
+  border-radius: 10px;
+  font-size: 10px;
+  font-weight: 800;
+  box-shadow: 0px 0px 4px #181926;
+}
+
+#clock {
+  margin: 0 5px;
+  font-weight: bold;
+}
+
+#mpd {
+  margin: 5px;
+  padding: 0 8px;
+  border: 1px solid #2e3440;
+  border-radius: 9999px;
+  color: #2e3440;
+  font-size: 10px;
+  box-shadow: 0px 0px 4px #2e3440;
+}
+
+#mpd.playing {
+  background-color: #a6da95;
+}
+
+#mpd.paused {
+  background-color: #8aadf4;
+}
+
+#mpd.stopped {
+  background-color: #363a4f;
+  color: #8087a2;
+}
+
+#custom-updates {
+  padding: 5px 5px;
+}
+
+#custom-updates.updates-available {
+  color: #f5a97f;
+}
+
+/*Right modules*/
+#language,
+#battery,
+#pulseaudio,
+#memory,
+#cpu,
+#tray {
+  margin: 0 5px;
+}
+
+#pulseaudio {
+  color: #c6a0f6;
+}
+
+#memory {
+  color: #f4dbd6;
+}
+
+#battery {
+  color: #b7bdf8;
+}
+
+#battery.warning {
+  color: #eed49f;
+}
+
+#battery.critical {
+  color: #ed8796;
+}
+
+#cpu {
+    color: #ee99a0;
+}
