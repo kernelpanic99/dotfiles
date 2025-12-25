@@ -1,0 +1,13 @@
+session: BigCommerce Client
+
+root: ~/adev/bc-client/
+
+windows:
+  - name: ide
+    selected: true
+    layout: main-horizontal
+    commands:
+      - nvim
+
+    panes:
+      - root: .

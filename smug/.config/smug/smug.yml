@@ -1,0 +1,10 @@
+session: smug
+
+root: ~/.config/smug/
+
+windows:
+  - name: config
+    selected: true
+    layout: main-horizontal
+    commands:
+      - nvim

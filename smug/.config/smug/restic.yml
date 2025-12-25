@@ -1,0 +1,10 @@
+session: Restic config
+
+root: ~/.config/restic/
+
+windows:
+  - name: config
+    selected: true
+    layout: main-horizontal
+    commands:
+      - nvim

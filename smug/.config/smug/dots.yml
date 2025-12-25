@@ -1,0 +1,37 @@
+session: Dotfiles
+
+root: ~/.dotfiles
+
+windows:
+  - name: Dots
+    root: .
+    selected: true
+    layout: main-horizontal
+
+  - name: Hyprland
+    root: hypr/.config/hypr/
+    selected: true
+    layout: main-horizontal
+    commands:
+      - nvim hyprland.conf
+
+  - name: Neovim
+    root: nvim/.config/nvim/
+    selected: true
+    layout: main-horizontal
+    commands:
+      - nvim init.lua
+
+  - name: Waybar
+    root: waybar/.config/waybar/
+    selected: true
+    layout: main-horizontal
+    commands:
+      - nvim config
+
+  - name: Smug
+    root: smug/.config/smug/
+    selected: true
+    layout: main-horizontal
+    commands:
+      - nvim config

@@ -1,0 +1,12 @@
+session: Time tracker (personal)
+
+root: ~/bdev/time-tracking/
+
+windows:
+  - name: code
+    selected: true
+    layout: main-horizontal
+    commands:
+      - nvim
+    panes:
+      - type: horizontal

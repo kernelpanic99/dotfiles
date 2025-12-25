@@ -1,0 +1,10 @@
+session: Neovim config
+
+root: ~/.config/nvim/
+
+windows:
+  - name: config
+    selected: true
+    layout: main-horizontal
+    commands:
+      - nvim init.lua
