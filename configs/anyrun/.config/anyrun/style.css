@@ -1,0 +1,69 @@
+window {
+  background: transparent;
+}
+
+box.main {
+  padding: 5px;
+  margin: 10px;
+  border-radius: 10px;
+  border: 2px solid #f4dbd6;
+  background-color: #24273a;
+  box-shadow: 0 0 5px black;
+}
+
+text {
+  min-height: 30px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.matches {
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 10px;
+}
+
+box.plugin:first-child {
+  margin-top: 5px;
+}
+
+box.plugin.info {
+  min-width: 200px;
+}
+
+list.plugin {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+label.match.description {
+  font-size: 10px;
+}
+
+label.plugin.info {
+  font-size: 14px;
+}
+
+.match {
+  background: transparent;
+  margin: 3px 10px;
+}
+
+.match:selected {
+  border: 1px solid #8bd5ca;
+  border-radius: 10px;
+  background: transparent;
+  animation: fade 0.1s linear;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/* 
+vim: ts=2 sw=2
+*/
