@@ -695,8 +695,30 @@ local plugin = {
 
   -- {{{ HTTP client
   {
-    'lima1909/resty.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim' },
+    'heilgar/nvim-http-client',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+    },
+    event = 'VeryLazy',
+    ft = { 'http', 'rest' },
+    config = function()
+      require('http_client').setup({
+        -- Default keybindings (can be customized)
+        keybindings = {
+          select_env_file = '<leader>hf',
+          set_env = '<leader>he',
+          run_request = '<leader>hr',
+          stop_request = '<leader>hx',
+          toggle_verbose = '<leader>hv',
+          toggle_profiling = '<leader>hp',
+          dry_run = '<leader>hd',
+          copy_curl = '<leader>hc',
+          save_response = '<leader>hs',
+          set_project_root = '<leader>hg',
+          get_project_root = '<leader>hgg',
+        },
+      })
+    end,
   },
   -- }}}
 }
