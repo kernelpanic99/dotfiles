@@ -1,0 +1,14 @@
+session: BigCommemrce mock server
+
+root: ~/bdev/bc-api-mock/
+
+windows:
+  - name: code
+    selected: true
+    layout: main-horizontal
+    commands:
+      - nvim
+    panes:
+      - type: horizontal
+        commands:
+          - pnpm dev
