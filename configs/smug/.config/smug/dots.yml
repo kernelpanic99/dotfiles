@@ -35,3 +35,10 @@ windows:
     layout: main-horizontal
     commands:
       - nvim -c 'lua require("tfm").open()'
+
+  - name: Tmux
+    root: configs/tmux/.config/tmux/
+    selected: true
+    layout: main-horizontal
+    commands:
+      - nvim tmux.conf
