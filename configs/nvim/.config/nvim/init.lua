@@ -94,6 +94,7 @@ local ts_parsers = {
   'vimdoc',
   'c',
   'cpp',
+  'http',
 }
 
 local tools = {
@@ -123,6 +124,12 @@ local tools = {
   'mdformat',
   'taplo',
 }
+
+vim.filetype.add({
+  extension = {
+    ['http'] = 'http',
+  },
+})
 
 local function lsp_configs()
   -- {{{ Typescript
@@ -322,6 +329,7 @@ local plugin = {
         { '<leader>s', group = '[S]earch' },
         { '<leader>t', group = '[T]oggle/Tools' },
         { '<leader>r', group = 'Search and [R]eplace' },
+        { '<leader>h', group = '[H]TTP Client' },
 
         -- Yank to system clipboard
         { '<leader>y', '"+y', desc = 'Yank to system clipboard', mode = { 'n', 'v' } },
@@ -674,6 +682,22 @@ local plugin = {
       { '<leader>ad', '<cmd>ClaudeCodeDiffDeny<cr>', desc = 'Deny diff' },
     },
   },
+  {
+    'supermaven-inc/supermaven-nvim',
+    build = function()
+      pcall(require('supermaven-nvim.api').use_free_version())
+    end,
+    config = function()
+      require('supermaven-nvim').setup({})
+    end,
+  },
+  -- }}}
+
+  -- {{{ HTTP client
+  {
+    'lima1909/resty.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+  },
   -- }}}
 }
 
@@ -682,7 +706,7 @@ local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
-  local out = vim.fn.system({ 'git', 'clone', '--filter=blob:none', '--branch=stable', lazyrepo, lazypath })
+  local out = vim.fn.system({ 'git', 'clone', '--filter=blob:none', '--branch=main', lazyrepo, lazypath })
   if vim.v.shell_error ~= 0 then
     vim.api.nvim_echo({
       { 'Failed to clone lazy.nvim:\n', 'ErrorMsg' },
