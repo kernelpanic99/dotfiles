@@ -47,7 +47,7 @@ vim.o.laststatus = 0
 -- }}}
 
 -- {{{ Check executables
-local executables = { 'rg', 'yazi', 'lazygit', 'fzf', 'fd', 'git', 'cargo +nightly', 'tmux', 'claude' }
+local executables = { 'rg', 'lazygit', 'fzf', 'fd', 'git', 'cargo +nightly', 'tmux', 'claude' }
 local missing = {}
 
 for _, exe in ipairs(executables) do
@@ -182,6 +182,15 @@ local plugin = {
   -- {{{ Libraries
   { 'nvim-tree/nvim-web-devicons', lazy = true }, -- Icons for some UI libraries
   { 'nvim-lua/plenary.nvim', lazy = true }, -- Utility Lua functions
+  { 'MunifTanjim/nui.nvim' },
+  {
+    'antosha417/nvim-lsp-file-operations',
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'nvim-tree/nvim-tree.lua',
+    },
+    opts = {},
+  },
   {
     'nvim-treesitter/nvim-treesitter', -- syntax parser for features like highliting, indents, folds, etc...
     lazy = false,
@@ -362,6 +371,7 @@ local plugin = {
   },
   {
     'folke/todo-comments.nvim',
+    lazy = false,
     dependencies = { 'nvim-lua/plenary.nvim', 'folke/trouble.nvim' },
     opts = {},
     keys = {
@@ -436,20 +446,19 @@ local plugin = {
 
   -- {{{ File manager
   {
-    'rolv-apneseth/tfm.nvim',
-    opts = {
-      file_manager = 'yazi',
-      enable_cmds = true,
-      ui = {
-        height = 0.8,
-        width = 0.8,
-      },
-      keybindings = {
-        ['<ESC>'] = 'q',
-      },
+    'nvim-neo-tree/neo-tree.nvim',
+    branch = 'v3.x',
+    dependencies = {
+      'antosha417/nvim-lsp-file-operations',
+      'nvim-lua/plenary.nvim',
+      'MunifTanjim/nui.nvim',
+      'nvim-tree/nvim-web-devicons', -- optional, but recommended
     },
+    lazy = false,
+    opts = {},
     keys = {
-      { '<leader>e', '<cmd>Tfm<CR>', desc = 'Open file manager' },
+      { '<leader>e', '<cmd>Neotree toggle<CR>', desc = 'Open file manager' },
+      { '<leader>be', '<cmd>Neotree buffers toggle<CR>', desc = '[E]xplore buffers' },
     },
   },
   -- }}}
