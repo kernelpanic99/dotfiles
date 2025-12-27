@@ -34,7 +34,7 @@ windows:
     selected: true
     layout: main-horizontal
     commands:
-      - nvim -c 'lua require("tfm").open()'
+      - nvim -c 'Neotree toggle'
 
   - name: Tmux
     root: configs/tmux/.config/tmux/
