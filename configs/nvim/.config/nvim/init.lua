@@ -310,6 +310,71 @@ local plugin = {
       { '<c-\\>', '<cmd><C-U>TmuxNavigatePrevious<cr>' },
     },
   },
+  {
+    'ThePrimeagen/harpoon',
+    branch = 'harpoon2',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    lazy = false,
+    config = function()
+      local harpoon = require('harpoon')
+      local wk = require('which-key')
+
+      harpoon:setup()
+
+      wk.add({
+        { '<leader>h', nil, desc = '[H]arpoon' },
+        {
+          '<leader>hu',
+          function()
+            harpoon.ui:toggle_quick_menu(harpoon:list())
+          end,
+          desc = 'Open [H]arpoon [U]I',
+        },
+        {
+          '<leader>ha',
+          function()
+            harpoon:list():add()
+          end,
+          desc = '[H]arpoon [A]dd file',
+        },
+        {
+          '<C-y>',
+          function()
+            harpoon:list():select(1)
+          end,
+          desc = 'Harpoon 1',
+        },
+        {
+          '<C-u>',
+          function()
+            harpoon:list():select(2)
+          end,
+          desc = 'Harpoon 2',
+        },
+        {
+          '<C-i>',
+          function()
+            harpoon:list():select(3)
+          end,
+          desc = 'Harpoon 3',
+        },
+        {
+          '<C-o>',
+          function()
+            harpoon:list():select(4)
+          end,
+          desc = 'Harpoon 4',
+        },
+        {
+          '<C-p>',
+          function()
+            harpoon:list():select(5)
+          end,
+          desc = 'Harpoon 5',
+        },
+      })
+    end,
+  },
   -- }}}
 
   -- {{{ Keybindings
