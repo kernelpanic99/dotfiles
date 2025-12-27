@@ -26,3 +26,31 @@ direnv hook fish | source
 if test -z "$DISPLAY"; and test "$XDG_VTNR" -eq 1
     exec Hyprland
 end
+
+function full-upgrade
+    echo "Upgrading system packages..."
+    paru -Syu --noconfirm
+
+    echo "Upgrading mise..."
+    mise upgrade
+
+    echo "Upgrading cargo..."
+    cargo install --list | grep -E '^\w' | awk '{print $1}' | xargs -n1 cargo install
+
+    echo "Upgrading fish..."
+    fisher update
+
+    echo "Upgrading python packages..."
+    uv tool upgrade --all
+
+    echo "Upgrading npm packages..."
+    pnpm update -g
+end
+
+# pnpm
+set -gx PNPM_HOME "/home/kp/.local/share/pnpm"
+
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end
