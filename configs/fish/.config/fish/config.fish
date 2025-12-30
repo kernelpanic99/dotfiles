@@ -18,6 +18,8 @@ if status is-interactive
 
     alias wb="killall waybar; waybar > /dev/null 2>&1 & disown"
     alias hp="killall hyprpaper; hyprpaper > /dev/null 2>&1 & disown"
+
+    alias ytaud="yt-dlp --extract-audio --audio-format m4a --audio-quality best --embed-metadata"
 end
 
 mise activate fish | source
