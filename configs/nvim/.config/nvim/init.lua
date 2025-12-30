@@ -659,6 +659,7 @@ local plugin = {
         javascript = { 'biome' },
         typescript = { 'biome' },
         json = { 'biome' },
+        typescriptreact = { 'biome' },
         svelte = { 'prettier' },
         astro = { 'prettier' },
         html = { 'prettier' },
