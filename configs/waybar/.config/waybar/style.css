@@ -53,6 +53,14 @@ window#waybar {
 }
 */
 
+#window {
+  background-color: #1e2030;
+  border-radius: 5px;
+  padding: 3px 8px 3px 10px;
+  font-size: 13px;
+  margin: 0 5px;
+}
+
 #workspaces button:hover {
   box-shadow: inherit;
   text-shadow: inherit;
@@ -170,5 +178,5 @@ window#waybar {
 }
 
 #cpu {
-    color: #ee99a0;
+  color: #ee99a0;
 }
