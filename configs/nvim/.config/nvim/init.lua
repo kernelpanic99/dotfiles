@@ -315,6 +315,7 @@ local plugin = {
     branch = 'harpoon2',
     dependencies = { 'nvim-lua/plenary.nvim' },
     lazy = false,
+    enabled = false,
     config = function()
       local harpoon = require('harpoon')
       local wk = require('which-key')
