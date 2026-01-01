@@ -1,6 +1,6 @@
 #!/usr/bin/env fish
 
-set configs anyrun btop calcurse copyq fish foot gtk-3.0 gtk-4.0 hypr lazygit mako mise mpd ncmpcpp nvim nwg-drawer nwg-look pipe-viewer satty smug timewarrior swaylock waybar tmux yazi
+set configs anyrun btop calcurse copyq fish foot gtk-3.0 gtk-4.0 hypr lazygit mako mise mpd ncmpcpp nvim nwg-drawer nwg-look pipe-viewer satty smug timewarrior swaylock waybar tmux yazi rmpc
 
 function get_configs
     if test (count $argv) -gt 0
