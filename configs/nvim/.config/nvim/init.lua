@@ -10,6 +10,9 @@ vim.o.timeout = true
 vim.o.timeoutlen = 300 -- timeout for key chords
 vim.o.confirm = true -- ask to save when quitting with unsaved changes
 
+-- Hide '~' character on empty lines
+vim.opt.fillchars = { eob = ' ' }
+
 -- Identation
 vim.o.autoindent = true
 vim.o.smartindent = true
