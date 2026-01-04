@@ -39,6 +39,9 @@ function full-upgrade
     echo "Upgrading cargo..."
     cargo install --list | grep -E '^\w' | awk '{print $1}' | xargs -n1 cargo install
 
+    echo "Upgrading rustup..."
+    rustup update
+
     echo "Upgrading fish..."
     fisher update
 
