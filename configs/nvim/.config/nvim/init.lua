@@ -832,7 +832,7 @@ require('lazy').setup({
 -- }}}
 
 -- {{{ Theme switcher
-vim.cmd.colorscheme('vague')
+vim.cmd.colorscheme('catppuccin')
 -- }}}
 
 -- {{{ Tweaks
