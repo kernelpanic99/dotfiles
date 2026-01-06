@@ -50,6 +50,9 @@ function full-upgrade
 
     echo "Upgrading npm packages..."
     pnpm update -g
+
+    echo "Upgrading hyprland plugins..."
+    hyprpm update
 end
 
 # pnpm
@@ -59,3 +62,15 @@ if not string match -q -- $PNPM_HOME $PATH
   set -gx PATH "$PNPM_HOME" $PATH
 end
 # pnpm end
+
+# Change CWD on exit from yazi
+function y
+    set tmp (mktemp -t "yazi-cwd.XXXXXX")
+    yazi $argv --cwd-file="$tmp"
+    
+    if set cwd (cat -- "$tmp") && test -n "$cwd" && test "$cwd" != "$PWD"
+        cd -- "$cwd"
+    end
+    
+    rm -f -- "$tmp"
+end
