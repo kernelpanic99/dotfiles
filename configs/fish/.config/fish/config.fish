@@ -50,9 +50,6 @@ function full-upgrade
 
     echo "Upgrading npm packages..."
     pnpm update -g
-
-    echo "Upgrading hyprland plugins..."
-    hyprpm update
 end
 
 # pnpm
