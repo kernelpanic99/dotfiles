@@ -65,6 +65,11 @@
                     "showVisualizer": false,
                     "useFixedWidth": false,
                     "visualizerType": "linear"
+                },
+                {
+                    "hideWhenZero": false,
+                    "id": "NotificationHistory",
+                    "showUnreadBadge": true
                 }
             ],
             "left": [
@@ -120,17 +125,13 @@
                     "hidePassive": false,
                     "id": "Tray",
                     "pinned": [
+                        "Ferdium"
                     ]
                 },
                 {
                     "displayMode": "forceOpen",
                     "id": "KeyboardLayout",
                     "showIcon": true
-                },
-                {
-                    "hideWhenZero": false,
-                    "id": "NotificationHistory",
-                    "showUnreadBadge": true
                 },
                 {
                     "deviceNativePath": "",
