@@ -26,10 +26,13 @@ Rectangle {
   property string widgetIcon: "player-pause"
   property var currentTask: null
 
+  visible: cmdOutput !== ""
+
   Process {
       id: tw
       command: ["timew", "export", "today"]
       running: true
+
 
       onExited: (code, status) => {
           timer.start()
