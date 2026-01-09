@@ -158,9 +158,11 @@ binds {
     Mod+D hotkey-overlay-title="Run an Application: Noctalia" { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: Noctalia" { spawn-sh "qs -c noctalia-shell ipc call lockScreen lock"; }
     Super+Alt+K hotkey-overlay-title="Shutdown menu: Noctalia" { spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"; }
+    Super+I hotkey-overlay-title="Open noctalia control center" { spawn-sh "qs -c noctalia-shell ipc call controlCenter toggle"; }
 
     Mod+W hotkey-overlay-title="Open a personal Browser: Brave" { spawn "brave"; } 
     Mod+Shift+W hotkey-overlay-title="Open a work Browser: Chromium" { spawn "chromium"; } 
+    Mod+B hotkey-overlay-title="Open a work Browser: Ferdium" { spawn "ferdium"; } 
 
     Mod+Apostrophe { spawn-sh "mpc toggle"; }
     Mod+X { spawn "foot" "-T" "Rmpc" "-e" "rmpc"; }
