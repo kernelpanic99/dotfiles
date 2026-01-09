@@ -143,6 +143,11 @@ window-rule {
     match title="Rmpc"
     open-floating true
 }
+
+window-rule {
+    match is-active=false
+    opacity 0.9
+}
 //}}}
 
 //{{{Keybinds
