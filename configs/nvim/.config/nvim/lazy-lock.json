@@ -36,7 +36,7 @@
   "smart-backspace.nvim": { "branch": "main", "commit": "12a34e281289c34e4da4c8589856a3113b58f45b" },
   "snacks.nvim": { "branch": "main", "commit": "fe7cfe9800a182274d0f868a74b7263b8c0c020b" },
   "supermaven-nvim": { "branch": "main", "commit": "07d20fce48a5629686aefb0a7cd4b25e33947d50" },
-  "tiny-code-action.nvim": { "branch": "main", "commit": "897de9af9e3aa6e59bcb9fec760a7eb02d00e264" },
+  "tiny-code-action.nvim": { "branch": "main", "commit": "f4a154569146d29fd4661ae289d83c4378135736" },
   "todo-comments.nvim": { "branch": "main", "commit": "31e3c38ce9b29781e4422fc0322eb0a21f4e8668" },
   "treesj": { "branch": "main", "commit": "186084dee5e9c8eec40f6e39481c723dd567cb05" },
   "trouble.nvim": { "branch": "main", "commit": "bd67efe408d4816e25e8491cc5ad4088e708a69a" },
