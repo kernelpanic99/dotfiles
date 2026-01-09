@@ -1,0 +1,19 @@
+{
+    "id": "noctalia-timewarrior",
+    "name": "Timewarrior widget",
+    "version": "0.0.1",
+    "minNoctaliaVersion": "3.8.2",
+    "author": "Arthur Nikolaienko",
+    "license": "MIT",
+    "repository": "",
+    "description": "A widget allowing to view and control timewarrior tasks",
+    "entryPoints": {
+        "barWidget": "BarWidget.qml"
+    },
+    "dependencies": {
+        "plugins": []
+    },
+    "metadata": {
+        "defaultSettings": {}
+    }
+}

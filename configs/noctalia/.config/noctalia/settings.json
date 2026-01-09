@@ -45,6 +45,11 @@
         "widgets": {
             "center": [
                 {
+                    "defaultSettings": {
+                    },
+                    "id": "plugin:noctalia-tw"
+                },
+                {
                     "customFont": "",
                     "formatHorizontal": "HH:mm ddd, MMM dd",
                     "formatVertical": "HH mm - dd MM",
@@ -509,7 +514,7 @@
         "panelPosition": "follow_bar",
         "randomEnabled": false,
         "randomIntervalSec": 300,
-        "recursiveSearch": false,
+        "recursiveSearch": true,
         "setWallpaperOnAllMonitors": true,
         "solidColor": "#1a1a2e",
         "transitionDuration": 1500,
