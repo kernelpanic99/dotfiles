@@ -167,6 +167,8 @@ binds {
     Mod+Apostrophe { spawn-sh "mpc toggle"; }
     Mod+X { spawn "foot" "-T" "Rmpc" "-e" "rmpc"; }
 
+    Mod+E { spawn "foot" "-T" "Yazi" "-e" "yazi"; }
+
     Mod+Y { spawn "keepassxc"; }
 
     XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
