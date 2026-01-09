@@ -148,15 +148,6 @@
                 {
                     "displayMode": "onhover",
                     "id": "Brightness"
-                },
-                {
-                    "colorizeDistroLogo": false,
-                    "colorizeSystemIcon": "none",
-                    "customIconPath": "",
-                    "enableColorization": false,
-                    "icon": "noctalia",
-                    "id": "ControlCenter",
-                    "useDistroLogo": false
                 }
             ]
         }
