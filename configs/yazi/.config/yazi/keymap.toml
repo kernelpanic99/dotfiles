@@ -1,0 +1,19 @@
+[[input.prepend_keymap]]
+on   = "<Esc>"
+run  = "close"
+desc = "Cancel input"
+
+[[mgr.prepend_keymap]]
+on   = "p"
+run  = "plugin smart-paste"
+desc = "Paste into the hovered directory or CWD"
+
+[[mgr.prepend_keymap]]
+on   = "t"
+run  = "plugin smart-tab"
+desc = "Create a tab and enter the hovered directory"
+
+# Copy to system clipboard
+[[mgr.prepend_keymap]]
+on  = "y"
+run = [ 'shell -- for path in %s; do echo "file://$path"; done | wl-copy -t text/uri-list', "yank" ]
