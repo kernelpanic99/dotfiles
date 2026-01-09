@@ -15,23 +15,27 @@ windows:
     commands:
       - nvim config.kdl
 
+  - name: Noctalia plugin
+    root: configs/noctalia/.config/noctalia/plugins/noctalia-tw/
+    layout: main-horizontal
+    commands:
+      - nvim BarWidget.qml
+
+
   - name: Neovim
     root: configs/nvim/.config/nvim/
-    selected: true
     layout: main-horizontal
     commands:
       - nvim init.lua
 
   - name: Smug
     root: configs/smug/.config/smug/
-    selected: true
     layout: main-horizontal
     commands:
       - nvim -c 'Neotree toggle'
 
   - name: Tmux
     root: configs/tmux/.config/tmux/
-    selected: true
     layout: main-horizontal
     commands:
       - nvim tmux.conf
