@@ -26,7 +26,7 @@ mise activate fish | source
 direnv hook fish | source
 
 if test -z "$DISPLAY"; and test "$XDG_VTNR" -eq 1
-    exec start-hyprland
+    exec niri-session
 end
 
 function full-upgrade
