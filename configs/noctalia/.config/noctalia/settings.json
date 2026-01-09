@@ -32,7 +32,7 @@
         "capsuleOpacity": 1,
         "density": "comfortable",
         "exclusive": true,
-        "floating": false,
+        "floating": true,
         "marginHorizontal": 0.25,
         "marginVertical": 0.25,
         "monitors": [
@@ -40,7 +40,7 @@
         "outerCorners": true,
         "position": "top",
         "showCapsule": true,
-        "showOutline": false,
+        "showOutline": true,
         "useSeparateOpacity": false,
         "widgets": {
             "center": [
@@ -285,7 +285,7 @@
         "compactLockScreen": false,
         "dimmerOpacity": 0.2,
         "enableShadows": true,
-        "forceBlackScreenCorners": false,
+        "forceBlackScreenCorners": true,
         "iRadiusRatio": 1,
         "language": "",
         "lockOnSuspend": true,
@@ -296,7 +296,7 @@
         "shadowOffsetX": 2,
         "shadowOffsetY": 3,
         "showHibernateOnLockScreen": false,
-        "showScreenCorners": false,
+        "showScreenCorners": true,
         "showSessionButtonsOnLockScreen": true
     },
     "hooks": {
@@ -329,13 +329,13 @@
         "wifiEnabled": true
     },
     "nightLight": {
-        "autoSchedule": true,
+        "autoSchedule": false,
         "dayTemp": "6500",
-        "enabled": false,
+        "enabled": true,
         "forced": false,
-        "manualSunrise": "06:30",
-        "manualSunset": "18:30",
-        "nightTemp": "4000"
+        "manualSunrise": "08:00",
+        "manualSunset": "19:00",
+        "nightTemp": "4004"
     },
     "notifications": {
         "backgroundOpacity": 1,
@@ -442,7 +442,7 @@
     "systemMonitor": {
         "cpuCriticalThreshold": 90,
         "cpuPollingInterval": 2750,
-        "cpuWarningThreshold": 80,
+        "cpuWarningThreshold": 75,
         "criticalColor": "",
         "diskCriticalThreshold": 90,
         "diskPollingInterval": 3000,
@@ -452,10 +452,10 @@
         "gpuCriticalThreshold": 90,
         "gpuPollingInterval": 3000,
         "gpuWarningThreshold": 80,
-        "loadAvgPollingInterval": 3000,
+        "loadAvgPollingInterval": 2500,
         "memCriticalThreshold": 90,
         "memPollingInterval": 3000,
-        "memWarningThreshold": 80,
+        "memWarningThreshold": 30,
         "networkPollingInterval": 3000,
         "tempCriticalThreshold": 90,
         "tempPollingInterval": 2750,
