@@ -1,0 +1,253 @@
+// vim: foldmethod=marker
+
+//{{{ Enviroment
+
+environment {
+    XCURSOR_SIZE "24"
+    HYPRCURSOR_SIZE "24"
+    ELECTRON_OZONE_PLATFORM_HINT "auto"
+    QT_AUTO_SCREEN_SCALE_FACTOR "1"
+    QT_QPA_PLATFORM "wayland;xcb"
+    GDK_BACKEND "wayland,x11,*"
+    QT_STYLE_OVERRIDE "Adwaita-Dark"
+    GTK_THEME "Adwaita:dark"
+    GTK2_RC_FILES "/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc"
+    XDG_CURRENT_DESKTOP "Niri"
+    XDG_SESSION_TYPE "wayland"
+    XDG_SESSION_DESKTOP "Niri"
+    OBSIDIAN_USE_WAYLAND "1"
+    _JAVA_AWT_WM_NONREPARENTING "1"
+}
+
+//}}}
+
+// {{{Autostart
+spawn-sh-at-startup "qs -c noctalia-shell"
+// }}}
+
+// {{{ Input & Monitors
+input {
+    keyboard {
+        xkb {
+            layout "us,ru,ua"
+            options "grp:win_space_toggle,caps:escape"
+        }
+
+        repeat-rate  75
+        repeat-delay 300
+    }
+
+    touchpad {
+        tap
+        natural-scroll
+    }
+
+    mouse {
+        accel-speed 0.5
+    }
+
+    warp-mouse-to-focus
+
+    // Focus windows and outputs automatically when moving the mouse into them.
+    // Setting max-scroll-amount="0%" makes it work only on windows already fully on screen.
+    focus-follows-mouse max-scroll-amount="0%"
+}
+output "eDP-1" {
+    mode "1920x1080"
+    scale 1.25
+    position x=1920 y=0
+}
+
+output "HDMI-A-1" {
+    mode "1920x1080"
+    scale 1
+    position x=0 y=0
+}
+// }}}
+
+// {{{Layout
+layout {
+    gaps 8
+    background-color "transparent"
+
+    struts {
+        top 4
+        left -4
+        right -4
+    }
+
+    center-focused-column "always"
+
+    preset-column-widths {
+        proportion 0.5
+        proportion 0.99
+    }
+
+    default-column-width { proportion 0.99; }
+}
+//}}}
+
+//{{{Misc
+hotkey-overlay {
+    skip-at-startup
+}
+
+prefer-no-csd
+
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+animations { 
+    // off; 
+}
+
+debug {
+    honor-xdg-activation-with-invalid-serial
+}
+
+// Set the regular wallpaper on the backdrop.
+layer-rule {
+    match namespace="^noctalia-wallpaper*"
+    place-within-backdrop true
+}
+
+// Optionally, disable the workspace shadows in the overview.
+overview {
+    workspace-shadow {
+        off
+    }
+}
+//}}}
+
+//{{{Window rules
+
+// Rounded corners
+window-rule {
+    geometry-corner-radius 20
+    clip-to-geometry true
+}
+
+// Open the Firefox picture-in-picture player as floating by default.
+window-rule {
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    open-floating true
+}
+
+// block out password manager from screen capture.
+window-rule {
+    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
+
+    block-out-from "screen-capture"
+}
+
+window-rule {
+    match title="Rmpc"
+    open-floating true
+}
+//}}}
+
+//{{{Keybinds
+binds {
+    Mod+Shift+Slash { show-hotkey-overlay; }
+
+    Mod+Return hotkey-overlay-title="Open a Terminal: Foot" { spawn "foot"; }
+    Mod+D hotkey-overlay-title="Run an Application: Noctalia" { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
+    Super+Alt+L hotkey-overlay-title="Lock the Screen: Noctalia" { spawn-sh "qs -c noctalia-shell ipc call lockScreen lock"; }
+    Super+Alt+K hotkey-overlay-title="Shutdown menu: Noctalia" { spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"; }
+
+    Mod+W hotkey-overlay-title="Open a personal Browser: Brave" { spawn "brave"; } 
+    Mod+Shift+W hotkey-overlay-title="Open a work Browser: Chromium" { spawn "chromium"; } 
+
+    Mod+Apostrophe { spawn-sh "mpc toggle"; }
+    Mod+X { spawn "foot" "-T" "Rmpc" "-e" "rmpc"; }
+
+    Mod+Y { spawn "keepassxc"; }
+
+    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
+    XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+
+    XF86AudioPlay        allow-when-locked=true { spawn-sh "playerctl play-pause"; }
+    XF86AudioStop        allow-when-locked=true { spawn-sh "playerctl stop"; }
+    XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
+    XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
+
+    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
+
+    Mod+O repeat=false { toggle-overview; }
+
+    Mod+Q repeat=false { close-window; }
+
+    Mod+J     { focus-column-left; }
+    Mod+K     { focus-column-right; }
+    Mod+H     { focus-monitor-left; }
+    Mod+L     { focus-monitor-right; }
+
+    Mod+Shift+H     { move-window-to-monitor-left; }
+    Mod+Shift+L     { move-window-to-monitor-right; }
+
+    Mod+Shift+J     { focus-workspace-down; }
+    Mod+Shift+K     { focus-workspace-up; }
+
+    Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
+    Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
+
+    Mod+Shift+WheelScrollDown      { focus-column-right; }
+    Mod+Shift+WheelScrollUp        { focus-column-left; }
+
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+    Mod+Shift+1 { move-column-to-workspace 1; }
+    Mod+Shift+2 { move-column-to-workspace 2; }
+    Mod+Shift+3 { move-column-to-workspace 3; }
+    Mod+Shift+4 { move-column-to-workspace 4; }
+    Mod+Shift+5 { move-column-to-workspace 5; }
+    Mod+Shift+6 { move-column-to-workspace 6; }
+    Mod+Shift+7 { move-column-to-workspace 7; }
+    Mod+Shift+8 { move-column-to-workspace 8; }
+    Mod+Shift+9 { move-column-to-workspace 9; }
+
+    Mod+R { switch-preset-column-width; }
+        
+    Mod+Shift+R { switch-preset-window-height; }
+    Mod+Ctrl+R { reset-window-height; }
+    Mod+S { maximize-column; }
+    Mod+Shift+F { fullscreen-window; }
+
+    Mod+Ctrl+F { expand-column-to-available-width; }
+
+    Mod+C { center-column; }
+
+    Mod+Ctrl+C { center-visible-columns; }
+
+    Mod+Minus { set-column-width "-10%"; }
+    Mod+Equal { set-column-width "+10%"; }
+
+    Mod+Shift+Minus { set-window-height "-10%"; }
+    Mod+Shift+Equal { set-window-height "+10%"; }
+
+    Mod+V       { toggle-window-floating; }
+    Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+
+    Print { screenshot; }
+    Ctrl+Print { screenshot-screen; }
+    Alt+Print { screenshot-window; }
+
+    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+
+    Mod+Shift+E { quit; }
+    Ctrl+Alt+Delete { quit; }
+
+    Mod+Shift+P { power-off-monitors; }
+}
+//}}}
+
+include "./noctalia.kdl"
