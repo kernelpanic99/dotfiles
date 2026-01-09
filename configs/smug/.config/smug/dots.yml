@@ -8,12 +8,12 @@ windows:
     selected: true
     layout: main-horizontal
 
-  - name: Hyprland
-    root: configs/hypr/.config/hypr/
+  - name: Niri
+    root: configs/niri/.config/niri/
     selected: true
     layout: main-horizontal
     commands:
-      - nvim hyprland.conf
+      - nvim config.kdl
 
   - name: Neovim
     root: configs/nvim/.config/nvim/
@@ -21,13 +21,6 @@ windows:
     layout: main-horizontal
     commands:
       - nvim init.lua
-
-  - name: Waybar
-    root: configs/waybar/.config/waybar/
-    selected: true
-    layout: main-horizontal
-    commands:
-      - nvim config
 
   - name: Smug
     root: configs/smug/.config/smug/
