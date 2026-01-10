@@ -50,7 +50,7 @@ vim.o.laststatus = 0
 -- }}}
 
 -- {{{ Check executables
-local executables = { 'rg', 'lazygit', 'fzf', 'fd', 'git', 'cargo +nightly', 'tmux', 'claude' }
+local executables = { 'rg', 'lazygit', 'fzf', 'fd', 'git', 'cargo +nightly', 'tmux'}
 local missing = {}
 
 for _, exe in ipairs(executables) do
