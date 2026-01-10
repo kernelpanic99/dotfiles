@@ -29,7 +29,7 @@
     },
     "bar": {
         "backgroundOpacity": 0.93,
-        "capsuleOpacity": 1,
+        "capsuleOpacity": 0.61,
         "density": "comfortable",
         "exclusive": true,
         "floating": true,
@@ -40,7 +40,7 @@
         "outerCorners": true,
         "position": "top",
         "showCapsule": true,
-        "showOutline": true,
+        "showOutline": false,
         "useSeparateOpacity": false,
         "widgets": {
             "center": [
@@ -108,7 +108,7 @@
             ],
             "right": [
                 {
-                    "compactMode": true,
+                    "compactMode": false,
                     "diskPath": "/",
                     "id": "SystemMonitor",
                     "showCpuTemp": true,
@@ -188,7 +188,7 @@
         "generateTemplatesForPredefined": true,
         "manualSunrise": "06:30",
         "manualSunset": "18:30",
-        "matugenSchemeType": "scheme-fruit-salad",
+        "matugenSchemeType": "scheme-content",
         "predefinedScheme": "Catppuccin",
         "schedulingMode": "off",
         "useWallpaperColors": false
