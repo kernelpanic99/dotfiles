@@ -1,7 +1,7 @@
 if status is-interactive
-    abbr --add xi paru -Syu
-    abbr --add xr paru -Rsn
-    abbr --add xs paru -Ss
+    abbr --add xi yay -Syu
+    abbr --add xr yay -Rsn
+    abbr --add xs yay -Ss
 
     alias t="smug start"
 
@@ -20,6 +20,8 @@ if status is-interactive
     alias hp="killall hyprpaper; hyprpaper > /dev/null 2>&1 & disown"
 
     alias ytaud="yt-dlp --extract-audio --audio-format m4a --audio-quality best --embed-metadata"
+
+    alias nvoff="/usr/share/acpi_call/examples/turn_off_gpu.sh"
 end
 
 mise activate fish | source
@@ -31,7 +33,7 @@ end
 
 function full-upgrade
     echo "Upgrading system packages..."
-    paru -Syu --noconfirm
+    yay -Syu --noconfirm
 
     echo "Upgrading mise..."
     mise upgrade
