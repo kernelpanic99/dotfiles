@@ -32,6 +32,15 @@ function restow
     end
 end
 
+function purge
+    set configs (get_configs $argv)
+    or return
+
+    for cfg in $configs
+        rm -rfv "$HOME/.config/$cfg"
+    end
+end
+
 function migrate_configs
     set configs (get_configs $argv)
     or return
@@ -74,6 +83,7 @@ function show_help
     echo "Commands:"
     echo "  migrate [configs...]  - Migrate configs from ~/.config to dotfiles"
     echo "  restow [configs...]   - Restow configs (all or specified)"
+    echo "  purge [configs...]    - Purge configs (all or specified)"
     echo "  help                  - Show this help message"
 end
 
@@ -93,6 +103,8 @@ switch $cmd
         restow $argv
     case help
         show_help
+    case purge
+        purge $argv
     case '*'
         echo "Unknown command: $cmd" >&2
         show_help
