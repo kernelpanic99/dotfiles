@@ -98,6 +98,7 @@ local ts_parsers = {
   'c',
   'cpp',
   'http',
+  'zig'
 }
 
 local tools = {
@@ -126,6 +127,7 @@ local tools = {
   'rustfmt',
   'mdformat',
   'taplo',
+  'zls'
 }
 
 vim.filetype.add({
@@ -658,6 +660,9 @@ local plugin = {
       { '<leader>cf', '<cmd>lua require("conform").format()<CR>', desc = '[F]ormat' },
     },
     opts = {
+      default_format_opts = {
+        lsp_format = "prefer"
+      },
       formatters_by_ft = {
         lua = { 'stylua' },
         javascript = { 'biome' },
