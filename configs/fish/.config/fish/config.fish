@@ -21,7 +21,7 @@ if status is-interactive
 
     alias ytaud="yt-dlp --extract-audio --audio-format m4a --audio-quality best --embed-metadata"
 
-    alias nvoff="/usr/share/acpi_call/examples/turn_off_gpu.sh"
+    alias nvoff="sudo /usr/share/acpi_call/examples/turn_off_gpu.sh"
 end
 
 mise activate fish | source
