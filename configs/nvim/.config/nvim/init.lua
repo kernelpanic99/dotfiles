@@ -266,6 +266,13 @@ local plugin = {
     'webhooked/kanso.nvim',
     lazy = false,
     priority = 1000,
+    opts = {
+      theme = 'mist',
+      foreground = {
+        dark = 'saturated',
+        light = 'saturated',
+      },
+    },
   },
   -- }}}
 
