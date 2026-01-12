@@ -141,7 +141,16 @@ window-rule {
 
 window-rule {
     match title="Rmpc"
+
     open-floating true
+
+    default-column-width {
+        fixed 800
+    }
+
+    default-window-height {
+        fixed 480
+    }
 }
 
 window-rule {
