@@ -50,7 +50,7 @@ vim.o.laststatus = 0
 -- }}}
 
 -- {{{ Check executables
-local executables = { 'rg', 'lazygit', 'fzf', 'fd', 'git', 'cargo +nightly', 'tmux'}
+local executables = { 'rg', 'lazygit', 'fzf', 'fd', 'git', 'cargo +nightly', 'tmux' }
 local missing = {}
 
 for _, exe in ipairs(executables) do
@@ -98,7 +98,7 @@ local ts_parsers = {
   'c',
   'cpp',
   'http',
-  'zig'
+  'zig',
 }
 
 local tools = {
@@ -127,7 +127,7 @@ local tools = {
   'rustfmt',
   'mdformat',
   'taplo',
-  'zls'
+  'zls',
 }
 
 vim.filetype.add({
@@ -261,6 +261,11 @@ local plugin = {
         },
       },
     },
+  },
+  {
+    'webhooked/kanso.nvim',
+    lazy = false,
+    priority = 1000,
   },
   -- }}}
 
@@ -661,7 +666,7 @@ local plugin = {
     },
     opts = {
       default_format_opts = {
-        lsp_format = "prefer"
+        lsp_format = 'prefer',
       },
       formatters_by_ft = {
         lua = { 'stylua' },
@@ -837,7 +842,7 @@ require('lazy').setup({
 -- }}}
 
 -- {{{ Theme switcher
-vim.cmd.colorscheme('catppuccin')
+vim.cmd.colorscheme('kanso')
 -- }}}
 
 -- {{{ Tweaks
