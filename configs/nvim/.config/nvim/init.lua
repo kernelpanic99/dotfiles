@@ -268,10 +268,6 @@ local plugin = {
     priority = 1000,
     opts = {
       theme = 'mist',
-      foreground = {
-        dark = 'saturated',
-        light = 'saturated',
-      },
     },
   },
   -- }}}
@@ -849,7 +845,7 @@ require('lazy').setup({
 -- }}}
 
 -- {{{ Theme switcher
-vim.cmd.colorscheme('kanso')
+vim.cmd.colorscheme('catppuccin')
 -- }}}
 
 -- {{{ Tweaks
