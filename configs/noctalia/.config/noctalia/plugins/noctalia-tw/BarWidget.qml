@@ -26,6 +26,9 @@ Rectangle {
   property string widgetIcon: "player-pause"
   property var currentTask: null
 
+  property bool isTracking: currentTask && !currentTask.end
+  property color trackingColor: isTracking ? "#a6e3a1" : "#f38ba8"
+
   visible: cmdOutput !== ""
 
   Process {
@@ -118,13 +121,13 @@ Rectangle {
         NIcon {
           id: icon
           icon: widgetIcon
-          color: Color.mPrimary
+          color: root.trackingColor
         }
     }
 
     NText {
       text: cmdOutput
-      color: Color.mOnSurface
+      color: root.trackingColor
       pointSize: Style.fontSizeS
     }
   }
