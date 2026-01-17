@@ -99,6 +99,7 @@ local ts_parsers = {
   'cpp',
   'http',
   'zig',
+  'ron'
 }
 
 local tools = {
