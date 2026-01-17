@@ -1,0 +1,12 @@
+[Service]
+Description=Start niri
+After=network.target
+After=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/niri-session
+Type=simple
+Restart=always
+
+[Install]
+WantedBy=default.target
