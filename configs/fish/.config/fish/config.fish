@@ -27,10 +27,6 @@ end
 mise activate fish | source
 direnv hook fish | source
 
-if test -z "$DISPLAY"; and test "$XDG_VTNR" -eq 1
-	#exec niri-session
-end
-
 function full-upgrade
     echo "Upgrading system packages..."
     yay -Syu --noconfirm
