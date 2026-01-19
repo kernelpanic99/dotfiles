@@ -103,7 +103,7 @@ local ts_parsers = {
   'http',
   'zig',
   'ron',
-  'ecma'
+  'ecma',
 }
 
 local tools = {
@@ -542,6 +542,14 @@ local plugin = {
       { '<leader>e', '<cmd>Neotree toggle<CR>', desc = 'Open file manager' },
       { '<leader>be', '<cmd>Neotree buffers toggle<CR>', desc = '[E]xplore buffers' },
     },
+    config = function()
+      vim.api.nvim_create_autocmd('TermClose', {
+        pattern = '*lazygit',
+        callback = function()
+          require('neo-tree.events').fire_event('git_event')
+        end,
+      })
+    end,
   },
   -- }}}
 
