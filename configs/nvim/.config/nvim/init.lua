@@ -47,6 +47,9 @@ vim.o.inccommand = 'split' -- previev substitutions live
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.o.laststatus = 0
+
+local ts_path = vim.fn.stdpath('data') .. '/site'
+vim.opt.runtimepath:prepend(ts_path)
 -- }}}
 
 -- {{{ Check executables
@@ -99,7 +102,8 @@ local ts_parsers = {
   'cpp',
   'http',
   'zig',
-  'ron'
+  'ron',
+  'ecma'
 }
 
 local tools = {
@@ -200,24 +204,21 @@ local plugin = {
   {
     'nvim-treesitter/nvim-treesitter', -- syntax parser for features like highliting, indents, folds, etc...
     lazy = false,
-    build = function()
+    branch = 'main',
+    build = ':TSUpdate',
+    config = function()
       local ts = require('nvim-treesitter')
 
       ts.install(ts_parsers)
-      ts.update()
-    end,
-    config = function()
-      require('nvim-treesitter').update()
+
+      ts.setup({
+        install_dir = ts_path,
+        highlight = { enable = true },
+      })
 
       vim.api.nvim_create_autocmd('FileType', {
-        callback = function(args)
-          local ts = vim.treesitter
-          local ft = args.match
-          local lang = ts.language.get_lang(ft)
-
-          if ts.language.add(lang) then
-            ts.start()
-          end
+        callback = function()
+          pcall(vim.treesitter.start)
         end,
       })
     end,
@@ -271,6 +272,7 @@ local plugin = {
       theme = 'mist',
     },
   },
+  { 'folke/tokyonight.nvim' },
   -- }}}
 
   -- {{{ Code
