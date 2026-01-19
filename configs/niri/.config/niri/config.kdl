@@ -256,7 +256,7 @@ binds {
     Mod+V       { toggle-window-floating; }
     Mod+Shift+V { switch-focus-between-floating-and-tiling; }
 
-    Print { screenshot; }
+    Print { spawn-sh "niri msg action screenshot; sleep 0.2; wl-paste | satty --filename -"; }
     Ctrl+Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
 
