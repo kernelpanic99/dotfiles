@@ -8,5 +8,10 @@ use = "yazi-rs/plugins:smart-paste"
 rev = "68f7d48"
 hash = "75fd60b2df7115e0a6ca31a6a804d320"
 
+[[plugin.deps]]
+use = "boydaihungst/gvfs"
+rev = "1badf40"
+hash = "2467c9a0dc3aeacc11be375de873a78b"
+
 [flavor]
 deps = []
