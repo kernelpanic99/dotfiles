@@ -24,6 +24,7 @@ environment {
 // {{{Autostart
 spawn-sh-at-startup "qs -c noctalia-shell"
 spawn-sh-at-startup "swayidle -w timeout 300 'brightnessctl set 20%; timew stop' resume 'brightnessctl set 100%' timeout 600 'qs -c noctalia-shell ipc call sessionMenu lockAndSuspend'"
+spawn-at-startup "nm-applet"
 // }}}
 
 // {{{ Input & Monitors
