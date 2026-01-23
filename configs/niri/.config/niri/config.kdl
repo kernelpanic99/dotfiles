@@ -207,8 +207,8 @@ binds {
     Mod+Shift+H     { move-window-to-monitor-left; }
     Mod+Shift+L     { move-window-to-monitor-right; }
 
-    Mod+Shift+J     { focus-workspace-down; }
-    Mod+Shift+K     { focus-workspace-up; }
+    Mod+Shift+K     { focus-workspace-down; }
+    Mod+Shift+J     { focus-workspace-up; }
 
     Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
     Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
