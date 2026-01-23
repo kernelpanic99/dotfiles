@@ -138,7 +138,8 @@
                     "hidePassive": false,
                     "id": "Tray",
                     "pinned": [
-                        "Ferdium"
+                        "Ferdium",
+                        "nm-applet"
                     ]
                 },
                 {
