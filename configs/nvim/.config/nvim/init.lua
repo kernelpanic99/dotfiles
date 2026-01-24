@@ -570,12 +570,20 @@ local plugin = {
       'nvim-tree/nvim-web-devicons', -- optional, but recommended
     },
     lazy = false,
-    opts = {},
     keys = {
       { '<leader>e', '<cmd>Neotree toggle<CR>', desc = 'Open file manager' },
       { '<leader>be', '<cmd>Neotree buffers toggle<CR>', desc = '[E]xplore buffers' },
     },
     config = function()
+      require('neo-tree').setup({
+        filesystem = {
+          follow_current_file = {
+            enabled = true,
+            leave_dirs_open = false,
+          },
+        },
+      })
+
       vim.api.nvim_create_autocmd('TermClose', {
         pattern = '*lazygit',
         callback = function()
