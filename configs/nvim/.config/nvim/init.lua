@@ -467,6 +467,22 @@ local plugin = {
     keys = {},
   },
   {
+    'rcarriga/nvim-notify',
+    config = function()
+      local notify = require('notify')
+
+      notify.setup({
+        render = 'compact',
+      })
+
+      vim.notify = notify
+    end,
+  },
+  {
+    'mahyarmirrashed/famous-quotes.nvim',
+    opts = {},
+  },
+  {
     'romgrk/barbar.nvim',
     lazy = false,
     dependencies = {
@@ -490,6 +506,15 @@ local plugin = {
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
       local startify = require('alpha.themes.startify')
+      local quote = require('famous-quotes').get_quote()[1]
+
+      startify.section.footer.val = {
+        { type = 'padding', val = 2 },
+        { type = 'text', val = 'Quote', opts = { hl = 'Special' } },
+        { type = 'padding', val = 1 },
+        { type = 'text', val = '«' .. quote.quote .. '»', opts = { hl = 'String' } },
+        { type = 'text', val = '— ' .. quote.author, opts = { hl = 'Comment' } },
+      }
 
       startify.file_icons.provider = 'devicons'
 
@@ -513,6 +538,14 @@ local plugin = {
       },
     },
     opts = {},
+  },
+  {
+    'rachartier/tiny-glimmer.nvim',
+    event = 'VeryLazy',
+    priority = 10, -- Low priority to catch other plugins' keybindings
+    config = function()
+      require('tiny-glimmer').setup()
+    end,
   },
   -- }}}
 
@@ -747,26 +780,22 @@ local plugin = {
     'coder/claudecode.nvim',
     dependencies = { 'folke/snacks.nvim' },
     opts = {
+      diff_opts = {
+        auto_close_on_accept = true,
+        open_in_current_tab = true,
+        vertical_split = true,
+        keep_terminal_focus = true,
+      },
       terminal = {
+        provider = 'native',
+        split_side = 'right',
         split_width_percentage = 0.4,
-        snacks_win_opts = {
-          keys = {
-            {
-              '<C-a>',
-              function(self)
-                self:hide()
-              end,
-              mode = 't',
-              desc = 'Hide',
-            },
-          },
-        },
       },
     },
     keys = {
       { '<leader>a', nil, desc = '[A]I/Claude Code' },
       { '<leader>ac', '<cmd>ClaudeCode<cr>', desc = 'Toggle [C]laude, Alternate - <C-a>' },
-      { '<C-a>', '<cmd>ClaudeCode<cr>', desc = 'Toggle Claude', mode = 'n' },
+      { '<C-a>', '<cmd>ClaudeCode<cr>', desc = 'Toggle Claude', mode = { 'n', 't' } },
       { '<C-a>', '<cmd>ClaudeCodeSend<cr>', desc = 'Open Claude with current selection', mode = 'v' },
       { '<leader>af', '<cmd>ClaudeCodeFocus<cr>', desc = 'Focus Claude' },
       { '<leader>ar', '<cmd>ClaudeCode --resume<cr>', desc = 'Resume Claude' },
@@ -863,16 +892,6 @@ vim.cmd.colorscheme('catppuccin')
 
 -- Clear highlight after search
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
-
--- Highligt yanked text
-vim.api.nvim_create_autocmd('TextYankPost', {
-  group = vim.api.nvim_create_augroup('highlight_yank', {}),
-  desc = 'Hightlight selection on yank',
-  pattern = '*',
-  callback = function()
-    vim.highlight.on_yank({ higroup = 'IncSearch', timeout = 500 })
-  end,
-})
 
 -- Keep visual on indent
 vim.keymap.set('v', '>', '>gv')
