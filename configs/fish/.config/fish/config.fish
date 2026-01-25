@@ -28,33 +28,22 @@ mise activate fish | source
 direnv hook fish | source
 
 function full-upgrade
-    echo "Upgrading system packages..."
+    # Toolchain managers first
+    echo "Upgrading system..."
     yay -Syu --noconfirm
 
-    echo "Upgrading mise..."
-    mise upgrade
+    echo "Upgrading toolchains..."
+    mise upgrade & rustup update & wait
 
-    echo "Upgrading cargo..."
-    cargo install --list | grep -E '^\w' | awk '{print $1}' | xargs -n1 cargo install
-
-    echo "Upgrading rustup..."
-    rustup update
-
-    echo "Upgrading fish..."
-    fisher update
-
-    echo "Upgrading python packages..."
-    uv tool upgrade --all
-
-    echo "Upgrading npm packages..."
-    pnpm update -g
+    # Everything else concurrently
+    cargo install-update -a & fisher update & uv tool upgrade --all & pnpm update -g & nvim --headless '+Lazy! sync' +qa & ya pkg upgrade & ~/.config/tmux/plugins/tpm/bin/update_plugins all & wait
 end
 
 # pnpm
 set -gx PNPM_HOME "/home/kp/.local/share/pnpm"
 
 if not string match -q -- $PNPM_HOME $PATH
-  set -gx PATH "$PNPM_HOME" $PATH
+    set -gx PATH "$PNPM_HOME" $PATH
 end
 # pnpm end
 
@@ -62,10 +51,10 @@ end
 function y
     set tmp (mktemp -t "yazi-cwd.XXXXXX")
     yazi $argv --cwd-file="$tmp"
-    
+
     if set cwd (cat -- "$tmp") && test -n "$cwd" && test "$cwd" != "$PWD"
         cd -- "$cwd"
     end
-    
+
     rm -f -- "$tmp"
 end
