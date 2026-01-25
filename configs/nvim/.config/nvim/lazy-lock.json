@@ -1,5 +1,6 @@
 {
   "alpha-nvim": { "branch": "main", "commit": "3979b01cb05734331c7873049001d3f2bb8477f4" },
+  "ascii.nvim": { "branch": "master", "commit": "70783fea66e99525221e52dce3b3489c05354181" },
   "atone.nvim": { "branch": "main", "commit": "d1c1f08bfe23ac56536d0091c8a398938ee9db4e" },
   "barbar.nvim": { "branch": "master", "commit": "539d73def39c9172b4d4d769f14090e08f37b29d" },
   "blink.cmp": { "branch": "main", "commit": "b137f63d89d0285ca76eed12e1923220e0aff8c1" },

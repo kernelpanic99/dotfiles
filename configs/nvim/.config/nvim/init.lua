@@ -502,13 +502,38 @@ local plugin = {
     },
   },
   {
+    'MaximilianLloyd/ascii.nvim',
+    dependencies = {
+      'MunifTanjim/nui.nvim',
+    },
+  },
+  {
     'goolord/alpha-nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
       local startify = require('alpha.themes.startify')
+      local ascii = require('ascii')
+      local quotes = require('famous-quotes')
+
+      local selected = {
+        ascii.art.planets.planets.saturn_plus,
+        ascii.art.text.neovim.ogre,
+        ascii.art.text.neovim.dos_rebel,
+        ascii.art.text.neovim.ansi_shadow,
+        ascii.art.text.neovim.elite,
+        ascii.art.text.neovim.bloody,
+        ascii.art.text.neovim.default1,
+        ascii.art.text.neovim.sharp,
+        ascii.art.misc.hydra.hydra,
+        ascii.art.text.slogons.arch_btw_doom,
+      }
+
+      startify.section.header.val = function()
+        return selected[math.random(#selected)]
+      end
 
       local function make_quote_section()
-        local quote = require('famous-quotes').get_quote()[1]
+        local quote = quotes.get_quote()[1]
 
         return {
           { type = 'padding', val = 2 },
@@ -520,7 +545,7 @@ local plugin = {
               { type = 'text', val = '«' .. quote.quote .. '»', opts = { hl = 'String' } },
               { type = 'text', val = '— ' .. quote.author, opts = { hl = 'Comment' } },
               { type = 'padding', val = 1 },
-              startify.button('r', '󰑓 Refresh quote', '<cmd>AlphaRedraw<CR>'),
+              startify.button('r', '󰑓 Refresh', '<cmd>AlphaRedraw<CR>'),
             },
           },
         }
