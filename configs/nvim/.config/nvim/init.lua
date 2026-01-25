@@ -519,6 +519,7 @@ local plugin = {
               { type = 'padding', val = 1 },
               { type = 'text', val = '«' .. quote.quote .. '»', opts = { hl = 'String' } },
               { type = 'text', val = '— ' .. quote.author, opts = { hl = 'Comment' } },
+              { type = 'padding', val = 1 },
               startify.button('r', '󰑓 Refresh quote', '<cmd>AlphaRedraw<CR>'),
             },
           },
