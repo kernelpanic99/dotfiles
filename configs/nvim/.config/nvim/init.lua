@@ -506,15 +506,26 @@ local plugin = {
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
       local startify = require('alpha.themes.startify')
-      local quote = require('famous-quotes').get_quote()[1]
 
-      startify.section.footer.val = {
-        { type = 'padding', val = 2 },
-        { type = 'text', val = 'Quote', opts = { hl = 'Special' } },
-        { type = 'padding', val = 1 },
-        { type = 'text', val = '«' .. quote.quote .. '»', opts = { hl = 'String' } },
-        { type = 'text', val = '— ' .. quote.author, opts = { hl = 'Comment' } },
-      }
+      local function make_quote_section()
+        local quote = require('famous-quotes').get_quote()[1]
+
+        return {
+          { type = 'padding', val = 2 },
+          {
+            type = 'group',
+            val = {
+              { type = 'text', val = 'Quote', opts = { hl = 'Special' } },
+              { type = 'padding', val = 1 },
+              { type = 'text', val = '«' .. quote.quote .. '»', opts = { hl = 'String' } },
+              { type = 'text', val = '— ' .. quote.author, opts = { hl = 'Comment' } },
+              startify.button('r', '󰑓 Refresh quote', '<cmd>AlphaRedraw<CR>'),
+            },
+          },
+        }
+      end
+
+      startify.section.footer.val = make_quote_section
 
       startify.file_icons.provider = 'devicons'
 
