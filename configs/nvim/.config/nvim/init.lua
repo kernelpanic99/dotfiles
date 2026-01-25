@@ -832,7 +832,7 @@ local plugin = {
         keep_terminal_focus = true,
       },
       terminal = {
-        provider = 'native',
+        provider = 'snacks',
         split_side = 'right',
         split_width_percentage = 0.4,
       },
