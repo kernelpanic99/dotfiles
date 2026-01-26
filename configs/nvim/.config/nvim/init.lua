@@ -227,7 +227,18 @@ local plugin = {
     'folke/snacks.nvim',
     lazy = false,
     priority = 1000,
-    opts = {},
+    opts = {
+      notifier = { enabled = true },
+      lazygit = { enabled = true },
+    },
+    keys = {
+      { '<leader>gg', function() Snacks.lazygit() end, desc = 'Lazy[G]it' },
+    },
+    init = function()
+      vim.notify = function(msg, level, opts)
+        Snacks.notifier.notify(msg, level, opts)
+      end
+    end,
   },
   -- }}}
 
@@ -448,10 +459,6 @@ local plugin = {
     },
   },
   {
-    'j-hui/fidget.nvim',
-    opts = {},
-  },
-  {
     'folke/todo-comments.nvim',
     lazy = false,
     dependencies = { 'nvim-lua/plenary.nvim', 'folke/trouble.nvim' },
@@ -465,18 +472,6 @@ local plugin = {
     opts = {}, -- for default options, refer to the configuration section for custom setup.
     cmd = 'Trouble',
     keys = {},
-  },
-  {
-    'rcarriga/nvim-notify',
-    config = function()
-      local notify = require('notify')
-
-      notify.setup({
-        render = 'compact',
-      })
-
-      vim.notify = notify
-    end,
   },
   {
     'mahyarmirrashed/famous-quotes.nvim',
@@ -662,7 +657,6 @@ local plugin = {
   {
     'neovim/nvim-lspconfig',
     dependencies = {
-      'j-hui/fidget.nvim',
       'saghen/blink.cmp',
       'folke/which-key.nvim',
     },
@@ -787,13 +781,6 @@ local plugin = {
   -- }}}
 
   -- {{{ Git
-  {
-    'kdheepak/lazygit.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim' },
-    keys = {
-      { '<leader>gg', '<cmd>LazyGit<CR>', desc = 'Lazy[G]it' },
-    },
-  },
   {
     'lewis6991/gitsigns.nvim',
     lazy = false,
