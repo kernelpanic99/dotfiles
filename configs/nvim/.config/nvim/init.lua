@@ -553,6 +553,8 @@ local plugin = {
 
       startify.section.footer.val = make_quote_section
 
+      startify.section.mru.val = { { type = 'padding', val = 0 } }
+
       startify.file_icons.provider = 'devicons'
 
       require('alpha').setup(startify.config)
