@@ -230,6 +230,7 @@ local plugin = {
     opts = {
       notifier = { enabled = true },
       lazygit = { enabled = true },
+      explorer = { enabled = true },
     },
     keys = {
       {
@@ -238,6 +239,13 @@ local plugin = {
           require('snacks').lazygit()
         end,
         desc = 'Lazy[G]it',
+      },
+      {
+        '<leader>e',
+        function()
+          require('snacks').explorer()
+        end,
+        desc = 'Open file [E]xplorer',
       },
     },
     init = function()
@@ -588,41 +596,6 @@ local plugin = {
     keys = {
       { '<leader>tu', '<cmd>Atone<CR>', desc = '[U]ndo history' },
     },
-  },
-  -- }}}
-
-  -- {{{ File manager
-  {
-    'nvim-neo-tree/neo-tree.nvim',
-    branch = 'v3.x',
-    dependencies = {
-      'antosha417/nvim-lsp-file-operations',
-      'nvim-lua/plenary.nvim',
-      'MunifTanjim/nui.nvim',
-      'nvim-tree/nvim-web-devicons', -- optional, but recommended
-    },
-    lazy = false,
-    keys = {
-      { '<leader>e', '<cmd>Neotree toggle<CR>', desc = 'Open file manager' },
-      { '<leader>be', '<cmd>Neotree buffers toggle<CR>', desc = '[E]xplore buffers' },
-    },
-    config = function()
-      require('neo-tree').setup({
-        filesystem = {
-          follow_current_file = {
-            enabled = true,
-            leave_dirs_open = false,
-          },
-        },
-      })
-
-      vim.api.nvim_create_autocmd('TermClose', {
-        pattern = '*lazygit',
-        callback = function()
-          require('neo-tree.events').fire_event('git_event')
-        end,
-      })
-    end,
   },
   -- }}}
 
