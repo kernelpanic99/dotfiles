@@ -232,11 +232,11 @@ local plugin = {
       lazygit = { enabled = true },
     },
     keys = {
-      { '<leader>gg', function() Snacks.lazygit() end, desc = 'Lazy[G]it' },
+      { '<leader>gg', function() require('snacks').lazygit() end, desc = 'Lazy[G]it' },
     },
     init = function()
       vim.notify = function(msg, level, opts)
-        Snacks.notifier.notify(msg, level, opts)
+        require('snacks').notifier.notify(msg, level, opts)
       end
     end,
   },
@@ -299,7 +299,7 @@ local plugin = {
       max_join_length = 300,
     },
   },
-  { 'windwp/nvim-autopairs', event = 'InsertEnter', opts = {} },
+  { 'nvim-mini/mini.pairs', version = false, event = 'InsertEnter', opts = {} },
   { 'qwavies/smart-backspace.nvim', opts = { map_bs = false } },
   { 'nvim-mini/mini.ai', version = false },
   {
@@ -572,14 +572,6 @@ local plugin = {
       },
     },
     opts = {},
-  },
-  {
-    'rachartier/tiny-glimmer.nvim',
-    event = 'VeryLazy',
-    priority = 10, -- Low priority to catch other plugins' keybindings
-    config = function()
-      require('tiny-glimmer').setup()
-    end,
   },
   -- }}}
 
@@ -930,5 +922,13 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- Keep visual on indent
 vim.keymap.set('v', '>', '>gv')
 vim.keymap.set('v', '<', '<gv')
+
+-- Highlight on yank
+vim.api.nvim_create_autocmd('TextYankPost', {
+  callback = function()
+    vim.highlight.on_yank({ timeout = 200 })
+  end,
+})
+
 
 -- }}}
