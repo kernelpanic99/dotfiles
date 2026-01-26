@@ -232,7 +232,13 @@ local plugin = {
       lazygit = { enabled = true },
     },
     keys = {
-      { '<leader>gg', function() require('snacks').lazygit() end, desc = 'Lazy[G]it' },
+      {
+        '<leader>gg',
+        function()
+          require('snacks').lazygit()
+        end,
+        desc = 'Lazy[G]it',
+      },
     },
     init = function()
       vim.notify = function(msg, level, opts)
@@ -929,6 +935,5 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.highlight.on_yank({ timeout = 200 })
   end,
 })
-
 
 -- }}}
