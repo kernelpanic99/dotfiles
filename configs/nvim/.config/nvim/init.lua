@@ -231,6 +231,10 @@ local plugin = {
       notifier = { enabled = true },
       lazygit = { enabled = true },
       explorer = { enabled = true },
+      indent = { enabled = true },
+      bigfile = {},
+      statuscolumn = {},
+      terminal = { enabled = true },
     },
     keys = {
       {
