@@ -230,7 +230,6 @@ local plugin = {
     opts = {
       notifier = { enabled = true },
       lazygit = { enabled = true },
-      explorer = { enabled = true },
       indent = { enabled = true },
       bigfile = {},
       statuscolumn = {},
