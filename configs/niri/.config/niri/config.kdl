@@ -1,4 +1,4 @@
-// vim: foldmethod=marker
+// vim: foldmethod=marker foldlevel=0
 
 //{{{ Enviroment
 
@@ -202,6 +202,8 @@ binds {
 
     Mod+J     { focus-column-left; }
     Mod+K     { focus-column-right; }
+    Mod+Z     { focus-column-left; }
+    Mod+C     { focus-column-right; }
     Mod+H     { focus-monitor-left; }
     Mod+L     { focus-monitor-right; }
 
@@ -245,7 +247,7 @@ binds {
 
     Mod+Ctrl+F { expand-column-to-available-width; }
 
-    Mod+C { center-column; }
+    // Mod+C { center-column; }
 
     Mod+Ctrl+C { center-visible-columns; }
 
