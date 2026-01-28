@@ -1,4 +1,4 @@
--- vim: foldmethod=marker shiftwidth=2
+-- vim: foldmethod=marker shiftwidth=2 foldlevel=0
 -- zo - open section, zc - close section, zR - open all, zM - close all
 
 -- {{{ Options
@@ -47,6 +47,10 @@ vim.o.inccommand = 'split' -- previev substitutions live
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.o.laststatus = 0
+
+-- Folds
+vim.opt.foldmethod = 'syntax'
+vim.opt.foldlevelstart = 99
 
 local ts_path = vim.fn.stdpath('data') .. '/site'
 vim.opt.runtimepath:prepend(ts_path)
@@ -219,6 +223,9 @@ local plugin = {
       vim.api.nvim_create_autocmd('FileType', {
         callback = function()
           pcall(vim.treesitter.start)
+
+          vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+          vim.wo[0][0].foldmethod = 'expr'
         end,
       })
     end,
@@ -755,9 +762,7 @@ local plugin = {
       { '<leader>cf', '<cmd>lua require("conform").format()<CR>', desc = '[F]ormat' },
     },
     opts = {
-      default_format_opts = {
-        lsp_format = 'prefer',
-      },
+      lsp_format = 'fallback',
       formatters_by_ft = {
         lua = { 'stylua' },
         javascript = { 'biome' },
