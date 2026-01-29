@@ -484,6 +484,7 @@ local plugin = {
             return { { '[', hl = 'special' }, { item.key, hl = 'key' }, { ']', hl = 'special' } }
           end,
         },
+        pane_gap = 4,
         preset = {
           keys = {
             { icon = ' ', key = 'f', desc = 'Find File', action = ":lua Snacks.dashboard.pick('files')" },
@@ -507,11 +508,29 @@ local plugin = {
         sections = {
           -- Custom header. ascii.nvim stores these as array of lines, so need to render individualy
           function()
-            local art = require('ascii').get_random('text', 'neovim')
-            local lines = { padding = 2, align = 'center' }
+            local art = require('ascii').art.text.neovim.sharp
+            local lines = { padding = 2, align = 'right', pane = 1 }
 
             for _, line in ipairs(art) do
-              table.insert(lines, { text = { line, hl = 'Title' } })
+              local line_len = vim.fn.strchars(line)
+              local mid = math.floor(line_len / 2)
+              local first_half = vim.fn.strcharpart(line, 0, mid)
+
+              table.insert(lines, { text = { first_half, hl = 'Title' } })
+            end
+
+            return lines
+          end,
+          function()
+            local art = require('ascii').art.text.neovim.sharp
+            local lines = { padding = 2, align = 'left', pane = 2 }
+
+            for _, line in ipairs(art) do
+              local line_len = vim.fn.strchars(line)
+              local mid = math.floor(line_len / 2)
+              local second_half = vim.fn.strcharpart(line, mid)
+
+              table.insert(lines, { text = { second_half, hl = 'Title' } })
             end
 
             return lines
@@ -520,8 +539,8 @@ local plugin = {
           { title = 'MRU ', file = vim.fn.fnamemodify('.', ':~'), padding = 1 },
           { section = 'recent_files', cwd = true, limit = 8, padding = 1 },
 
-          { title = 'Bookmarks', padding = 1 },
-          { section = 'keys' },
+          { title = 'Bookmarks', padding = 1, pane = 2 },
+          { section = 'keys', pane = 2 },
 
           { title = 'Quote', padding = { 1, 1 } },
           function()
@@ -540,7 +559,7 @@ local plugin = {
             return items
           end,
 
-          { section = 'startup' },
+          { section = 'startup', pane = 2, padding = { 1, 1 } },
         },
       },
     },
