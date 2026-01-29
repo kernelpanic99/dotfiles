@@ -161,7 +161,6 @@ local tools = {
   'mdformat',
   'taplo',
   'zls',
-  'go',
 }
 
 vim.filetype.add({
