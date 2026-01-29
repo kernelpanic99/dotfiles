@@ -78,8 +78,6 @@ vim.o.laststatus = 0
 vim.opt.foldmethod = 'syntax'
 vim.opt.foldlevelstart = 99
 
-local ts_path = vim.fn.stdpath('data') .. '/site'
-vim.opt.runtimepath:prepend(ts_path)
 -- }}}
 
 -- {{{ Check executables
@@ -163,6 +161,7 @@ local tools = {
   'mdformat',
   'taplo',
   'zls',
+  'go',
 }
 
 vim.filetype.add({
@@ -242,7 +241,6 @@ local plugin = {
       ts.install(ts_parsers)
 
       ts.setup({
-        install_dir = ts_path,
         highlight = { enable = true },
       })
 
