@@ -1,6 +1,32 @@
 -- vim: foldmethod=marker shiftwidth=2 foldlevel=0
 -- zo - open section, zc - close section, zR - open all, zM - close all
 
+--{{{Util
+local function break_sentence(text, max_len)
+  local chunks, current = {}, ''
+
+  for word in text:gmatch('%S+') do
+    local next_chunk = current == '' and word or current .. ' ' .. word
+
+    if #next_chunk <= max_len then
+      current = next_chunk
+    else
+      if current ~= '' then
+        table.insert(chunks, current)
+      end
+
+      current = word
+    end
+  end
+
+  if current ~= '' then
+    table.insert(chunks, current)
+  end
+
+  return chunks
+end
+--}}}
+
 -- {{{ Options
 
 -- General Behaviour
@@ -230,33 +256,6 @@ local plugin = {
       })
     end,
   },
-  {
-    'folke/snacks.nvim',
-    lazy = false,
-    priority = 1000,
-    opts = {
-      notifier = { enabled = true },
-      lazygit = { enabled = true },
-      indent = { enabled = true },
-      bigfile = {},
-      statuscolumn = {},
-      terminal = { enabled = true },
-    },
-    keys = {
-      {
-        '<leader>gg',
-        function()
-          require('snacks').lazygit()
-        end,
-        desc = 'Lazy[G]it',
-      },
-    },
-    init = function()
-      vim.notify = function(msg, level, opts)
-        require('snacks').notifier.notify(msg, level, opts)
-      end
-    end,
-  },
   -- }}}
 
   -- {{{ Colorschemes
@@ -468,6 +467,102 @@ local plugin = {
 
   -- {{{ UI
   {
+    'folke/snacks.nvim',
+    lazy = false,
+    priority = 1000,
+    dependencies = {
+      'MaximilianLloyd/ascii.nvim',
+      'mahyarmirrashed/famous-quotes.nvim',
+    },
+    opts = {
+      notifier = { enabled = true },
+      lazygit = { enabled = true },
+      indent = { enabled = true },
+      bigfile = {},
+      statuscolumn = {},
+      terminal = { enabled = true },
+      dashboard = {
+        formats = {
+          key = function(item)
+            return { { '[', hl = 'special' }, { item.key, hl = 'key' }, { ']', hl = 'special' } }
+          end,
+        },
+        preset = {
+          keys = {
+            { icon = ' ', key = 'f', desc = 'Find File', action = ":lua Snacks.dashboard.pick('files')" },
+            { icon = ' ', key = 'n', desc = 'New File', action = ':ene | startinsert' },
+            { icon = ' ', key = 'g', desc = 'Find Text', action = ":lua Snacks.dashboard.pick('live_grep')" },
+            { icon = ' ', key = 'r', desc = 'Recent Files', action = ":lua Snacks.dashboard.pick('oldfiles')" },
+            { icon = ' ', key = 'c', desc = 'Config', action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
+            { icon = ' ', key = 's', desc = 'Restore Session', section = 'session' },
+            { icon = '󰒲 ', key = 'L', desc = 'Lazy', action = ':Lazy', enabled = package.loaded.lazy ~= nil },
+            {
+              icon = ' ',
+              key = 'R',
+              desc = 'Refresh dashboard',
+              action = function()
+                Snacks.dashboard.update()
+              end,
+            },
+            { icon = ' ', key = 'q', desc = 'Quit', action = ':qa' },
+          },
+        },
+        sections = {
+          -- Custom header. ascii.nvim stores these as array of lines, so need to render individualy
+          function()
+            local art = require('ascii').get_random('text', 'neovim')
+            local lines = { padding = 2, align = 'center' }
+
+            for _, line in ipairs(art) do
+              table.insert(lines, { text = { line, hl = 'Title' } })
+            end
+
+            return lines
+          end,
+
+          { title = 'MRU ', file = vim.fn.fnamemodify('.', ':~'), padding = 1 },
+          { section = 'recent_files', cwd = true, limit = 8, padding = 1 },
+
+          { title = 'Bookmarks', padding = 1 },
+          { section = 'keys' },
+
+          { title = 'Quote', padding = { 1, 1 } },
+          function()
+            local quote = require('famous-quotes').get_quote()[1]
+            local dash_width = 60
+
+            local lines = break_sentence('«' .. quote.quote .. '»', dash_width)
+            local items = { padding = 1 }
+
+            for _, line in ipairs(lines) do
+              table.insert(items, { text = { line, hl = 'String', align = 'left' } })
+            end
+
+            table.insert(items, { text = { ' — ' .. quote.author, hl = 'Comment', align = 'right' } })
+
+            return items
+          end,
+
+          { section = 'startup' },
+        },
+      },
+    },
+    keys = {
+      {
+        '<leader>gg',
+        function()
+          require('snacks').lazygit()
+        end,
+        desc = 'Lazy[G]it',
+      },
+    },
+    init = function()
+      vim.notify = function(msg, level, opts)
+        require('snacks').notifier.notify(msg, level, opts)
+      end
+    end,
+  },
+  {
     'nvim-lualine/lualine.nvim',
     opts = {
       options = {
@@ -518,59 +613,6 @@ local plugin = {
     dependencies = {
       'MunifTanjim/nui.nvim',
     },
-  },
-  {
-    'goolord/alpha-nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-    config = function()
-      local startify = require('alpha.themes.startify')
-      local ascii = require('ascii')
-      local quotes = require('famous-quotes')
-
-      local selected = {
-        ascii.art.planets.planets.saturn_plus,
-        ascii.art.text.neovim.ogre,
-        ascii.art.text.neovim.dos_rebel,
-        ascii.art.text.neovim.ansi_shadow,
-        ascii.art.text.neovim.elite,
-        ascii.art.text.neovim.bloody,
-        ascii.art.text.neovim.default1,
-        ascii.art.text.neovim.sharp,
-        ascii.art.misc.hydra.hydra,
-        ascii.art.text.slogons.arch_btw_doom,
-      }
-
-      startify.section.header.val = function()
-        return selected[math.random(#selected)]
-      end
-
-      local function make_quote_section()
-        local quote = quotes.get_quote()[1]
-
-        return {
-          { type = 'padding', val = 2 },
-          {
-            type = 'group',
-            val = {
-              { type = 'text', val = 'Quote', opts = { hl = 'Special' } },
-              { type = 'padding', val = 1 },
-              { type = 'text', val = '«' .. quote.quote .. '»', opts = { hl = 'String' } },
-              { type = 'text', val = '— ' .. quote.author, opts = { hl = 'Comment' } },
-              { type = 'padding', val = 1 },
-              startify.button('r', '󰑓 Refresh', '<cmd>AlphaRedraw<CR>'),
-            },
-          },
-        }
-      end
-
-      startify.section.footer.val = make_quote_section
-
-      startify.section.mru.val = { { type = 'padding', val = 0 } }
-
-      startify.file_icons.provider = 'devicons'
-
-      require('alpha').setup(startify.config)
-    end,
   },
   {
     'rachartier/tiny-code-action.nvim',
