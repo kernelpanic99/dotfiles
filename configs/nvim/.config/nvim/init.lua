@@ -484,7 +484,6 @@ local plugin = {
             return { { '[', hl = 'special' }, { item.key, hl = 'key' }, { ']', hl = 'special' } }
           end,
         },
-        pane_gap = 4,
         preset = {
           keys = {
             { icon = ' ', key = 'f', desc = 'Find File', action = ":lua Snacks.dashboard.pick('files')" },
@@ -508,37 +507,37 @@ local plugin = {
         sections = {
           -- Custom header. ascii.nvim stores these as array of lines, so need to render individualy
           function()
-            local art = require('ascii').art.text.neovim.sharp
-            local lines = { padding = 2, align = 'right', pane = 1 }
+            local ascii = require('ascii')
 
-            for _, line in ipairs(art) do
+            local art_choices = {
+              ascii.art.text.neovim.sharp,
+              ascii.art.text.neovim.dos_rebel,
+              ascii.art.text.neovim.default1,
+              ascii.art.text.neovim.isometric,
+              ascii.art.text.neovim.ogre,
+              ascii.art.text.neovim.ansi_shadow,
+              ascii.art.text.neovim.bloody,
+              ascii.art.text.neovim.elite,
+              ascii.art.text.neovim.larry_3d,
+            }
+
+            local selected_art = art_choices[math.random(#art_choices)]
+            local lines = { padding = 2, align = 'center' }
+
+            for _, line in ipairs(selected_art) do
               table.insert(lines, { text = { line, hl = 'Title' } })
             end
 
             return lines
           end,
-          -- function()
-          --   local art = require('ascii').art.text.neovim.sharp
-          --   local lines = { padding = 2, align = 'left', pane = 2 }
-          --
-          --   for _, line in ipairs(art) do
-          --     local line_len = vim.fn.strchars(line)
-          --     local mid = math.floor(line_len / 2)
-          --     local second_half = vim.fn.strcharpart(line, mid)
-          --
-          --     table.insert(lines, { text = { second_half, hl = 'Title' } })
-          --   end
-          --
-          --   return lines
-          -- end,
-
           { title = 'MRU ', file = vim.fn.fnamemodify('.', ':~'), padding = 1 },
           { section = 'recent_files', cwd = true, limit = 8, padding = 1 },
 
-          { title = 'Bookmarks', padding = 1, pane = 1 },
-          { section = 'keys', pane = 1 },
+          { title = 'Bookmarks', padding = 1 },
+          { section = 'keys' },
 
           { title = 'Quote', padding = { 1, 1 } },
+
           function()
             local quote = require('famous-quotes').get_quote()[1]
             local dash_width = 60
@@ -555,7 +554,7 @@ local plugin = {
             return items
           end,
 
-          { section = 'startup', pane = 1, padding = { 1, 1 } },
+          { section = 'startup', padding = { 1, 1 } },
         },
       },
     },
