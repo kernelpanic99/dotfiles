@@ -165,7 +165,7 @@ window-rule {
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
-    Mod+Return hotkey-overlay-title="Open a Terminal: Ghostty" { spawn "ghostty"; }
+    Mod+Return hotkey-overlay-title="Open a Terminal: Foot" { spawn "foot"; }
     Mod+D hotkey-overlay-title="Run an Application: Noctalia" { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: Noctalia" { spawn-sh "qs -c noctalia-shell ipc call sessionMenu lockAndSuspend"; }
     Super+Alt+K hotkey-overlay-title="Shutdown menu: Noctalia" { spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"; }
