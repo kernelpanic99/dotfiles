@@ -529,14 +529,8 @@ local plugin = {
     dependencies = { 'nvim-lua/plenary.nvim', 'folke/trouble.nvim' },
     opts = {},
     keys = {
-      { '<leader>td', '<cmd>TodoTrouble<CR>', desc = 'To[D]os' },
+      { '<leader>td', '<cmd>TodoFzfLua<CR>', desc = 'To[D]os' },
     },
-  },
-  {
-    'folke/trouble.nvim',
-    opts = {}, -- for default options, refer to the configuration section for custom setup.
-    cmd = 'Trouble',
-    keys = {},
   },
   {
     'mahyarmirrashed/famous-quotes.nvim',
@@ -666,18 +660,19 @@ local plugin = {
     },
     config = function()
       vim.api.nvim_create_autocmd('LspAttach', {
-        callback = function()
-          local wk = require('which-key')
+        callback = function(event)
+          local map = function(keys, func, desc)
+            vim.keymap.set('n', keys, func, { buffer = event.buf, desc = desc })
+          end
 
-          wk.add({
-            { 'gd', '<cmd>Trouble lsp_definitions<CR>', desc = '[G]o to [D]efinition' },
-            { 'gr', '<cmd>Trouble lsp_references<CR>', desc = '[G]o to [R]eferences' },
-            { 'gi', '<cmd>Trouble lsp_implementations<CR>', desc = '[G]o to [I]mplementations' },
-            { '<leader>ls', '<cmd>Trouble lsp_document_symbols<CR>', desc = 'Document [S]ymbols' },
-            { '<leader>lx', '<cmd>Trouble diagnostics toggle<cr>', desc = 'Diagnostics' },
-            { '<leader>lq', '<cmd>Trouble quickfix<cr>', desc = '[Q]uickfix' },
-            { '<leader>lr', vim.lsp.buf.rename, desc = '[R]ename' },
-          })
+          map('gd', '<cmd>FzfLua lsp_definitions<CR>', '[G]o to [D]efinition')
+          map('gr', '<cmd>FzfLua lsp_references<CR>', '[G]o to [R]eferences')
+          map('gi', '<cmd>FzfLua lsp_implementations<CR>', '[G]o to [I]mplementations')
+          map('<leader>ls', '<cmd>FzfLua lsp_document_symbols<CR>', 'Document [S]ymbols')
+          map('<leader>lx', '<cmd>FzfLua diagnostics_document<cr>', 'Diagnostics')
+          map('<leader>lX', '<cmd>FzfLua diagnostics_workspace<cr>', 'Global Diagnostics')
+          map('<leader>lq', '<cmd>FzfLua quickfix<cr>', '[Q]uickfix')
+          map('<leader>lr', vim.lsp.buf.rename, '[R]ename')
 
           lsp_configs()
 
