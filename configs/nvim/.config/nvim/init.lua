@@ -81,7 +81,7 @@ vim.opt.foldlevelstart = 99
 -- }}}
 
 -- {{{ Check executables
-local executables = { 'rg', 'lazygit', 'fzf', 'fd', 'git', 'cargo +nightly', 'tmux' }
+local executables = { 'rg', 'lazygit', 'fzf', 'fd', 'git', 'cargo +nightly', 'tmux', 'opencode', 'lsof' }
 local missing = {}
 
 for _, exe in ipairs(executables) do
@@ -223,7 +223,7 @@ local plugin = {
   { 'MunifTanjim/nui.nvim' },
   {
     'antosha417/nvim-lsp-file-operations',
-    requires = {
+    dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-tree/nvim-tree.lua',
     },
@@ -418,6 +418,7 @@ local plugin = {
       lazygit = { enabled = true },
       indent = { enabled = true },
       bigfile = {},
+      picker = {},
       statuscolumn = {},
       terminal = { enabled = true },
       dashboard = {
@@ -810,6 +811,7 @@ local plugin = {
   {
     'coder/claudecode.nvim',
     dependencies = { 'folke/snacks.nvim' },
+    enabled = false,
     opts = {
       diff_opts = {
         auto_close_on_accept = true,
@@ -852,6 +854,84 @@ local plugin = {
     end,
     config = function()
       require('supermaven-nvim').setup({})
+    end,
+  },
+  {
+    'NickvanDyke/opencode.nvim',
+    dependencies = {
+      { 'folke/snacks.nvim' },
+    },
+    keys = {
+      {
+        '<leader>o',
+        desc = '[O]penCode',
+      },
+      {
+        '<leader>oo',
+        function()
+          require('opencode').toggle()
+        end,
+        mode = { 'n', 't' },
+        desc = 'Toggle [O]penCode',
+      },
+      {
+        '<leader>of',
+        function()
+          require('opencode').prompt('fix')
+        end,
+        mode = { 'n' },
+        desc = 'Fix buffer [d]iagnostics',
+      },
+      {
+        '<leader>on',
+        function()
+          require('opencode').command('session.new')
+        end,
+        mode = { 'n' },
+        desc = '[N]ew OpenCode session',
+      },
+      {
+        '<leader>os',
+        function()
+          require('opencode').command('session.select')
+        end,
+        mode = { 'n' },
+        desc = '[S]elect OpenCode session',
+      },
+      {
+        '<C-a>',
+        function()
+          require('opencode').ask('@buffer: ', { submit = true })
+        end,
+        mode = { 'n' },
+        desc = 'Ask opencode about current buffer',
+      },
+      {
+        '<C-a>',
+        function()
+          require('opencode').ask('@this: ', { submit = true })
+        end,
+        mode = { 'x' },
+      },
+      {
+        '<C-x>',
+        function()
+          require('opencode').select()
+        end,
+        mode = { 'n', 'x' },
+        desc = 'Ask opencode about current selection',
+      },
+    },
+    config = function()
+      local provider = vim.env.TMUX and 'tmux' or 'snacks'
+
+      vim.g.opencode_opts = {
+        provider = {
+          enabled = provider,
+        },
+      }
+
+      vim.o.autoread = true
     end,
   },
   -- }}}
