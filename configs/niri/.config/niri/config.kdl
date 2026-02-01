@@ -147,11 +147,11 @@ window-rule {
     open-floating true
 
     default-column-width {
-        fixed 800
+        fixed 1000
     }
 
     default-window-height {
-        fixed 480
+        fixed 600
     }
 }
 
