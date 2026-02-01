@@ -1,0 +1,16 @@
+layout = 'fe42,157x36,0,0[157x18,0,0,0,157x17,0,19,2]'
+session_name = 'development'
+number_of_panes = 2
+commands = ['nvim']
+
+[stencil]
+layout = 'fe42,157x36,0,0[157x18,0,0,0,157x17,0,19,2]'
+session_name = 'stencil'
+number_of_panes = 2
+commands = ['nvim', 'stencil start']
+
+[backend]
+layout = 'fe42,157x36,0,0[157x18,0,0,0,157x17,0,19,2]'
+session_name = 'backend'
+number_of_panes = 2
+commands = ['nvim', 'docker compose up -d']
