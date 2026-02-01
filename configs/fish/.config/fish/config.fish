@@ -3,7 +3,9 @@ if status is-interactive
     abbr --add xr yay -Rsn
     abbr --add xs yay -Ss
 
-    alias t="smug start"
+    alias t="dmux"
+    alias tb="dmux -P backend"
+    alias ts="dmux -P stencil"
 
     alias tw="timew"
     alias tws="timew start"
