@@ -801,15 +801,6 @@ local plugin = {
 
   -- {{{ AI
   {
-    'supermaven-inc/supermaven-nvim',
-    build = function()
-      pcall(require('supermaven-nvim.api').use_free_version())
-    end,
-    config = function()
-      require('supermaven-nvim').setup({})
-    end,
-  },
-  {
     'NickvanDyke/opencode.nvim',
     dependencies = {
       { 'folke/snacks.nvim' },
