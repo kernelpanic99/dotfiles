@@ -350,14 +350,6 @@ local plugin = {
       { '<c-\\>', '<cmd><C-U>TmuxNavigatePrevious<cr>' },
     },
   },
-  {
-    'suliatis/Jumppack.nvim',
-    opts = {
-      options = {
-        cwd_only = true,
-      },
-    },
-  },
   -- }}}
 
   -- {{{ Keybindings
