@@ -412,6 +412,7 @@ local plugin = {
       bigfile = {},
       picker = {},
       statuscolumn = {},
+      input = {},
       terminal = { enabled = true },
       dashboard = {
         formats = {
@@ -815,37 +816,21 @@ local plugin = {
         function()
           require('opencode').toggle()
         end,
-        mode = { 'n', 't' },
+        mode = { 'n' },
         desc = 'Toggle [O]penCode',
       },
       {
-        '<leader>of',
+        '<leader>od',
         function()
-          require('opencode').prompt('fix')
+          require('opencode').ask('@diagnostics: ')
         end,
         mode = { 'n' },
-        desc = 'Fix buffer [d]iagnostics',
-      },
-      {
-        '<leader>on',
-        function()
-          require('opencode').command('session.new')
-        end,
-        mode = { 'n' },
-        desc = '[N]ew OpenCode session',
-      },
-      {
-        '<leader>os',
-        function()
-          require('opencode').command('session.select')
-        end,
-        mode = { 'n' },
-        desc = '[S]elect OpenCode session',
+        desc = 'Ask about [D]iagnostics',
       },
       {
         '<C-a>',
         function()
-          require('opencode').ask('@buffer: ', { submit = true })
+          require('opencode').ask('@buffer: ')
         end,
         mode = { 'n' },
         desc = 'Ask opencode about current buffer',
@@ -853,29 +838,28 @@ local plugin = {
       {
         '<C-a>',
         function()
-          require('opencode').ask('@this: ', { submit = true })
+          require('opencode').ask('@this: ')
         end,
         mode = { 'x' },
+        desc = 'Ask opencode about selection',
       },
       {
         '<C-x>',
         function()
           require('opencode').select()
         end,
-        mode = { 'n', 'x' },
-        desc = 'Ask opencode about current selection',
+        mode = { 'n' },
+        desc = 'Select opencode features',
       },
     },
     config = function()
-      local provider = vim.env.TMUX and 'tmux' or 'snacks'
+      local provider = 'snacks' --vim.env.TMUX and 'tmux' or 'snacks'
 
       vim.g.opencode_opts = {
         provider = {
           enabled = provider,
         },
       }
-
-      vim.o.autoread = true
     end,
   },
   -- }}}
