@@ -38,6 +38,7 @@
         "autoShowDelay": 150,
         "backgroundOpacity": 0.93,
         "barType": "simple",
+        "capsuleColorKey": "none",
         "capsuleOpacity": 0.61,
         "density": "comfortable",
         "displayMode": "always_visible",
@@ -87,12 +88,14 @@
                     "showArtistFirst": true,
                     "showProgressRing": true,
                     "showVisualizer": false,
+                    "textColor": "none",
                     "useFixedWidth": false,
                     "visualizerType": "linear"
                 },
                 {
                     "hideWhenZero": false,
                     "hideWhenZeroUnread": false,
+                    "iconColor": "none",
                     "id": "NotificationHistory",
                     "showUnreadBadge": true,
                     "unreadBadgeColor": "primary"
@@ -124,6 +127,7 @@
                 {
                     "compactMode": false,
                     "diskPath": "/",
+                    "iconColor": "none",
                     "id": "SystemMonitor",
                     "showCpuFreq": false,
                     "showCpuTemp": true,
@@ -137,12 +141,13 @@
                     "showMemoryUsage": true,
                     "showNetworkStats": false,
                     "showSwapUsage": false,
-                    "useMonospaceFont": true,
-                    "usePrimaryColor": false
+                    "textColor": "none",
+                    "useMonospaceFont": true
                 },
                 {
                     "blacklist": [
                     ],
+                    "chevronColor": "none",
                     "colorizeIcons": false,
                     "drawerEnabled": true,
                     "hidePassive": false,
@@ -154,8 +159,10 @@
                 },
                 {
                     "displayMode": "forceOpen",
+                    "iconColor": "none",
                     "id": "KeyboardLayout",
-                    "showIcon": false
+                    "showIcon": false,
+                    "textColor": "none"
                 },
                 {
                     "deviceNativePath": "",
@@ -168,12 +175,16 @@
                 },
                 {
                     "displayMode": "onhover",
+                    "iconColor": "none",
                     "id": "Volume",
-                    "middleClickCommand": "pwvucontrol || pavucontrol"
+                    "middleClickCommand": "pwvucontrol || pavucontrol",
+                    "textColor": "none"
                 },
                 {
                     "displayMode": "onhover",
-                    "id": "Brightness"
+                    "iconColor": "none",
+                    "id": "Brightness",
+                    "textColor": "none"
                 }
             ]
         }
@@ -302,6 +313,8 @@
         "autoStartAuth": false,
         "avatarImage": "/home/kp/.face",
         "boxRadiusRatio": 1,
+        "clockFormat": "hh\\nmm",
+        "clockStyle": "custom",
         "compactLockScreen": false,
         "dimmerOpacity": 0.2,
         "enableLockScreenCountdown": true,
@@ -367,9 +380,8 @@
     },
     "notifications": {
         "backgroundOpacity": 1,
-        "batteryCriticalThreshold": 5,
-        "batteryWarningThreshold": 20,
         "criticalUrgencyDuration": 15,
+        "enableBatteryToast": true,
         "enableKeyboardLayoutToast": true,
         "enableMediaToast": false,
         "enabled": true,
@@ -409,6 +421,9 @@
         "monitors": [
         ],
         "overlayLayer": true
+    },
+    "plugins": {
+        "autoUpdate": false
     },
     "sessionMenu": {
         "countdownDuration": 10000,
@@ -457,8 +472,10 @@
         "showHeader": true,
         "showNumberLabels": true
     },
-    "settingsVersion": 47,
+    "settingsVersion": 49,
     "systemMonitor": {
+        "batteryCriticalThreshold": 5,
+        "batteryWarningThreshold": 20,
         "cpuCriticalThreshold": 90,
         "cpuPollingInterval": 1000,
         "cpuWarningThreshold": 75,
