@@ -801,45 +801,6 @@ local plugin = {
 
   -- {{{ AI
   {
-    'coder/claudecode.nvim',
-    dependencies = { 'folke/snacks.nvim' },
-    enabled = false,
-    opts = {
-      diff_opts = {
-        auto_close_on_accept = true,
-        open_in_current_tab = true,
-        vertical_split = true,
-        keep_terminal_focus = true,
-      },
-      terminal = {
-        provider = 'snacks',
-        split_side = 'right',
-        split_width_percentage = 0.4,
-      },
-    },
-    keys = {
-      { '<leader>a', nil, desc = '[A]I/Claude Code' },
-      { '<leader>ac', '<cmd>ClaudeCode<cr>', desc = 'Toggle [C]laude, Alternate - <C-a>' },
-      { '<C-a>', '<cmd>ClaudeCode<cr>', desc = 'Toggle Claude', mode = { 'n', 't' } },
-      { '<C-a>', '<cmd>ClaudeCodeSend<cr>', desc = 'Open Claude with current selection', mode = 'v' },
-      { '<leader>af', '<cmd>ClaudeCodeFocus<cr>', desc = 'Focus Claude' },
-      { '<leader>ar', '<cmd>ClaudeCode --resume<cr>', desc = 'Resume Claude' },
-      { '<leader>aC', '<cmd>ClaudeCode --continue<cr>', desc = 'Continue Claude' },
-      { '<leader>am', '<cmd>ClaudeCodeSelectModel<cr>', desc = 'Select Claude model' },
-      { '<leader>ab', '<cmd>ClaudeCodeAdd %<cr>', desc = 'Add current buffer' },
-      { '<leader>as', '<cmd>ClaudeCodeSend<cr>', mode = 'v', desc = 'Send to Claude' },
-      {
-        '<leader>as',
-        '<cmd>ClaudeCodeTreeAdd<cr>',
-        desc = 'Add file',
-        ft = { 'NvimTree', 'neo-tree', 'oil', 'minifiles', 'netrw' },
-      },
-      -- Diff management
-      { '<leader>aa', '<cmd>ClaudeCodeDiffAccept<cr>', desc = 'Accept diff' },
-      { '<leader>ad', '<cmd>ClaudeCodeDiffDeny<cr>', desc = 'Deny diff' },
-    },
-  },
-  {
     'supermaven-inc/supermaven-nvim',
     build = function()
       pcall(require('supermaven-nvim.api').use_free_version())
