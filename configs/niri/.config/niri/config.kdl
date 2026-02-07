@@ -12,9 +12,9 @@ environment {
     QT_STYLE_OVERRIDE "Adwaita-Dark"
     GTK_THEME "Adwaita:dark"
     GTK2_RC_FILES "/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc"
-    XDG_CURRENT_DESKTOP "Niri"
+    XDG_CURRENT_DESKTOP "niri"
     XDG_SESSION_TYPE "wayland"
-    XDG_SESSION_DESKTOP "Niri"
+    XDG_SESSION_DESKTOP "niri"
     OBSIDIAN_USE_WAYLAND "1"
     _JAVA_AWT_WM_NONREPARENTING "1"
 }
