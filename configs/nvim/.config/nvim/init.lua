@@ -211,6 +211,15 @@ local function lsp_configs()
     },
   })
   -- }}}
+
+  -- {{{ Gdscript
+  vim.lsp.config('gdscript', {
+    cmd = vim.lsp.rpc.connect('127.0.0.1', 6005),
+    filetypes = { 'gd', 'gdscript', 'gdscript3' },
+    root_markers = { 'project.godot', '.git' },
+  })
+  vim.lsp.enable('gdscript')
+  -- }}}
 end
 -- }}}
 
@@ -668,8 +677,6 @@ local plugin = {
           map('<leader>lq', '<cmd>FzfLua quickfix<cr>', '[Q]uickfix')
           map('<leader>lr', vim.lsp.buf.rename, '[R]ename')
 
-          lsp_configs()
-
           -- Inline diagnostics
           vim.diagnostic.config({
             virtual_text = {
@@ -686,6 +693,8 @@ local plugin = {
           })
         end,
       })
+
+      lsp_configs()
     end,
   },
   {
@@ -943,4 +952,13 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- Godot server tweak
+local cwd = vim.fn.getcwd()
+local project_file = vim.fs.joinpath(cwd, 'project.godot')
+local server_file = vim.fs.joinpath(cwd, 'server.pipe')
+
+if vim.uv.fs_stat(project_file) and not vim.uv.fs_stat(server_file) then
+  vim.fn.serverstart(server_file)
+  print('Godot server started')
+end
 -- }}}
