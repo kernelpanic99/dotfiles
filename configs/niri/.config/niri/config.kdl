@@ -78,7 +78,7 @@ layout {
         right -4
     }
 
-    center-focused-column "always"
+    center-focused-column "on-overflow"
 
     preset-column-widths {
         proportion 0.5
