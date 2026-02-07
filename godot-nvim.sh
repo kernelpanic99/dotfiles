@@ -1,7 +1,18 @@
 #!/bin/bash
 
 # A simple wrapper to automatically open neovim when started from godot or focus if already running
-# Note: niri compositor and foot terminal only
+#
+# Dependencies:
+#  - Niri compositor
+#  - Foot terminal
+#  - Fish shell
+#  - Neovim
+#  - Jq
+#
+# Godot setup (Editor -> Editor settings -> Text editor -> External):
+#  - Use External Editor - yes
+#  - Exec Path - <your_dotfiles_path>/godot-nvim.sh
+#  - Exec Flags - {project} {file} {line} {col}
 
 PROJECT="$1"
 FILE="$2"
