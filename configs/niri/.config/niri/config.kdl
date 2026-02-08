@@ -74,8 +74,6 @@ layout {
 
     struts {
         top 4
-        left -4
-        right -4
     }
 
     center-focused-column "never"
@@ -85,7 +83,7 @@ layout {
         proportion 0.99
     }
 
-    default-column-width { proportion 0.99; }
+    default-column-width { proportion 1.0; }
 }
 //}}}
 
