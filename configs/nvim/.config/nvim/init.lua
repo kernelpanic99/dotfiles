@@ -862,7 +862,7 @@ local plugin = {
       },
     },
     config = function()
-      local provider = 'snacks' --vim.env.TMUX and 'tmux' or 'snacks'
+      local provider = vim.env.TMUX and 'tmux' or 'snacks'
 
       vim.g.opencode_opts = {
         provider = {
