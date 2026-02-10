@@ -8,6 +8,7 @@ environment {
     ELECTRON_OZONE_PLATFORM_HINT "auto"
     QT_AUTO_SCREEN_SCALE_FACTOR "1"
     QT_QPA_PLATFORM "wayland;xcb"
+    QT_QPA_PLATFORMTHEME "gtk3"
     GDK_BACKEND "wayland,x11,*"
     QT_STYLE_OVERRIDE "Adwaita-Dark"
     GTK_THEME "Adwaita:dark"
