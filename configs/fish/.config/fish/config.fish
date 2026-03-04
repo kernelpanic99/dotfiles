@@ -38,7 +38,7 @@ function full-upgrade
     mise upgrade & rustup update & wait
 
     # Everything else concurrently
-    cargo install-update -a & fisher update & uv tool upgrade --all & pnpm update -g & nvim --headless '+Lazy! sync' +qa & ya pkg upgrade & ~/.config/tmux/plugins/tpm/bin/update_plugins all & wait
+    cargo install-update -a & fisher update & uv tool upgrade --all & pnpm update -g & nvim --headless '+Lazy! sync' +qa & ya pkg upgrade & ~/.config/tmux/plugins/tpm/bin/update_plugins all & flatpak update & wait
 end
 
 # pnpm
