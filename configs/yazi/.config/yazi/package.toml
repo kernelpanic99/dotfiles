@@ -10,8 +10,8 @@ hash = "3f8d49413bc8691b4c652eb417a20178"
 
 [[plugin.deps]]
 use = "boydaihungst/gvfs"
-rev = "9d64595"
-hash = "b6f691f01a2122bd94866800d4d12a22"
+rev = "a908b62"
+hash = "5b6bd533139461c620968c1d860b4dce"
 
 [flavor]
 deps = []
