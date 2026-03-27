@@ -933,7 +933,7 @@ require('lazy').setup({
 -- }}}
 
 -- {{{ Theme switcher
-vim.cmd.colorscheme('catppuccin')
+vim.cmd.colorscheme('kanso-ink')
 -- }}}
 
 -- {{{ Tweaks
