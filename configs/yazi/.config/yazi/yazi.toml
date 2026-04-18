@@ -1,0 +1,5 @@
+[opener]
+play = [{ run = 'mpv --force-window "$@"', orphan = true, for = "unix" }]
+
+[open]
+rules = [{ mime = "video/*", use = ["play", "reveal"] }]
