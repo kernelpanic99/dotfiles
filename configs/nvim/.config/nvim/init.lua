@@ -306,6 +306,7 @@ local plugin = {
     },
   },
   { 'folke/tokyonight.nvim' },
+  { 'ellisonleao/gruvbox.nvim' },
   -- }}}
 
   -- {{{ Code
@@ -924,7 +925,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
   install = { colorscheme = { 'habamax' } },
-  checker = { enabled = true },
+  checker = { enabled = false, notify = false },
   git = { timeout = 300 },
   spec = plugin,
 })
@@ -933,7 +934,7 @@ require('lazy').setup({
 -- }}}
 
 -- {{{ Theme switcher
-vim.cmd.colorscheme('kanso-ink')
+vim.cmd.colorscheme('gruvbox')
 -- }}}
 
 -- {{{ Tweaks
