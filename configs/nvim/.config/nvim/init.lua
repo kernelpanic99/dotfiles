@@ -230,6 +230,7 @@ local plugin = {
   { 'nvim-tree/nvim-web-devicons', lazy = true }, -- Icons for some UI libraries
   { 'nvim-lua/plenary.nvim', lazy = true }, -- Utility Lua functions
   { 'MunifTanjim/nui.nvim' },
+  { 'saghen/blink.lib' },
   {
     'antosha417/nvim-lsp-file-operations',
     dependencies = {
@@ -745,7 +746,7 @@ local plugin = {
         },
       },
     },
-    build = 'cargo +nightly build --release',
+    build = function() require('blink.cmp').build():wait(60000) end
   },
   -- }}}
 
@@ -934,7 +935,7 @@ require('lazy').setup({
 -- }}}
 
 -- {{{ Theme switcher
-vim.cmd.colorscheme('gruvbox')
+vim.cmd.colorscheme('catppuccin-mocha')
 -- }}}
 
 -- {{{ Tweaks
