@@ -248,7 +248,7 @@
         "manualSunrise": "06:30",
         "manualSunset": "18:30",
         "monitorForColors": "",
-        "predefinedScheme": "Gruvbox",
+        "predefinedScheme": "Catppuccin",
         "schedulingMode": "off",
         "syncGsettings": true,
         "useWallpaperColors": false
@@ -494,6 +494,7 @@
         "location": "top_right",
         "lowUrgencyDuration": 3,
         "monitors": [
+            "eDP-1"
         ],
         "normalUrgencyDuration": 8,
         "overlayLayer": true,
