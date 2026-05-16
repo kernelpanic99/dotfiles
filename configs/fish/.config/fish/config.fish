@@ -27,7 +27,6 @@ if status is-interactive
 end
 
 mise activate fish | source
-direnv hook fish | source
 
 function full-upgrade
     # Toolchain managers first
