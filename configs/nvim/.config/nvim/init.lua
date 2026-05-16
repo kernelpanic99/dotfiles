@@ -81,7 +81,7 @@ vim.opt.foldlevelstart = 99
 -- }}}
 
 -- {{{ Check executables
-local executables = { 'rg', 'lazygit', 'fzf', 'fd', 'git', 'cargo +nightly', 'tmux', 'opencode', 'lsof' }
+local executables = { 'rg', 'lazygit', 'fzf', 'fd', 'git', 'cargo +nightly', 'tmux', 'lsof' }
 local missing = {}
 
 for _, exe in ipairs(executables) do
@@ -157,7 +157,6 @@ local tools = {
   'stylua',
   'prettier',
   'black',
-  'rustfmt',
   'mdformat',
   'taplo',
   'zls',
@@ -746,7 +745,9 @@ local plugin = {
         },
       },
     },
-    build = function() require('blink.cmp').build():wait(60000) end
+    build = function()
+      require('blink.cmp').build():wait(60000)
+    end,
   },
   -- }}}
 
