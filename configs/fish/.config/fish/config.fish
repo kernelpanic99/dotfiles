@@ -22,6 +22,7 @@ if status is-interactive
     alias hp="killall hyprpaper; hyprpaper > /dev/null 2>&1 & disown"
 
     alias ytaud="yt-dlp --extract-audio --audio-format m4a --audio-quality best --embed-metadata"
+    alias ytdl="yt-dlp -f 'bestvideo[height>=720]+bestaudio/best[height>=720]' -S '+size,+br,vcodec:av1:vp9:h265:h264'"
 
     alias nvoff="sudo /usr/share/acpi_call/examples/turn_off_gpu.sh"
 end
