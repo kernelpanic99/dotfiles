@@ -1,8 +1,18 @@
 [opener]
 mpv = [{ run = 'mpv --force-window "$@"', orphan = true, for = "unix" }]
+mdfried = [
+  { run = "mdfried %s", block = true, for = "unix", desc = "View markdown with mdfried" },
+]
+nvim = [
+  { run = "nvim %s", block = true, for = "unix", desc = "Edit with neovim" },
+]
 
 [open]
 prepend_rules = [
+  { url = "*.md", use = [
+    "nvim",
+    "mdfried",
+  ] },
   { mime = "video/*", use = [
     "mpv",
     "reveal",
