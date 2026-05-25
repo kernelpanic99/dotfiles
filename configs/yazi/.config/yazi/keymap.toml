@@ -42,3 +42,8 @@ desc = "Edit a GVFS mount URI"
 on = [ "M", "r" ]
 run = "plugin gvfs -- remove-mount"
 desc = "Remove a GVFS mount URI"
+
+# Drag and Drop
+[[mgr.prepend_keymap]]
+on = "<C-n>"
+run = "shell -- ripdrag -xa %s"
