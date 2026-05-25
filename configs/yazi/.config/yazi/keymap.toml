@@ -9,9 +9,14 @@ run  = "plugin smart-paste"
 desc = "Paste into the hovered directory or CWD"
 
 [[mgr.prepend_keymap]]
-on   = "t"
+on   = [ "t", "t" ]
 run  = "plugin smart-tab"
 desc = "Create a tab and enter the hovered directory"
+
+[[mgr.prepend_keymap]]
+on   = [ "t", "h" ]
+run  = "tab_create ~/"
+desc = "Create new tab at home"
 
 # Copy to system clipboard
 [[mgr.prepend_keymap]]
@@ -42,6 +47,11 @@ desc = "Edit a GVFS mount URI"
 on = [ "M", "r" ]
 run = "plugin gvfs -- remove-mount"
 desc = "Remove a GVFS mount URI"
+
+[[mgr.prepend_keymap]]
+on = ["g", "m"]
+run = "plugin gvfs -- jump-to-device"
+desc = "Jump to mounted device"
 
 # Drag and Drop
 [[mgr.prepend_keymap]]
