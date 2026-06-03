@@ -1,0 +1,34 @@
+#!/bin/sh
+
+# Download a page, preprocess and save markdown
+# Dependencies
+# - jq
+# - wget
+# - readability-extractor - global npm package
+# - htmd - htmd-cli on cargo
+
+if [ -z "$1" ] || [ -z "$2" ]; then
+    echo "usage: $0 <url> <title>"
+    exit 1;
+fi
+
+DEST="$HOME/Documents/News"
+
+mkdir -p "$DEST"
+
+RAW_HTML=$(mktemp)
+EXTRACTED=$(mktemp)
+
+trap 'rm -f "$RAW_HTML" "$EXTRACTED"' EXIT
+
+slugify() {
+  echo "$1" | tr '[:upper:]' '[:lower:]' | tr -s '[:space:][:punct:]' '-' | sed 's/^-//;s/-$//'
+}
+
+wget --convert-links -q "$1" -O "$RAW_HTML" || { echo "Failed to fetch $1"; exit 1; }
+
+readability-extractor "$RAW_HTML" > "$EXTRACTED"
+
+FILE="$DEST/$(slugify "$2").md"
+
+jq -r '.content' "$EXTRACTED" | htmd -o "$FILE"

@@ -1,0 +1,6 @@
+[Unit]
+Description=Refresh eilmeldung feeds
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/eilmeldung --sync
