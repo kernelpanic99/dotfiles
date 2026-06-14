@@ -7,7 +7,8 @@ environment {
     HYPRCURSOR_SIZE "24"
     ELECTRON_OZONE_PLATFORM_HINT "auto"
     QT_AUTO_SCREEN_SCALE_FACTOR "1"
-    QT_QPA_PLATFORM "wayland;xcb"
+    QT_QPA_PLATFORM "wayland"
+    QT_QPA_PLATFORMTHEME_QT6 "gtk3"
     QT_QPA_PLATFORMTHEME "gtk3"
     GDK_BACKEND "wayland,x11,*"
     QT_STYLE_OVERRIDE "Adwaita-Dark"
@@ -23,8 +24,10 @@ environment {
 //}}}
 
 // {{{Autostart
-spawn-sh-at-startup "qs -c noctalia-shell"
-spawn-sh-at-startup "swayidle -w timeout 300 'brightnessctl set 20%; timew stop' resume 'brightnessctl set 100%' timeout 600 'qs -c noctalia-shell ipc call sessionMenu lockAndSuspend'"
+// spawn-sh-at-startup "qs -c noctalia-shell"
+spawn-at-startup "dms" "run"
+spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
+spawn-sh-at-startup "swayidle -w timeout 300 'brightnessctl set 20%; timew stop' resume 'brightnessctl set 100%'"
 spawn-at-startup "nm-applet"
 // }}}
 
@@ -165,13 +168,14 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     Mod+Return hotkey-overlay-title="Open a Terminal: Foot" { spawn "foot"; }
-    Mod+D hotkey-overlay-title="Run an Application: Noctalia" { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
-    Super+Alt+L hotkey-overlay-title="Lock the Screen: Noctalia" { spawn-sh "qs -c noctalia-shell ipc call sessionMenu lockAndSuspend"; }
-    Super+Alt+K hotkey-overlay-title="Shutdown menu: Noctalia" { spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"; }
-    Super+I hotkey-overlay-title="Open noctalia control center" { spawn-sh "qs -c noctalia-shell ipc call controlCenter toggle"; }
-    Super+V hotkey-overlay-title="Clipboard history" { spawn-sh "qs -c noctalia-shell ipc call launcher clipboard"; }
+    Mod+D hotkey-overlay-title="Application runner" { spawn-sh "dms ipc call spotlight toggle"; }
+    Super+Alt+L hotkey-overlay-title="Lock screen" { spawn-sh "dms ipc call lock lock"; }
+    Super+Alt+K hotkey-overlay-title="Shutdown menu" { spawn-sh "dms ipc call powermenu toggle"; }
+    Super+I hotkey-overlay-title="Notification center" { spawn-sh "dms ipc call dash toggle overview"; }
+    Super+V hotkey-overlay-title="Clipboard history" { spawn-sh "dms ipc call clipboard toggle"; }
+    Super+N hotkey-overlay-title="Open notepad" { spawn-sh "dms ipc cll notepd toggle"; }
 
-    Mod+W hotkey-overlay-title="Open a personal Browser: Brave" { spawn "brave"; } 
+    Mod+W hotkey-overlay-title="Open a personal Browser: Brave" { spawn-sh "flatpak run com.brave.Browser"; } 
     Mod+Shift+W hotkey-overlay-title="Open a work Browser: Wavebox" { spawn-sh "flatpak run io.wavebox.Wavebox"; } 
 
     Mod+Apostrophe { spawn-sh "mpc toggle"; }
@@ -271,4 +275,11 @@ binds {
 }
 //}}}
 
-include "./noctalia.kdl"
+// include "./noctalia.kdl"
+
+include "dms/colors.kdl"
+include "dms/layout.kdl"
+include "dms/alttab.kdl"
+include "dms/binds.kdl"
+
+include "dms/cursor.kdl"
