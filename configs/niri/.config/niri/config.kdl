@@ -172,7 +172,7 @@ binds {
     Super+V hotkey-overlay-title="Clipboard history" { spawn-sh "qs -c noctalia-shell ipc call launcher clipboard"; }
 
     Mod+W hotkey-overlay-title="Open a personal Browser: Brave" { spawn "brave"; } 
-    Mod+Shift+W hotkey-overlay-title="Open a work Browser: Wavebox" { spawn "wavebox"; } 
+    Mod+Shift+W hotkey-overlay-title="Open a work Browser: Wavebox" { spawn-sh "flatpak run io.wavebox.Wavebox"; } 
 
     Mod+Apostrophe { spawn-sh "mpc toggle"; }
     Mod+X { spawn "foot" "-T" "Rmpc" "-e" "rmpc"; }
