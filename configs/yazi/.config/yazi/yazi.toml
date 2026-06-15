@@ -6,6 +6,13 @@ mdfried = [
 nvim = [
   { run = "nvim %s", block = true, for = "unix", desc = "Edit with neovim" },
 ]
+xournalpp = [
+  { run = "xournalpp %s", block = false, orphan = true, for = "unix", desc = "Open with Xournal++" },
+]
+
+zathura = [
+  { run = "zathura %s", block = false, orphan = true, for = "unix", desc = "Open with Zathura" },
+]
 
 [open]
 prepend_rules = [
@@ -22,6 +29,9 @@ prepend_rules = [
   ] },
   { mime = "application/x-{tar,bzip*,7z-compressed,xz,rar}", use = [
     "extract",
+  ] },
+  { url = "*.pdf", use = [
+    "xournalpp",
   ] },
 ]
 
