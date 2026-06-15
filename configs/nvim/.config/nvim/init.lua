@@ -812,96 +812,19 @@ local plugin = {
   },
   -- }}}
 
-  -- {{{ AI
+  -- {{{ Neorg
   {
-    'NickvanDyke/opencode.nvim',
-    dependencies = {
-      { 'folke/snacks.nvim' },
-    },
-    keys = {
-      {
-        '<leader>o',
-        desc = '[O]penCode',
-      },
-      {
-        '<leader>oo',
-        function()
-          require('opencode').toggle()
-        end,
-        mode = { 'n' },
-        desc = 'Toggle [O]penCode',
-      },
-      {
-        '<leader>od',
-        function()
-          require('opencode').ask('@diagnostics: ')
-        end,
-        mode = { 'n' },
-        desc = 'Ask about [D]iagnostics',
-      },
-      {
-        '<C-a>',
-        function()
-          require('opencode').ask('@buffer: ')
-        end,
-        mode = { 'n' },
-        desc = 'Ask opencode about current buffer',
-      },
-      {
-        '<C-a>',
-        function()
-          require('opencode').ask('@this: ')
-        end,
-        mode = { 'x' },
-        desc = 'Ask opencode about selection',
-      },
-      {
-        '<C-x>',
-        function()
-          require('opencode').select()
-        end,
-        mode = { 'n' },
-        desc = 'Select opencode features',
+    'nvim-neorg/neorg',
+    lazy = false,
+    priority = 1,
+    version = '*',
+    config = true,
+    opts = {
+      load = {
+        ['core.defaults'] = {},
+        ['core.concealer'] = {},
       },
     },
-    config = function()
-      local provider = vim.env.TMUX and 'tmux' or 'snacks'
-
-      vim.g.opencode_opts = {
-        provider = {
-          enabled = provider,
-        },
-      }
-    end,
-  },
-  -- }}}
-
-  -- {{{ HTTP client
-  {
-    'heilgar/nvim-http-client',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-    },
-    event = 'VeryLazy',
-    ft = { 'http', 'rest' },
-    config = function()
-      require('http_client').setup({
-        -- Default keybindings (can be customized)
-        keybindings = {
-          select_env_file = '<leader>hf',
-          set_env = '<leader>he',
-          run_request = '<leader>hr',
-          stop_request = '<leader>hx',
-          toggle_verbose = '<leader>hv',
-          toggle_profiling = '<leader>hp',
-          dry_run = '<leader>hd',
-          copy_curl = '<leader>hc',
-          save_response = '<leader>hs',
-          set_project_root = '<leader>hg',
-          get_project_root = '<leader>hgg',
-        },
-      })
-    end,
   },
   -- }}}
 }
