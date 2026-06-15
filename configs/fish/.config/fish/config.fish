@@ -1,7 +1,7 @@
 if status is-interactive
-    abbr --add xi yay -Syu
-    abbr --add xr yay -Rsn
-    abbr --add xs yay -Ss
+    abbr --add xi sudo pacman -Syu
+    abbr --add xr sudo pacman -Rsn
+    abbr --add xs sudo pacman -Ss
 
     alias t="dmux"
     alias tb="dmux -P backend"
@@ -14,13 +14,6 @@ if status is-interactive
     alias twc="timew continue"
     alias twd="timew delete"
 
-    alias yw="pipe-viewer"
-    alias ys="pipe-viewer -ls"
-    alias yc="pipe-viewer -sc"
-
-    alias wb="killall waybar; waybar > /dev/null 2>&1 & disown"
-    alias hp="killall hyprpaper; hyprpaper > /dev/null 2>&1 & disown"
-
     alias ytaud="yt-dlp --extract-audio --audio-format m4a --audio-quality best --embed-metadata"
     alias ytdl="yt-dlp -f 'bestvideo[height>=720]+bestaudio/best[height>=720]' -S '+size,+br,vcodec:av1:vp9:h265:h264'"
 
@@ -32,7 +25,7 @@ mise activate fish | source
 function full-upgrade
     # Toolchain managers first
     echo "Upgrading system..."
-    yay -Syu --noconfirm
+    sudo pacman -Syu --noconfirm
 
     echo "Upgrading toolchains..."
     mise upgrade & rustup update & wait
