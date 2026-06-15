@@ -7,7 +7,7 @@ environment {
     HYPRCURSOR_SIZE "24"
     ELECTRON_OZONE_PLATFORM_HINT "auto"
     QT_AUTO_SCREEN_SCALE_FACTOR "1"
-    QT_QPA_PLATFORM "wayland"
+    QT_QPA_PLATFORM "wayland;xcb"
     QT_QPA_PLATFORMTHEME_QT6 "gtk3"
     QT_QPA_PLATFORMTHEME "gtk3"
     GDK_BACKEND "wayland,x11,*"
@@ -173,7 +173,8 @@ binds {
     Super+Alt+K hotkey-overlay-title="Shutdown menu" { spawn-sh "dms ipc call powermenu toggle"; }
     Super+I hotkey-overlay-title="Notification center" { spawn-sh "dms ipc call dash toggle overview"; }
     Super+V hotkey-overlay-title="Clipboard history" { spawn-sh "dms ipc call clipboard toggle"; }
-    Super+N hotkey-overlay-title="Open notepad" { spawn-sh "dms ipc cll notepd toggle"; }
+    Super+Shift+N hotkey-overlay-title="Open work notes" { spawn-sh "foot -e dmux -s WorkNotes ~/Documents/neorg/work"; }
+    Super+N hotkey-overlay-title="Open personal notes" { spawn-sh "foot -e dmux -s PersonalNotes ~/Documents/neorg/personal"; }
 
     Mod+W hotkey-overlay-title="Open a personal Browser: Brave" { spawn-sh "flatpak run com.brave.Browser"; } 
     Mod+Shift+W hotkey-overlay-title="Open a work Browser: Wavebox" { spawn-sh "flatpak run io.wavebox.Wavebox"; } 
@@ -283,3 +284,5 @@ include "dms/alttab.kdl"
 include "dms/binds.kdl"
 
 include "dms/cursor.kdl"
+
+include "dms/windowrules.kdl"
