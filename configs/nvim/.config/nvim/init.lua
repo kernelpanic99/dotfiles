@@ -724,6 +724,7 @@ local plugin = {
   {
     'saghen/blink.cmp',
     dependencies = {
+      'saghen/blink.lib',
       'rafamadriz/friendly-snippets',
     },
     opts = {
