@@ -9,7 +9,12 @@
 }: {
   imports = [./disko.nix];
 
-  nix.settings.experimental-features = ["flakes" "nix-command"];
+  nix.settings = {
+    experimental-features = ["flakes" "nix-command"];
+
+    extra-substituters = ["https://noctalia.cachix.org"];
+    extra-trusted-public-keys = ["noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="];
+  };
 
   nixpkgs.config.allowUnfree = true;
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
