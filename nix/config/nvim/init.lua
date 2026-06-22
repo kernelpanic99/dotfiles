@@ -81,7 +81,7 @@ vim.opt.foldlevelstart = 99
 -- }}}
 
 -- {{{ Check executables
-local executables = { 'rg', 'lazygit', 'fzf', 'fd', 'git', 'cargo +nightly', 'tmux', 'lsof' }
+local executables = { 'rg', 'lazygit', 'fzf', 'fd', 'git', 'tmux', 'lsof' }
 local missing = {}
 
 for _, exe in ipairs(executables) do
@@ -100,67 +100,6 @@ end
 -- }}}
 
 -- {{{ Languages
-local ts_parsers = {
-  'fish',
-  'bash',
-  'javascript',
-  'typescript',
-  'terraform',
-  'json',
-  'html',
-  'astro',
-  'svelte',
-  'tsx',
-  'css',
-  'scss',
-  'yaml',
-  'go',
-  'rust',
-  'toml',
-  'ini',
-  'hyprlang',
-  'elixir',
-  'erlang',
-  'python',
-  'query',
-  'lua',
-  'vim',
-  'vimdoc',
-  'c',
-  'cpp',
-  'http',
-  'zig',
-  'ron',
-  'ecma',
-}
-
-local tools = {
-  'vtsls',
-  'biome',
-  'cssls',
-  'tailwindcss',
-  'astro',
-  'svelte',
-  'stylelint_lsp',
-  'rust_analyzer',
-  'gopls',
-  'lexical',
-  'marksman',
-  'yamlls',
-  'terraformls',
-  'lua_ls',
-  'dockerls',
-  'docker_compose_language_service',
-  'bashls',
-  'fish_lsp',
-  'pyright',
-  'stylua',
-  'prettier',
-  'black',
-  'mdformat',
-  'taplo',
-  'zls',
-}
 
 vim.filetype.add({
   extension = {
@@ -219,6 +158,15 @@ local function lsp_configs()
   })
   vim.lsp.enable('gdscript')
   -- }}}
+
+  for _, server in ipairs({
+    'vtsls', 'cssls', 'tailwindcss', 'astro', 'svelte',
+    'rust_analyzer', 'gopls', 'lexical', 'marksman', 'yamlls',
+    'terraformls', 'lua_ls', 'dockerls', 'docker_compose_language_service',
+    'bashls', 'fish_lsp', 'pyright', 'zls',
+  }) do
+    vim.lsp.enable(server)
+  end
 end
 -- }}}
 
@@ -229,7 +177,6 @@ local plugin = {
   { 'nvim-tree/nvim-web-devicons', lazy = true }, -- Icons for some UI libraries
   { 'nvim-lua/plenary.nvim', lazy = true }, -- Utility Lua functions
   { 'MunifTanjim/nui.nvim' },
-  { 'saghen/blink.lib' },
   {
     'antosha417/nvim-lsp-file-operations',
     dependencies = {
@@ -239,16 +186,11 @@ local plugin = {
     opts = {},
   },
   {
-    'nvim-treesitter/nvim-treesitter', -- syntax parser for features like highliting, indents, folds, etc...
+    dir = vim.g.treesitter_path,
+    name = 'nvim-treesitter',
     lazy = false,
-    branch = 'main',
-    build = ':TSUpdate',
     config = function()
-      local ts = require('nvim-treesitter')
-
-      ts.install(ts_parsers)
-
-      ts.setup({
+      require('nvim-treesitter').setup({
         highlight = { enable = true },
       })
 
@@ -653,10 +595,6 @@ local plugin = {
 
   -- {{{ LSP
   {
-    'mason-org/mason.nvim',
-    opts = {},
-  },
-  {
     'neovim/nvim-lspconfig',
     dependencies = {
       'saghen/blink.cmp',
@@ -698,35 +636,14 @@ local plugin = {
       lsp_configs()
     end,
   },
-  {
-    'mason-org/mason-lspconfig.nvim',
-    dependencies = { 'mason-org/mason.nvim', 'neovim/nvim-lspconfig' },
-    opts = {},
-  },
-  {
-    'WhoIsSethDaniel/mason-tool-installer.nvim',
-    dependencies = {
-      'mason-org/mason.nvim',
-      'neovim/nvim-lspconfig',
-      'mason-org/mason-lspconfig.nvim',
-    },
-    opts = {
-      ensure_installed = tools,
-      integrations = {
-        ['mason-lspconfig'] = true,
-      },
-    },
-  },
   -- }}}
 
   -- {{{ Autocomplete & snippets
   { 'rafamadriz/friendly-snippets' },
   {
-    'saghen/blink.cmp',
-    dependencies = {
-      'saghen/blink.lib',
-      'rafamadriz/friendly-snippets',
-    },
+    dir = vim.g.blink_cmp_path,
+    name = 'blink.cmp',
+    dependencies = { 'rafamadriz/friendly-snippets' },
     opts = {
       sources = {
         default = { 'lsp', 'path', 'snippets', 'buffer' },
@@ -746,9 +663,6 @@ local plugin = {
         },
       },
     },
-    build = function()
-      require('blink.cmp').build():pwait()
-    end,
   },
   -- }}}
 
@@ -832,23 +746,7 @@ local plugin = {
 }
 
 -- {{{ Lazy bootstrap
-local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
-
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
-  local out = vim.fn.system({ 'git', 'clone', '--filter=blob:none', '--branch=main', lazyrepo, lazypath })
-  if vim.v.shell_error ~= 0 then
-    vim.api.nvim_echo({
-      { 'Failed to clone lazy.nvim:\n', 'ErrorMsg' },
-      { out, 'WarningMsg' },
-      { '\nPress any key to exit...' },
-    }, true, {})
-    vim.fn.getchar()
-    os.exit(1)
-  end
-end
-
-vim.opt.rtp:prepend(lazypath)
+vim.opt.rtp:prepend(vim.g.lazy_path)
 
 require('lazy').setup({
   install = { colorscheme = { 'habamax' } },
