@@ -6,7 +6,7 @@
   lib,
   pkgs,
   ...
-}: rec {
+}: {
   imports = [./disko.nix];
 
   nix.settings = {
@@ -88,7 +88,7 @@
   documentation = {
     dev.enable = true;
 
-    man.enable = false;
+    man.man-db.enable = false;
     man.mandoc.enable = true;
   };
 
@@ -118,6 +118,7 @@
         ];
       };
     };
+
     extraPortals = with pkgs; [
       xdg-desktop-portal-gtk
       xdg-desktop-portal-gnome
@@ -127,6 +128,7 @@
 
   # List services that you want to enable:
   services = {
+    gnome.gnome-keyring.enable = true;
     flatpak.enable = true;
     upower.enable = true;
     power-profiles-daemon.enable = true;
@@ -147,6 +149,8 @@
       };
     };
   };
+
+  security.pam.services.login.enableGnomeKeyring = true;
 
   hardware = {
     enableRedistributableFirmware = true;
