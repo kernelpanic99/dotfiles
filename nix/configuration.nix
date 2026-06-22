@@ -131,6 +131,7 @@
     gnome.gnome-keyring.enable = true;
     flatpak.enable = true;
     upower.enable = true;
+    udisks2.enable = true;
     power-profiles-daemon.enable = true;
     xserver.videoDrivers = [
       "nvidia"

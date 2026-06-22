@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, ...}: rec {
   home = {
     username = "kp";
     homeDirectory = "/home/kp";
@@ -19,6 +19,14 @@
       fastfetch
       niri
       brave
+      timewarrior
+      yt-dlp
+      grayjay
+      keepassxc
+      pavucontrol
+      wl-clipboard
+      cliphist
+      swayidle
     ];
   };
 
@@ -34,6 +42,27 @@
       enable = true;
     };
 
+    fish = import ./config/fish.nix {inherit pkgs;};
     neovim = import ./config/nvim/nvim.nix {inherit pkgs;};
+    zoxide = {
+      enable = true;
+      enableFishIntegration = true;
+    };
+  };
+
+  services = {
+    udiskie.enable = true;
+
+    mpd = {
+      enable = true;
+      musicDirectory = "${home.homeDirectory}/Music";
+      network.startWhenNeeded = true;
+      extraConfig = ''
+        audio_output {
+          type "pipewire"
+          name "Pipewire Sound Server"
+        }
+      '';
+    };
   };
 }
