@@ -2,8 +2,8 @@
   enable = true;
 
   plugins = with pkgs.fishPlugins; [
-    done
-    hydro
+    { name = "done"; src = done.src; }
+    { name = "hydro"; src = hydro.src; }
   ];
 
   shellAbbrs = {
