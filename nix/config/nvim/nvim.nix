@@ -9,29 +9,28 @@
     vscode-langservers-extracted # cssls, htmlls, jsonls, eslintls
     tailwindcss-language-server
     astro-language-server
-    nodePackages.svelte-language-server
+    svelte-language-server
     rust-analyzer
     gopls
-    lexical
     marksman
     yaml-language-server
     terraform-ls
     lua-language-server
-    dockerfile-language-server-nodejs
-    nodePackages.bash-language-server
+    dockerfile-language-server
+    bash-language-server
     fish-lsp
     pyright
     zls
     docker-compose-language-service
     # Formatters
     stylua
-    nodePackages.prettier
+    prettier
     black
     mdformat
     taplo
   ];
 
-  extraLuaConfig =
+  initLua =
     ''
       vim.g.lazy_path = "${pkgs.vimPlugins.lazy-nvim}"
       vim.g.treesitter_path = "${pkgs.vimPlugins.nvim-treesitter.withAllGrammars}"

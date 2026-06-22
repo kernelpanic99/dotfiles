@@ -160,10 +160,23 @@ local function lsp_configs()
   -- }}}
 
   for _, server in ipairs({
-    'vtsls', 'cssls', 'tailwindcss', 'astro', 'svelte',
-    'rust_analyzer', 'gopls', 'lexical', 'marksman', 'yamlls',
-    'terraformls', 'lua_ls', 'dockerls', 'docker_compose_language_service',
-    'bashls', 'fish_lsp', 'pyright', 'zls',
+    'vtsls',
+    'cssls',
+    'tailwindcss',
+    'astro',
+    'svelte',
+    'rust_analyzer',
+    'gopls',
+    'marksman',
+    'yamlls',
+    'terraformls',
+    'lua_ls',
+    'dockerls',
+    'docker_compose_language_service',
+    'bashls',
+    'fish_lsp',
+    'pyright',
+    'zls',
   }) do
     vim.lsp.enable(server)
   end
