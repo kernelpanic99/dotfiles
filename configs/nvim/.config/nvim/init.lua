@@ -779,6 +779,7 @@ local plugin = {
         go = { 'gofumpt' },
         markdown = { 'mdformat' },
         toml = { 'taplo' },
+        nix = { 'alejandra' },
       },
     },
   },
