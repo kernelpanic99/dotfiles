@@ -9,7 +9,7 @@
       ripgrep
       fd
       jq
-      yazi
+
       fzf
       lazygit
       btop
@@ -45,6 +45,7 @@
 
     fish = import ./config/fish.nix {inherit pkgs;};
     neovim = import ./config/nvim/nvim.nix {inherit pkgs;};
+    yazi = import ./config/yazi.nix {inherit pkgs;};
     zoxide = {
       enable = true;
       enableFishIntegration = true;
