@@ -140,7 +140,7 @@
       settings = rec {
         initial_session = {
           command = "${pkgs.sway}/bin/niri-session";
-          user = users.users.kp.name;
+          user = "kp";
         };
 
         default_session = initial_session;
