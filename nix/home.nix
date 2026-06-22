@@ -27,6 +27,7 @@
       wl-clipboard
       cliphist
       swayidle
+      bruno
     ];
   };
 
@@ -52,6 +53,15 @@
 
   services = {
     udiskie.enable = true;
+
+    flatpak = {
+      enable = true;
+
+      packages = [
+        "com.nvidia.geforcenow"
+        "io.wavebox.Wavebox"
+      ];
+    };
 
     mpd = {
       enable = true;

@@ -25,6 +25,8 @@
       url = "github:noctalia-dev/noctalia";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
   };
 
   outputs = inputs @ {
@@ -35,6 +37,7 @@
     home-manager,
     eilmeldung,
     noctalia,
+    nix-flatpak,
     ...
   }: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem rec {
@@ -53,7 +56,7 @@
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-            sharedModules = [eilmeldung.homeManager.default noctalia.homeModules.default];
+            sharedModules = [eilmeldung.homeManager.default noctalia.homeModules.default nix-flatpak.homeManagerModules.nix-flatpak];
             users.kp = ./nix/home.nix;
           };
         }
