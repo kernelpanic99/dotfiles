@@ -25,8 +25,11 @@
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
-    kernelModules = ["kvm-amd"];
-    initrd.availableKernelModules = ["nvme" "xhci_pci" "ahci" "usbhid"];
+
+    initrd = {
+      availableKernelModules = ["nvme" "xhci_pci" "ahci" "usbhid"];
+      kernelModules = ["kvm-amd" "amdgpu"];
+    };
   };
 
   networking = {
@@ -126,6 +129,9 @@
   };
 
   hardware = {
+    enableRedistributableFirmware = true;
+    firmware = [pkgs.linux-firmware];
+
     graphics.enable = true;
 
     nvidia = {
