@@ -5,11 +5,9 @@
   config,
   lib,
   pkgs,
-  modulesPath,
   ...
 }: {
-  # Remember to run `nixos-generate-config` on install
-  imports = [./disko.nix "${modulesPath}/virtualisation/qemu-vm.nix"];
+  imports = [./disko.nix];
 
   nix.settings.experimental-features = ["flakes" "nix-command"];
 
