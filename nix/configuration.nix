@@ -6,7 +6,7 @@
   lib,
   pkgs,
   ...
-}: {
+}: rec {
   imports = [./disko.nix];
 
   nix.settings = {
@@ -65,16 +65,25 @@
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    vim
     wget
     git
     tmux
     man-pages
     man-pages-posix
     lshw
-    nerd-fonts.comic-shanns-mono
     cliphist
   ];
+
+  fonts = {
+    packages = with pkgs; [
+      noto-fonts
+      noto-fonts-cjk-sans
+      noto-fonts-color-emoji
+      nerd-fonts.jetbrains-mono
+      nerd-fonts.comic-shanns-mono
+    ];
+  };
 
   documentation = {
     dev.enable = true;
@@ -119,13 +128,24 @@
   # List services that you want to enable:
   services = {
     flatpak.enable = true;
-    getty.autologinUser = "kp";
     upower.enable = true;
     power-profiles-daemon.enable = true;
     xserver.videoDrivers = [
       "nvidia"
       "amdgpu"
     ];
+
+    greetd = {
+      enable = true;
+      settings = rec {
+        initial_session = {
+          command = "${pkgs.sway}/bin/niri-session";
+          user = users.users.kp.name;
+        };
+
+        default_session = initial_session;
+      };
+    };
   };
 
   hardware = {
