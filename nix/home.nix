@@ -13,39 +13,54 @@
     };
 
     packages = with pkgs; [
-      # Base tools
+      # Core CLI
       ripgrep
       fd
       jq
       lsof
-      tree-sitter
 
-      fzf
-      lazygit
-      btop
-      ouch
-      restic
-      docker-compose
-      fastfetch
-      niri
-      brave
-      timewarrior
-      yt-dlp
-      pavucontrol
-      wl-clipboard
-      cliphist
-      swayidle
+      # Dev tooling
+      tree-sitter
+      gnumake
+      python3
       bruno
       claude-code
-      pnpm
-      nodejs
+      lazygit
+
+      # Terminal UX
+      fzf
       grc
-      mpc
-      mpv
+      btop
+      fastfetch
+      ouch
+
+      # Desktop / Wayland
+      niri
+      swayidle
+      wl-clipboard
+      cliphist
+      brightnessctl
+      pavucontrol
+
+      # Apps
+      brave
+      libreoffice-fresh
       seahorse
-      python3
+
+      # Media
+      mpv
+      mpc
+      yt-dlp
+
+      # Infra / backup
+      docker-compose
+      restic
+
+      # Personal workflow
+      timewarrior
+
+      # Security
       gnupg
-      gnumake
     ];
   };
 
@@ -95,6 +110,11 @@
     zoxide = {
       enable = true;
       enableFishIntegration = true;
+    };
+
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
     };
   };
 
