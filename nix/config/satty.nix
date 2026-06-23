@@ -1,0 +1,16 @@
+{
+  enable = true;
+  settings = {
+    general = {
+      "early-exit" = true;
+      "initial-tool" = "arrow";
+      "annotation-size-factor" = 0.4;
+      "copy-command" = "wl-copy";
+      "actions-on-enter" = ["save-to-clipboard"];
+      "actions-on-escape" = ["save-to-clipboard"];
+    };
+    font = {
+      family = "JetBrainsMono Nerd Font";
+    };
+  };
+}

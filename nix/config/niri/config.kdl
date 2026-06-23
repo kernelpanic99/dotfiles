@@ -156,12 +156,12 @@ binds {
 
     Mod+Return hotkey-overlay-title="Open a Terminal: Foot" { spawn "foot"; }
     Mod+D hotkey-overlay-title="Application runner" { spawn-sh "noctalia msg panel-toggle launcher"; }
-    Super+Alt+L hotkey-overlay-title="Lock screen" { spawn-sh "noctalia msg session lock-and-suspend"; }
-    Super+Alt+K hotkey-overlay-title="Shutdown menu" { spawn-sh "noctalia msg panel-toggle session"; }
-    Super+I hotkey-overlay-title="Notification center" { spawn-sh "noctalia msg settings-toggle"; }
-    Super+V hotkey-overlay-title="Clipboard history" { spawn-sh "noctalia msg panel-toggle clipboard"; }
-    Super+Shift+N hotkey-overlay-title="Open work notes" { spawn-sh "foot -e dmux -s WorkNotes ~/Documents/neorg/work"; }
-    Super+N hotkey-overlay-title="Open personal notes" { spawn-sh "foot -e dmux -s PersonalNotes ~/Documents/neorg/personal"; }
+    Mod+Alt+L hotkey-overlay-title="Lock screen" { spawn-sh "noctalia msg session lock-and-suspend"; }
+    Mod+Alt+K hotkey-overlay-title="Shutdown menu" { spawn-sh "noctalia msg panel-toggle session"; }
+    Mod+I hotkey-overlay-title="Notification center" { spawn-sh "noctalia msg panel-toggle control-center"; }
+    Mod+V hotkey-overlay-title="Clipboard history" { spawn-sh "noctalia msg panel-toggle clipboard"; }
+    Mod+Shift+N hotkey-overlay-title="Open work notes" { spawn-sh "foot -e tmux -s WorkNotes ~/Documents/neorg/work"; }
+    Mod+N hotkey-overlay-title="Open personal notes" { spawn-sh "foot -e tmux -s PersonalNotes ~/Documents/neorg/personal"; }
 
     Mod+W hotkey-overlay-title="Open a personal Browser: Brave" { spawn-sh "brave"; } 
     Mod+Shift+W hotkey-overlay-title="Open a work Browser: Wavebox" { spawn-sh "wavebox"; } 
@@ -250,9 +250,7 @@ binds {
     Mod+V       { toggle-window-floating; }
     Mod+Shift+V { switch-focus-between-floating-and-tiling; }
 
-    Print { spawn-sh "niri msg action screenshot"; }
-    Ctrl+Print { screenshot-screen; }
-    Alt+Print { screenshot-window; }
+    Print { spawn-sh "noctalia msg screenshot-region"; }
 
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
