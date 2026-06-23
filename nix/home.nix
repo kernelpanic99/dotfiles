@@ -114,8 +114,23 @@
     flatpak = {
       enable = true;
 
+      remotes = [
+        {
+          name = "flathub";
+          location = "https://dl.flathub.org/repo/flathub.flatpakrepo";
+        }
+        {
+          name = "nvidia-geforcenow";
+          location = "https://international.download.nvidia.com/GFNLinux/flatpak/geforcenow.flatpakrepo";
+        }
+      ];
+
       packages = [
-        "com.nvidia.geforcenow"
+        {
+          appId = "com.nvidia.geforcenow";
+          origin = "nvidia-geforcenow";
+        }
+        "app.grayjay.Grayjay"
         "io.wavebox.Wavebox"
       ];
     };
