@@ -2,8 +2,18 @@
   enable = true;
 
   plugins = with pkgs.fishPlugins; [
-    { name = "done"; src = done.src; }
-    { name = "hydro"; src = hydro.src; }
+    {
+      name = "done";
+      src = done.src;
+    }
+    {
+      name = "hydro";
+      src = hydro.src;
+    }
+    {
+      name = "grc";
+      src = grc.src;
+    }
   ];
 
   shellAbbrs = {
@@ -37,7 +47,6 @@
   };
 
   shellAliases = {
-
     tw = "timew";
     tws = "timew start";
     twp = "timew stop";
