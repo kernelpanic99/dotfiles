@@ -100,13 +100,6 @@ end
 -- }}}
 
 -- {{{ Languages
-
-vim.filetype.add({
-  extension = {
-    ['http'] = 'http',
-  },
-})
-
 local function lsp_configs()
   -- {{{ Typescript
   vim.lsp.config('vtsls', {
@@ -177,6 +170,7 @@ local function lsp_configs()
     'fish_lsp',
     'pyright',
     'zls',
+    'nixd'
   }) do
     vim.lsp.enable(server)
   end

@@ -66,9 +66,9 @@
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
     vim
-    wget
-    git
     tmux
+    wget
+    gcc
     man-pages
     man-pages-posix
     lshw
@@ -94,8 +94,13 @@
 
   # Programs
   programs = {
+    dconf.enable = true;
     fish.enable = true;
     xwayland.enable = true;
+    git = {
+      enable = true;
+      lfs.enable = true;
+    };
   };
 
   virtualisation = {
@@ -142,7 +147,7 @@
       enable = true;
       settings = rec {
         initial_session = {
-          command = "${pkgs.sway}/bin/niri-session";
+          command = "${pkgs.niri}/bin/niri-session";
           user = "kp";
         };
 

@@ -44,13 +44,6 @@
     ];
   };
 
-  theme = {
-    flavor = {
-      dark = "noctalia";
-      light = "noctalia";
-    };
-  };
-
   initLua = ''
     require('gvfs'):setup({})
   '';
