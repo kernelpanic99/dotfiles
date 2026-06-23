@@ -11,7 +11,6 @@
         "network"
         "bluetooth"
         "volume"
-        "brightness"
         "battery"
         "session"
       ];
