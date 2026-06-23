@@ -38,6 +38,9 @@
       swayidle
       bruno
       claude-code
+      pnpm
+      nodejs
+      grc
     ];
   };
 
