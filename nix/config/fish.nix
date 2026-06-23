@@ -16,12 +16,6 @@
     }
   ];
 
-  shellAbbrs = {
-    xi = "sudo pacman -Syu";
-    xr = "sudo pacman -Rsn";
-    xs = "sudo pacman -Ss";
-  };
-
   functions = {
     t = ''
       if set -q argv[1]
@@ -53,6 +47,8 @@
     twi = "timew summary :ids";
     twc = "timew continue";
     twd = "timew delete";
+
+    nxr = "sudo nixos-rebuild switch --flake ~/dotfiles#nixos";
 
     ytaud = "yt-dlp --extract-audio --audio-format m4a --audio-quality best --embed-metadata";
     ytdl = "yt-dlp -f 'bestvideo[height>=720]+bestaudio/best[height>=720]' -S '+size,+br,vcodec:av1:vp9:h265:h264'";
