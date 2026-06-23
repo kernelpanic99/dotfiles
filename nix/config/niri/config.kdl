@@ -160,11 +160,9 @@ binds {
     Mod+Alt+K hotkey-overlay-title="Shutdown menu" { spawn-sh "noctalia msg panel-toggle session"; }
     Mod+I hotkey-overlay-title="Notification center" { spawn-sh "noctalia msg panel-toggle control-center"; }
     Mod+V hotkey-overlay-title="Clipboard history" { spawn-sh "noctalia msg panel-toggle clipboard"; }
-    Mod+Shift+N hotkey-overlay-title="Open work notes" { spawn-sh "foot -e tmux -s WorkNotes ~/Documents/neorg/work"; }
-    Mod+N hotkey-overlay-title="Open personal notes" { spawn-sh "foot -e tmux -s PersonalNotes ~/Documents/neorg/personal"; }
 
     Mod+W hotkey-overlay-title="Open a personal Browser: Brave" { spawn-sh "brave"; } 
-    Mod+Shift+W hotkey-overlay-title="Open a work Browser: Wavebox" { spawn-sh "wavebox"; } 
+    Mod+Shift+W hotkey-overlay-title="Open a work Browser: Wavebox" { spawn-sh "flatpak run io.wavebox.Wavebox"; } 
 
     Mod+Apostrophe { spawn-sh "mpc toggle"; }
     Mod+X { spawn "foot" "-T" "Rmpc" "-e" "rmpc"; }
