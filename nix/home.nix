@@ -42,6 +42,7 @@
       grc
       mpc
       mpv
+      seahorse
     ];
   };
 

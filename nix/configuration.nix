@@ -27,9 +27,15 @@
     };
 
     initrd = {
+      verbose = false;
       availableKernelModules = ["nvme" "xhci_pci" "ahci" "usbhid"];
       kernelModules = ["kvm-amd" "amdgpu"];
+      systemd.enable = true;
     };
+
+    plymouth.enable = true;
+
+    kernelParams = ["quiet" "splash"];
   };
 
   networking = {
@@ -145,13 +151,11 @@
 
     greetd = {
       enable = true;
-      settings = rec {
-        initial_session = {
-          command = "${pkgs.niri}/bin/niri-session";
-          user = "kp";
+      settings = {
+        default_session = {
+          command = "${pkgs.tuigreet}/bin/tuigreet --time --user kp --cmd ${pkgs.niri}/bin/niri-session";
+          user = "greeter";
         };
-
-        default_session = initial_session;
       };
     };
   };
