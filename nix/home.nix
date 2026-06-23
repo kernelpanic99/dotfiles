@@ -1,4 +1,5 @@
 {pkgs, ...}: rec {
+  imports = [./config/restic.nix];
   home = {
     username = "kp";
     homeDirectory = "/home/kp";
@@ -54,7 +55,6 @@
 
       # Infra / backup
       docker-compose
-      restic
 
       # Personal workflow
       timewarrior
