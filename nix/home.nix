@@ -31,7 +31,6 @@
       brave
       timewarrior
       yt-dlp
-      keepassxc
       pavucontrol
       wl-clipboard
       cliphist
@@ -69,6 +68,26 @@
     yazi = import ./config/yazi.nix {inherit pkgs;};
     rmpc = import ./config/rmpc.nix;
     satty = import ./config/satty.nix;
+
+    keepassxc = {
+      enable = true;
+
+      settings = {
+        GUI = {
+          Language = "en_US";
+          MinimizeOnClose = true;
+          MinimizeToTray = true;
+          ShowTrayIcon = true;
+          TrayIconAppearance = "monochrome-light";
+          ApplicationTheme = "dark";
+        };
+
+        Security = {
+          LockDatabaseIdle = false;
+        };
+      };
+    };
+
     zoxide = {
       enable = true;
       enableFishIntegration = true;
