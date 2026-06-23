@@ -41,6 +41,8 @@
       pnpm
       nodejs
       grc
+      mpc
+      mpv
     ];
   };
 
@@ -68,6 +70,7 @@
     neovim = import ./config/nvim/nvim.nix {inherit pkgs;};
     tmux = import ./config/tmux.nix {inherit pkgs;};
     yazi = import ./config/yazi.nix {inherit pkgs;};
+    rmpc = import ./config/rmpc.nix;
     zoxide = {
       enable = true;
       enableFishIntegration = true;
