@@ -43,7 +43,9 @@
       mpc
       mpv
       seahorse
-      mise
+      python3
+      gnupg
+      gnumake
     ];
   };
 
