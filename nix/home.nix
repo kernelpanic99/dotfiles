@@ -43,6 +43,7 @@
       mpc
       mpv
       seahorse
+      mise
     ];
   };
 
