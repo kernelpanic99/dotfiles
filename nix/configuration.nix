@@ -153,7 +153,7 @@
       enable = true;
       settings = {
         default_session = {
-          command = "${pkgs.tuigreet}/bin/tuigreet --time --user kp --cmd ${pkgs.niri}/bin/niri-session";
+          command = "${pkgs.tuigreet}/bin/tuigreet --time -r --cmd ${pkgs.niri}/bin/niri-session";
           user = "greeter";
         };
       };
