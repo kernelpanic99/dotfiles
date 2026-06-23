@@ -1,6 +1,0 @@
-[Unit]
-Description=Refresh eilmeldung feeds
-
-[Service]
-Type=oneshot
-ExecStart=/home/kp/.cargo/bin/eilmeldung --sync
