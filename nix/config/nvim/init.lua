@@ -170,7 +170,7 @@ local function lsp_configs()
     'fish_lsp',
     'pyright',
     'zls',
-    'nixd'
+    'nixd',
   }) do
     vim.lsp.enable(server)
   end
@@ -731,22 +731,6 @@ local plugin = {
       { '<leader>gv', '<cmd>lua require("gitsigns").preview_hunk()<CR>', desc = 'Pre[V]iew hunk' },
 
       { '<leader>gb', '<cmd>lua require("gitsigns").blame_line({ full = true })<CR>', desc = '[B]lame line' },
-    },
-  },
-  -- }}}
-
-  -- {{{ Neorg
-  {
-    'nvim-neorg/neorg',
-    lazy = false,
-    priority = 1,
-    version = '*',
-    config = true,
-    opts = {
-      load = {
-        ['core.defaults'] = {},
-        ['core.concealer'] = {},
-      },
     },
   },
   -- }}}
