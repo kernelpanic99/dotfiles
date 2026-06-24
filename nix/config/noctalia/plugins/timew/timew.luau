@@ -5,9 +5,20 @@ local update_interval = barWidget.getConfig('update_interval')
 noctalia.setUpdateInterval(update_interval * 1000)
 
 local function parseISO8601(s)
-  local Y, M, D, h, m, s = s:match('(%d%d%d%d)(%d%d)(%d%d)T(%d%d)(%d%d)(%d%d)Z')
+  local Y, M, D, h, m, sec = s:match('(%d%d%d%d)(%d%d)(%d%d)T(%d%d)(%d%d)(%d%d)Z')
 
-  return os.time({ year = Y + 0, month = M + 0, day = D + 0, hour = h + 0, min = m + 0, sec = s + 0 })
+  return os.time({ year = Y + 0, month = M + 0, day = D + 0, hour = h + 0, min = m + 0, sec = sec + 0 })
+end
+
+local function fmtDur(seconds, with_secs)
+  local h = math.floor(seconds / 3600)
+  local m = math.floor((seconds % 3600) / 60)
+
+  if with_secs then
+    return string.format('%d:%02d:%02d', h, m, math.floor(seconds % 60))
+  end
+
+  return string.format('%d:%02d', h, m)
 end
 
 local Timew = {}
@@ -34,7 +45,7 @@ function Timew:render()
 end
 
 function Timew:format(tag, total_active, total)
-  return tag .. ' ' .. noctalia.formatTime('%H:%M:%S', total_active) .. '/' .. noctalia.formatTime('%H:%M', total)
+  return tag .. ' ' .. fmtDur(total_active, true) .. '/' .. fmtDur(total, false)
 end
 
 function Timew:total(records)
