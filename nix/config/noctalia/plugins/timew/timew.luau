@@ -44,6 +44,24 @@ function Timew:render()
   return self:format(active.tags[#active.tags], total_active, total)
 end
 
+function Timew:summary()
+  local lines = {}
+
+  for _, record in ipairs(self.records) do
+    local tag = record.tags[#record.tags] or '#'
+    local start = noctalia.formatTime('%H:%M:%S', parseISO8601(record.start))
+    local done = '--'
+
+    if record['end'] ~= nil then
+      done = noctalia.formatTime('%H:%M:%S', parseISO8601(record['end']))
+    end
+
+    table.insert(lines, tag .. '\t' .. start .. ' - ' .. done .. '\n')
+  end
+
+  return table.concat(lines)
+end
+
 function Timew:format(tag, total_active, total)
   return tag .. ' ' .. fmtDur(total_active, true) .. '/' .. fmtDur(total, false)
 end
@@ -116,6 +134,7 @@ function update()
     local timew = Timew.new(res)
 
     barWidget.setText(timew:render())
+    barWidget.setTooltip(timew:summary())
   end)
 end
 
