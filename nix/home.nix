@@ -36,6 +36,7 @@
 
       # Desktop / Wayland
       niri
+      xwayland-satellite
       swayidle
       wl-clipboard
       cliphist
@@ -160,23 +161,16 @@
     flatpak = {
       enable = true;
       update.onActivation = true;
+      uninstallUnmanaged = true;
 
       remotes = [
         {
           name = "flathub";
           location = "https://dl.flathub.org/repo/flathub.flatpakrepo";
         }
-        {
-          name = "nvidia-geforcenow";
-          location = "https://international.download.nvidia.com/GFNLinux/flatpak/geforcenow.flatpakrepo";
-        }
       ];
 
       packages = [
-        {
-          appId = "com.nvidia.geforcenow";
-          origin = "nvidia-geforcenow";
-        }
         "app.grayjay.Grayjay"
         "io.wavebox.Wavebox"
       ];
