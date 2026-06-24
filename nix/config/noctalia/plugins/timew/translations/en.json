@@ -1,0 +1,17 @@
+{
+    "title": "Timewarrior",
+    "settings": {
+        "update_interval": {
+            "label": "Update interval",
+            "description": "Widget update interval in seconds (default: 1s)"
+        }
+    },
+    "notifications": {
+        "tracking": {
+            "stopped": "Timew tracking stopped",
+            "resumed": "Timew tracking resumed",
+            "stop_failed": "Failed to stop Timew tracking",
+            "resume_failed": "Failed to resume Timew tracking"
+        }
+    }
+}

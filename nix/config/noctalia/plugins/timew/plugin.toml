@@ -1,0 +1,21 @@
+id = "kernelpanic99/timew"
+name = "Timewarrior"
+version = "0.0.1"
+min_noctalia = "5.0.0"
+author = "Arthur Nikolaienko"
+license = "MIT"
+deprecated = false
+description = "Show timewarrior tracking state"
+tags = ["timetracking", "timewarrior", "productivity"]
+dependencies = ["timew"]
+
+[[widget]]
+id = "timew"
+entry = "timew.luau"
+
+[[widget.setting]]
+key = "update_interval"
+type = "integer"
+label_key = "settings.update_interval.label"
+description_key = "settings.update_interval.description"
+default = 1
