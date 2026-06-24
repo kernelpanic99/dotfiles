@@ -191,5 +191,7 @@
         }
       '';
     };
+
+    mpd-mpris.enable = true;
   };
 }
