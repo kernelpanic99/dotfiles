@@ -42,6 +42,8 @@
       cliphist
       brightnessctl
       pavucontrol
+      libappindicator
+      gobject-introspection
 
       # Apps
       brave
@@ -178,6 +180,8 @@
         "app.grayjay.Grayjay"
         "io.wavebox.Wavebox"
       ];
+
+      overrides.global."Session Bus Policy"."org.kde.StatusNotifierWatcher" = "talk";
     };
 
     mpd = {
