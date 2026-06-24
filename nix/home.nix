@@ -157,6 +157,7 @@
 
     flatpak = {
       enable = true;
+      update.onActivation = true;
 
       remotes = [
         {
