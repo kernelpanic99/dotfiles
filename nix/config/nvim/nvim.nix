@@ -22,6 +22,8 @@
     pyright
     zls
     docker-compose-language-service
+    tombi
+    luau-lsp
     # Formatters
     stylua
     prettier

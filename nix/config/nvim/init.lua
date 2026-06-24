@@ -171,6 +171,7 @@ local function lsp_configs()
     'pyright',
     'zls',
     'nixd',
+    'tombi',
   }) do
     vim.lsp.enable(server)
   end
