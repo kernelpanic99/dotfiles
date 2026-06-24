@@ -75,13 +75,6 @@
       "niri/config.kdl".source = ./config/niri/config.kdl;
       "xdg-desktop-portal-termfilechooser/config".source = ./config/termfilechooser.conf;
     };
-
-    stateFile = {
-      "noctalia/plugins/timew" = {
-        source = ./config/noctalia/plugins/timew;
-        recursive = true;
-      };
-    };
   };
 
   programs = {

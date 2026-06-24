@@ -3,7 +3,16 @@
 
   settings = {
     bar.default = {
-      center = ["clock" "notifications" "control-center" "audio_visualizer"];
+      capsule_group = [
+        {
+          fill = "surface_variant";
+          id = "g1";
+          members = ["clock" "notifications"];
+          opacity = 1.0;
+          padding = 6.0;
+        }
+      ];
+      center = ["timew" "group:g1" "control-center" "audio_visualizer"];
       end = [
         "tray"
         "keyboard_layout"
@@ -18,6 +27,27 @@
       margin_ends = 5;
       start = ["launcher" "workspaces"];
       thickness = 35;
+    };
+
+    plugins = {
+      enabled = ["kernelpanic99/timew"];
+      source = [
+        {
+          kind = "git";
+          location = "https://github.com/noctalia-dev/official-plugins";
+          name = "official";
+        }
+        {
+          kind = "git";
+          location = "https://github.com/noctalia-dev/community-plugins";
+          name = "community";
+        }
+        {
+          kind = "path";
+          location = "~/dotfiles/nix/config/noctalia/plugins/";
+          name = "dev";
+        }
+      ];
     };
 
     location.address = "Odessa, Ukraine";
@@ -105,6 +135,10 @@
       };
       clock.format = "{:%H:%M %a %d-%m-%y}";
       network.show_label = false;
+      timew = {
+        capsule = true;
+        type = "kernelpanic99/timew:timew";
+      };
       workspaces = {
         empty_color = "on_surface";
         hide_when_empty = true;
