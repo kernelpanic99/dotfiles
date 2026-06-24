@@ -75,12 +75,19 @@
       "niri/config.kdl".source = ./config/niri/config.kdl;
       "xdg-desktop-portal-termfilechooser/config".source = ./config/termfilechooser.conf;
     };
+
+    stateFile = {
+      "noctalia/plugins/timew" = {
+        source = ./config/noctalia/plugins/timew;
+        recursive = true;
+      };
+    };
   };
 
   programs = {
     eilmeldung = import ./config/eilmeldung.nix;
     foot = import ./config/foot.nix;
-    noctalia = import ./config/noctalia.nix;
+    noctalia = import ./config/noctalia/noctalia.nix;
     fish = import ./config/fish.nix {inherit pkgs;};
     neovim = import ./config/nvim/nvim.nix {inherit pkgs;};
     tmux = import ./config/tmux.nix {inherit pkgs;};
