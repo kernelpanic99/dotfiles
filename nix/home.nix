@@ -31,7 +31,6 @@
       # Terminal UX
       fzf
       grc
-      btop
       fastfetch
       ouch
 
@@ -89,6 +88,7 @@
     yazi = import ./config/yazi.nix {inherit pkgs;};
     rmpc = import ./config/rmpc.nix;
     satty = import ./config/satty.nix;
+    btop = import ./config/btop.nix;
 
     keepassxc = {
       enable = true;
