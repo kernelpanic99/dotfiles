@@ -41,7 +41,15 @@ function Timew:render()
   local total = self:total()
   local total_active = self:total(filtered)
 
-  return self:format(active.tags[#active.tags], total_active, total)
+  local tag = active.tags[#active.tags]
+
+  for _, t in ipairs(active.tags) do
+    if t:find('-') then
+      tag = t
+    end
+  end
+
+  return self:format(tag, total_active, total)
 end
 
 function Timew:period_summary()
