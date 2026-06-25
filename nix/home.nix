@@ -91,6 +91,19 @@
     satty = import ./config/satty.nix;
     btop = import ./config/btop.nix;
 
+    git = {
+      enable = true;
+      lfs.enable = true;
+      settings = {
+        user.name = "Arthur Nikolaienko";
+      };
+    };
+
+    delta = {
+      enable = true;
+      enableGitIntegration = true;
+    };
+
     keepassxc = {
       enable = true;
 

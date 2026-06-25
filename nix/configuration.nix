@@ -104,11 +104,6 @@
     fish.enable = true;
     xwayland.enable = true;
 
-    git = {
-      enable = true;
-      lfs.enable = true;
-    };
-
     nix-ld = {
       enable = true;
     };
