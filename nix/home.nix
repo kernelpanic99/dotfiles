@@ -27,6 +27,7 @@
       bruno
       claude-code
       lazygit
+      nodejs
 
       # Terminal UX
       fzf
