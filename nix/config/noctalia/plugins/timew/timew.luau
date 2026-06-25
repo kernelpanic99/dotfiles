@@ -27,6 +27,9 @@ Timew.__index = Timew
 function Timew.new(records)
   local self = setmetatable({}, Timew)
   self.records = records
+  self.config = {
+    tag_pattern = '-',
+  }
   return self
 end
 
@@ -41,33 +44,9 @@ function Timew:render()
   local total = self:total()
   local total_active = self:total(filtered)
 
-  local tag = active.tags[#active.tags]
-
-  for _, t in ipairs(active.tags) do
-    if t:find('-') then
-      tag = t
-    end
-  end
+  local tag = self:extract_tag(active.tags)
 
   return self:format(tag, total_active, total)
-end
-
-function Timew:period_summary()
-  local lines = {}
-
-  for _, record in ipairs(self.records) do
-    local tag = record.tags[#record.tags] or '#'
-    local start = noctalia.formatTime('%H:%M:%S', parseISO8601(record.start))
-    local done = '--'
-
-    if record['end'] ~= nil then
-      done = noctalia.formatTime('%H:%M:%S', parseISO8601(record['end']))
-    end
-
-    table.insert(lines, tag .. '\t' .. start .. ' - ' .. done .. '\n')
-  end
-
-  return table.concat(lines)
 end
 
 function Timew:totals_summary()
@@ -77,16 +56,23 @@ function Timew:totals_summary()
     local tags = table.concat(record.tags, ', ')
 
     if not grouped[tags] then
-      grouped[tags] = { duration = 0 }
+      grouped[tags] = { duration = 0, tags = record.tags }
     end
 
-    grouped[tags].duration = grouped[tags].duration + record.duration
+    local start = parseISO8601(record.start)
+    local done = os.time()
+
+    if record['end'] then
+      done = parseISO8601(record['end'])
+    end
+
+    grouped[tags].duration = grouped[tags].duration + done - start
   end
 
   local lines = {}
 
   for tags, data in pairs(grouped) do
-    table.insert(lines, tags .. '\t' .. fmtDur(data.duration, true) .. '\n')
+    table.insert(lines, self:extract_tag(data.tags) .. '\t' .. fmtDur(data.duration, true) .. '\n')
   end
 
   return table.concat(lines)
@@ -94,6 +80,20 @@ end
 
 function Timew:format(tag, total_active, total)
   return tag .. ' ' .. fmtDur(total_active, true) .. '/' .. fmtDur(total, false)
+end
+
+function Timew:extract_tag(tags)
+  if not tags or #tags <= 0 then
+    return '#'
+  end
+
+  for _, tag in ipairs(tags) do
+    if tag:find(self.config.tag_pattern) then
+      return tag
+    end
+  end
+
+  return tags[#tags]
 end
 
 function Timew:total(records)
