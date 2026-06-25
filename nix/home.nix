@@ -104,6 +104,11 @@
       enableGitIntegration = true;
     };
 
+    dircolors = {
+      enable = true;
+      enableFishIntegration = true;
+    };
+
     keepassxc = {
       enable = true;
 
