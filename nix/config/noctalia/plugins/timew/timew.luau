@@ -44,7 +44,7 @@ function Timew:render()
   return self:format(active.tags[#active.tags], total_active, total)
 end
 
-function Timew:summary()
+function Timew:period_summary()
   local lines = {}
 
   for _, record in ipairs(self.records) do
@@ -57,6 +57,28 @@ function Timew:summary()
     end
 
     table.insert(lines, tag .. '\t' .. start .. ' - ' .. done .. '\n')
+  end
+
+  return table.concat(lines)
+end
+
+function Timew:totals_summary()
+  local grouped = {}
+
+  for _, record in ipairs(self.records) do
+    local tags = table.concat(record.tags, ', ')
+
+    if not grouped[tags] then
+      grouped[tags] = { duration = 0 }
+    end
+
+    grouped[tags].duration = grouped[tags].duration + record.duration
+  end
+
+  local lines = {}
+
+  for tags, data in pairs(grouped) do
+    table.insert(lines, tags .. '\t' .. fmtDur(data.duration, true) .. '\n')
   end
 
   return table.concat(lines)
@@ -134,7 +156,7 @@ function update()
     local timew = Timew.new(res)
 
     barWidget.setText(timew:render())
-    barWidget.setTooltip(timew:summary())
+    barWidget.setTooltip(timew:totals_summary())
   end)
 end
 
