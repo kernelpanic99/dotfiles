@@ -38,7 +38,6 @@
       # Desktop / Wayland
       niri
       xwayland-satellite
-      swayidle
       wl-clipboard
       cliphist
       brightnessctl
@@ -91,6 +90,10 @@
     rmpc = import ./config/rmpc.nix;
     satty = import ./config/satty.nix;
     btop = import ./config/btop.nix;
+
+    obs-studio = {
+      enable = true;
+    };
 
     git = {
       enable = true;
