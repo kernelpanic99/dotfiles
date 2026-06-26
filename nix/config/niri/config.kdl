@@ -15,7 +15,6 @@ environment {
 spawn-at-startup "xwayland-satellite"
 spawn-at-startup "noctalia"
 spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
-spawn-sh-at-startup "swayidle -w timeout 300 'brightnessctl set 20%; timew stop' timeout 600 'noctalia msg session lock-and-suspend' resume 'brightnessctl set 100%'"
 spawn-at-startup "nm-applet"
 // }}}
 

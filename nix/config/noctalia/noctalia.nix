@@ -11,8 +11,16 @@
           opacity = 1.0;
           padding = 6.0;
         }
+
+        {
+          fill = "surface_variant";
+          id = "g2";
+          members = ["media" "audio_visualizer"];
+          opacity = 1.0;
+          padding = 6.0;
+        }
       ];
-      center = ["timew" "group:g1" "control-center" "audio_visualizer"];
+      center = ["timew" "group:g1" "group:g2"];
       end = [
         "tray"
         "keyboard_layout"
@@ -142,6 +150,31 @@
       workspaces = {
         empty_color = "on_surface";
         hide_when_empty = true;
+      };
+      media = {
+        album_art_only = true;
+      };
+    };
+
+    idle = {
+      behavior_order = ["lock" "screen-off" "lock-and-suspend"];
+
+      behavior = {
+        lock = {
+          action = "lock";
+          enabled = true;
+          timeout = 600;
+        };
+        lock-and-suspend = {
+          action = "lock-and-suspend";
+          enabled = true;
+          timeout = 900;
+        };
+        screen-off = {
+          action = "screen_off";
+          enabled = true;
+          timeout = 660;
+        };
       };
     };
   };
