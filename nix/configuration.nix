@@ -193,7 +193,8 @@
       settings = {
         General = {
           Experimental = true;
-          FastConnectable = false;
+          FastConnectable = true;
+          AlwaysPairable = true;
         };
       };
     };
