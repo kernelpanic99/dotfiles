@@ -26,10 +26,13 @@ Timew.__index = Timew
 
 function Timew.new(records)
   local self = setmetatable({}, Timew)
+
   self.records = records
+  self.status = 'stopped'
   self.config = {
     tag_pattern = '-',
   }
+
   return self
 end
 
@@ -37,7 +40,14 @@ function Timew:render()
   local active = self:get_active()
 
   if not active then
+    self.status = 'stopped'
     return '--/--'
+  end
+
+  if not active['end'] then
+    self.status = 'running'
+  else
+    self.status = 'paused'
   end
 
   local filtered = self:filter_by_tags(active.tags)
@@ -165,6 +175,14 @@ function update()
 
     barWidget.setText(timew:render())
     barWidget.setTooltip(timew:totals_summary())
+
+    if timew.status == 'stopped' then
+      barWidget.setColor('surface')
+    elseif timew.status == 'paused' then
+      barWidget.setColor('secondary')
+    else
+      barWidget.setColor('primary')
+    end
   end)
 end
 
