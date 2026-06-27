@@ -178,10 +178,13 @@ function update()
 
     if timew.status == 'stopped' then
       barWidget.setColor('on_surface')
+      barWidget.setVisible(false)
     elseif timew.status == 'paused' then
       barWidget.setColor('secondary')
+      barWidget.setVisible(true)
     else
       barWidget.setColor('primary')
+      barWidget.setVisible(true)
     end
   end)
 end
