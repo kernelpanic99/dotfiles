@@ -177,7 +177,7 @@ function update()
     barWidget.setTooltip(timew:totals_summary())
 
     if timew.status == 'stopped' then
-      barWidget.setColor('surface')
+      barWidget.setColor('on_surface')
     elseif timew.status == 'paused' then
       barWidget.setColor('secondary')
     else
