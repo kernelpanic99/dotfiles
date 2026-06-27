@@ -32,7 +32,6 @@
       # Terminal UX
       fzf
       grc
-      fastfetch
       ouch
 
       # Desktop / Wayland
@@ -90,6 +89,8 @@
     rmpc = import ./config/rmpc.nix;
     satty = import ./config/satty.nix;
     btop = import ./config/btop.nix;
+
+    fastfetch = import ./config/fastfetch.nix;
 
     obs-studio = {
       enable = true;
