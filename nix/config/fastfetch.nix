@@ -40,7 +40,7 @@ in {
     modules = [
       {
         type = "title";
-        key = "System";
+        key = "Host";
         keyColor = "blue";
       }
 
