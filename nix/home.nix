@@ -28,6 +28,7 @@
       claude-code
       lazygit
       nodejs
+      devenv
 
       # Terminal UX
       fzf
