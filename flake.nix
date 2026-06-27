@@ -58,15 +58,15 @@
       }
     ];
 
-    mkSystem = hardwareModule:
+    mkSystem = hostModule:
       nixpkgs.lib.nixosSystem {
         inherit system;
-        modules = baseModules ++ [hardwareModule];
+        modules = baseModules ++ [hostModule];
       };
   in {
     nixosConfigurations = {
-      laptop = mkSystem ./nix/hardware/laptop.nix;
-      desktop = mkSystem ./nix/hardware/desktop.nix;
+      laptop = mkSystem ./nix/hosts/laptop.nix;
+      desktop = mkSystem ./nix/hosts/desktop.nix;
     };
   };
 }
