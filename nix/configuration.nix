@@ -2,7 +2,6 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 {
-  config,
   lib,
   pkgs,
   ...
@@ -41,7 +40,6 @@
   };
 
   networking = {
-    hostName = "nixos";
     networkmanager.enable = true;
     firewall.enable = true;
   };
@@ -146,11 +144,6 @@
     upower.enable = true;
     udisks2.enable = true;
     power-profiles-daemon.enable = true;
-    xserver.videoDrivers = [
-      "nvidia"
-      "amdgpu"
-    ];
-
     greetd = {
       enable = true;
       settings = {
@@ -170,23 +163,6 @@
     firmware = [pkgs.linux-firmware];
 
     graphics.enable = true;
-
-    nvidia = {
-      modesetting.enable = true;
-      powerManagement.finegrained = true;
-      open = true;
-      nvidiaSettings = true;
-
-      prime = {
-        offload = {
-          enable = true;
-          enableOffloadCmd = true;
-        };
-
-        amdgpuBusId = "PCI:5:00:0";
-        nvidiaBusId = "PCI:1:00:0";
-      };
-    };
 
     bluetooth = {
       enable = true;

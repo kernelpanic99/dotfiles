@@ -39,28 +39,34 @@
     noctalia,
     nix-flatpak,
     ...
-  }: {
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem rec {
-      system = "x86_64-linux";
+  }: let
+    system = "x86_64-linux";
 
-      modules = [
-        disko.nixosModules.disko
-        ./nix/configuration.nix
-        home-manager.nixosModules.default
+    baseModules = [
+      disko.nixosModules.disko
+      ./nix/configuration.nix
+      home-manager.nixosModules.default
+      {
+        nixpkgs.overlays = [eilmeldung.overlays.default];
+        environment.systemPackages = [alejandra.defaultPackage.${system}];
+        home-manager = {
+          useGlobalPkgs = true;
+          useUserPackages = true;
+          sharedModules = [eilmeldung.homeManager.default noctalia.homeModules.default nix-flatpak.homeManagerModules.nix-flatpak];
+          users.kp = ./nix/home.nix;
+        };
+      }
+    ];
 
-        {
-          nixpkgs.overlays = [eilmeldung.overlays.default];
-
-          environment.systemPackages = [alejandra.defaultPackage.${system}];
-
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            sharedModules = [eilmeldung.homeManager.default noctalia.homeModules.default nix-flatpak.homeManagerModules.nix-flatpak];
-            users.kp = ./nix/home.nix;
-          };
-        }
-      ];
+    mkSystem = hardwareModule:
+      nixpkgs.lib.nixosSystem {
+        inherit system;
+        modules = baseModules ++ [hardwareModule];
+      };
+  in {
+    nixosConfigurations = {
+      laptop = mkSystem ./nix/hardware/laptop.nix;
+      desktop = mkSystem ./nix/hardware/desktop.nix;
     };
   };
 }
