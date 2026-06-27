@@ -157,23 +157,33 @@
     };
 
     idle = {
-      behavior_order = ["lock" "screen-off" "lock-and-suspend"];
-
       behavior = {
+        stop-tracker = {
+          action = "command";
+          enabled = true;
+          timeout = 300;
+          command = "timew stop";
+        };
+        stop-player = {
+          action = "command";
+          enabled = true;
+          timeout = 590;
+          command = "mpc pause";
+        };
         lock = {
           action = "lock";
           enabled = true;
           timeout = 600;
         };
-        lock-and-suspend = {
-          action = "lock-and-suspend";
-          enabled = true;
-          timeout = 900;
-        };
         screen-off = {
           action = "screen_off";
           enabled = true;
           timeout = 660;
+        };
+        lock-and-suspend = {
+          action = "lock-and-suspend";
+          enabled = true;
+          timeout = 900;
         };
       };
     };
