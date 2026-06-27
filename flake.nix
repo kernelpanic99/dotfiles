@@ -27,6 +27,11 @@
     };
 
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
+
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
@@ -52,7 +57,12 @@
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
-          sharedModules = [eilmeldung.homeManager.default noctalia.homeModules.default nix-flatpak.homeManagerModules.nix-flatpak];
+          sharedModules = [
+            eilmeldung.homeManager.default
+            noctalia.homeModules.default
+            nix-flatpak.homeManagerModules.nix-flatpak
+            inputs.nixvim.homeModules.nixvim
+          ];
           users.kp = ./nix/home.nix;
         };
       }
