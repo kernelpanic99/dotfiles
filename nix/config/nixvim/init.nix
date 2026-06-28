@@ -72,6 +72,46 @@
     nvim-web-devicons
   ];
 
+  lsp = {
+    servers = {
+      # Web
+      vtsls.enable = true;
+      biome.enable = true;
+      nixd.enable = true;
+      html.enable = true;
+      cssls.enable = true;
+      jsonls.enable = true;
+      tailwindcss.enable = true;
+      astro.enable = true;
+
+      # Languages
+      rust_analyzer.enable = true;
+      gopls.enable = true;
+      lua_ls.enable = true;
+      pyright.enable = true;
+
+      # Configs
+      yamlls.enable = true;
+      tombi.enable = true;
+      docker_language_server.enable = true;
+      docker_compose_language_service.enable = true;
+      terraformls.enable = true;
+
+      #Other
+      fish_lsp.enable = true;
+      bashls.enable = true;
+      marksman.enable = true;
+    };
+  };
+
+  extraPackages = with pkgs; [
+    stylua
+    prettier
+    biome
+    black
+    mdformat
+  ];
+
   plugins = {
     lualine = {enable = true;};
     barbar = {enable = true;};
@@ -86,6 +126,8 @@
         };
       };
     };
+
+    lspconfig.enable = true;
 
     treesitter = {
       enable = true;
@@ -117,6 +159,10 @@
         astro
         terraform
       ];
+    };
+
+    conform-nvim = {
+      enable = true;
     };
   };
 }
