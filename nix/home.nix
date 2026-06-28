@@ -11,6 +11,7 @@
       GDK_BACKEND = "wayland,x11,*";
       _JAVA_AWT_WM_NONREPARENTING = "1";
       OBSIDIAN_USE_WAYLAND = "1";
+      NIXOS_OZONE_WL = "1";
     };
 
     packages = with pkgs; [
@@ -44,6 +45,7 @@
       pavucontrol
       libappindicator
       gobject-introspection
+      mesa-demos
 
       # Apps
       brave
