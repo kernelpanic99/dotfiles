@@ -5,7 +5,7 @@
       underline = true,
       update_in_insert = false,
       severity_sort = true,
-      float = { border = "rounded", source = "always" },
+      float = { border = "rounded", source = true },
     })
   '';
 
@@ -30,6 +30,11 @@
       {
         key = "<leader>lr";
         lspBufAction = "rename";
+      }
+      {
+        key = "<leader>la";
+        lspBufAction = "code_action";
+        mode = ["n" "v"];
       }
       {
         key = "<leader>ls";

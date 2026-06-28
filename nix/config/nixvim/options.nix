@@ -37,8 +37,7 @@
     smartcase = true;
     inccommand = "split";
 
-    # Folds
-    foldmethod = "syntax";
+    # Folds (foldmethod/foldexpr are set per-window by treesitter folding)
     foldlevelstart = 99;
   };
 
@@ -56,7 +55,7 @@
       event = ["TextYankPost"];
       callback.__raw = ''
         function()
-          vim.highlight.on_yank({ timeout = 200 })
+          vim.hl.on_yank({ timeout = 200 })
         end
       '';
     }

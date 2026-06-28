@@ -11,10 +11,23 @@
     stylua
     prettier
     biome
-    black
+    ruff
     mdformat
     gofumpt
+    alejandra
+
+    # Rust editor tooling only; suffixed on PATH, so a project's
+    # devenv toolchain (earlier on PATH) takes precedence when present.
+    rustc
+    cargo
+    rustfmt
   ];
+
+  # Give rust-analyzer a std source for untooled projects, but don't
+  # clobber a value already provided by a project shell.
+  extraConfigLua = ''
+    vim.env.RUST_SRC_PATH = vim.env.RUST_SRC_PATH or "${pkgs.rustPlatform.rustLibSrc}"
+  '';
 
   plugins = {
     snacks = {
@@ -130,7 +143,7 @@
         lsp_format = "fallback";
         formatters_by_ft = {
           lua = ["stylua"];
-          python = ["black"];
+          python = ["ruff_organize_imports" "ruff_format"];
           markdown = ["mdformat"];
           nix = ["alejandra"];
           javascript = ["biome"];
