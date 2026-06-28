@@ -1,8 +1,4 @@
-{
-  pkgs,
-  config,
-  ...
-}: rec {
+{pkgs, ...}: rec {
   imports = [./config/restic.nix];
   home = {
     username = "kp";
@@ -88,7 +84,6 @@
     foot = import ./config/foot.nix;
     noctalia = import ./config/noctalia/noctalia.nix;
     fish = import ./config/fish.nix {inherit pkgs;};
-    # neovim = import ./config/nvim/nvim.nix {inherit pkgs;};
     tmux = import ./config/tmux.nix {inherit pkgs;};
     yazi = import ./config/yazi.nix {inherit pkgs;};
     rmpc = import ./config/rmpc.nix;
