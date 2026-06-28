@@ -14,43 +14,53 @@
       {
         key = "gd";
         lspBufAction = "definition";
+        options.desc = "Go to definition";
       }
       {
         key = "gr";
         lspBufAction = "references";
+        options.desc = "References";
       }
       {
         key = "gi";
         lspBufAction = "implementation";
+        options.desc = "Go to implementation";
       }
       {
         key = "K";
         lspBufAction = "hover";
+        options.desc = "Hover";
       }
       {
         key = "<leader>lr";
         lspBufAction = "rename";
+        options.desc = "Rename symbol";
       }
       {
         key = "<leader>la";
         lspBufAction = "code_action";
         mode = ["n" "v"];
+        options.desc = "Code action";
       }
       {
         key = "<leader>ls";
         action = "<cmd>lua require('snacks').picker.lsp_symbols()<CR>";
+        options.desc = "Document symbols";
       }
       {
         key = "<leader>lx";
         action = "<cmd>lua require('snacks').picker.diagnostics()<CR>";
+        options.desc = "Diagnostics";
       }
       {
         key = "<leader>k";
         action.__raw = "function() vim.diagnostic.jump({ count = -1, float = true }) end";
+        options.desc = "Previous diagnostic";
       }
       {
         key = "<leader>j";
         action.__raw = "function() vim.diagnostic.jump({ count = 1, float = true }) end";
+        options.desc = "Next diagnostic";
       }
     ];
     servers = {

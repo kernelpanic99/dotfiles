@@ -96,10 +96,6 @@
           "__unkeyed-1" = "<leader>s";
           group = "[S]earch";
         }
-        {
-          "__unkeyed-1" = "<leader>t";
-          group = "[T]oggle/Tools";
-        }
       ];
     };
 
