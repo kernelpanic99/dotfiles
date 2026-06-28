@@ -3,14 +3,6 @@ let
   makeDashes = n: builtins.concatStringsSep "" (builtins.genList (_: "─") n);
   innerWidth = 60; # fixed: all sections produce the same total line width
   logoWidth = 40; # inferred imperically
-  rightCol = logoWidth + 2 + innerWidth; # Column where │ lands
-
-  # Draws │ at rightCol on the line above by using cursor-up (\e[1A),
-  # then returns — takes no extra visible line in the output.
-  borderLine = color: {
-    type = "custom";
-    format = "${esc}[1A${esc}[${toString rightCol}G${esc}[${color}m│${esc}[0m";
-  };
 
   section = text: color: let
     textLen = builtins.stringLength text;
@@ -52,32 +44,32 @@ in {
         key = "├─󱄅";
         keyColor = "magenta";
       }
-      (borderLine "35")
       {
         type = "kernel";
         key = "├─";
         format = "{1} {2}";
         keyColor = "magenta";
       }
-      (borderLine "35")
       {
         type = "packages";
         key = "├─󰮯";
         keyColor = "magenta";
       }
-      (borderLine "35")
       {
         type = "wm";
         key = "├─󰧨";
         keyColor = "magenta";
       }
-      (borderLine "35")
       {
         type = "theme";
         key = "├─󰉼";
         keyColor = "magenta";
       }
-      (borderLine "35")
+      {
+        type = "uptime";
+        key = "├─󰅐";
+        keyColor = "magenta";
+      }
       (endsection "35")
 
       "break"
@@ -88,19 +80,16 @@ in {
         key = "├─";
         keyColor = "green";
       }
-      (borderLine "32")
       {
         type = "terminalfont";
         key = "├─";
         keyColor = "green";
       }
-      (borderLine "32")
       {
         type = "shell";
         key = "├─";
         keyColor = "green";
       }
-      (borderLine "32")
       (endsection "32")
 
       "break"
@@ -111,39 +100,33 @@ in {
         key = "├─";
         keyColor = "yellow";
       }
-      (borderLine "33")
       {
         type = "cpu";
         key = "├─󰍛";
         keyColor = "yellow";
       }
-      (borderLine "33")
       {
         type = "gpu";
         key = "├─󰘚";
         keyColor = "yellow";
         hideType = "integrated";
       }
-      (borderLine "33")
       {
         type = "display";
         key = "├─󰍹";
         keyColor = "yellow";
         compactType = "original-with-refresh-rate";
       }
-      (borderLine "33")
       {
         type = "memory";
         key = "├─󰑭";
         keyColor = "yellow";
       }
-      (borderLine "33")
       {
-        type = "uptime";
-        key = "├─󰅐";
+        type = "disk";
+        key = "├─";
         keyColor = "yellow";
       }
-      (borderLine "33")
       (endsection "33")
 
       "break"
