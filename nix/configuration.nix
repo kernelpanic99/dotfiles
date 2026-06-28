@@ -78,7 +78,6 @@
     man-pages
     man-pages-posix
     lshw
-    cliphist
   ];
 
   fonts = {
