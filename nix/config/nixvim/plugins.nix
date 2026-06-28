@@ -13,6 +13,7 @@
     biome
     black
     mdformat
+    gofumpt
   ];
 
   plugins = {
@@ -123,10 +124,7 @@
     conform-nvim = {
       enable = true;
       settings = {
-        format_on_save = {
-          timeout_ms = 500;
-          lsp_fallback = true;
-        };
+        lsp_format = "fallback";
         formatters_by_ft = {
           lua = ["stylua"];
           python = ["black"];
@@ -139,7 +137,15 @@
           json = ["biome"];
           jsonc = ["biome"];
           css = ["prettier"];
+          scss = ["prettier"];
           html = ["prettier"];
+          svelte = ["prettier"];
+          astro = ["prettier"];
+          jsx = ["prettier"];
+          tsx = ["prettier"];
+          yaml = ["prettier"];
+          rust = ["rustfmt"];
+          go = ["gofumpt"];
         };
       };
     };
