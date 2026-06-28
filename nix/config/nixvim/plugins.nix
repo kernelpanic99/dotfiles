@@ -31,7 +31,10 @@
       };
     };
 
-    lualine.enable = true;
+    lualine = {
+      enable = true;
+      settings.options.globalstatus = true;
+    };
     barbar.enable = true;
     tmux-navigator.enable = true;
 
