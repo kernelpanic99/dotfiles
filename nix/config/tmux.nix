@@ -24,7 +24,6 @@
   ];
 
   extraConfig = ''
-    bind C-s send-prefix
     bind-key K kill-session
 
     set -g status on
@@ -40,20 +39,5 @@
     bind -r p previous-window
 
     set -sg terminal-overrides ",*:RGB"
-
-    bind C-\\ \
-      set prefix None \;\
-      set key-table off \;\
-      set status-style "bg=colour240,fg=colour255" \;\
-      if -F '#{pane_in_mode}' 'send-keys -X cancel' \;\
-      refresh-client -S \;\
-      display-message "tmux keybinds OFF"
-
-    bind -T off C-\\ \
-      set -u prefix \;\
-      set -u key-table \;\
-      set -u status-style \;\
-      refresh-client -S \;\
-      display-message "tmux keybinds ON"
   '';
 }
