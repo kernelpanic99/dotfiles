@@ -26,7 +26,7 @@
     # UI
     mouse = "a";
     number = true;
-    showmode = true;
+    showmode = false;
     signcolumn = "yes";
     splitright = true;
     splitbelow = true;
@@ -59,12 +59,142 @@
     loaded_netrwPlugin = false;
   };
 
+  autoCmd = [
+    {
+      event = ["TextYankPost"];
+      callback.__raw = ''
+        function()
+          vim.highlight.on_yank({ timeout = 200 })
+        end
+      '';
+    }
+  ];
+
   keymaps = [
+    # Files / UI
     {
       key = "<leader>e";
       action = "<cmd>Neotree toggle<CR>";
       options.silent = true;
       mode = "n";
+    }
+    {
+      key = "<leader>cf";
+      action = "<cmd>lua require('conform').format()<CR>";
+      options.silent = true;
+      mode = "n";
+    }
+
+    # Buffer
+    {
+      key = "<S-h>";
+      action = "<cmd>BufferPrevious<CR>";
+    }
+    {
+      key = "<S-l>";
+      action = "<cmd>BufferNext<CR>";
+    }
+    {
+      key = "<leader>bd";
+      action = "<cmd>BufferClose<CR>";
+    }
+    {
+      key = "<leader>bo";
+      action = "<cmd>BufferCloseAllButCurrentOrPinned<CR>";
+    }
+
+    # Search (snacks.picker)
+    {
+      key = "<leader><leader>";
+      action = "<cmd>lua require('snacks').picker.files()<CR>";
+    }
+    {
+      key = "<leader>sg";
+      action = "<cmd>lua require('snacks').picker.grep()<CR>";
+    }
+    {
+      key = "<leader>sw";
+      action = "<cmd>lua require('snacks').picker.grep_word()<CR>";
+    }
+    {
+      key = "<leader>sv";
+      action = "<cmd>lua require('snacks').picker.grep_word()<CR>";
+      mode = "v";
+    }
+    {
+      key = "<leader>sr";
+      action = "<cmd>lua require('snacks').picker.recent()<CR>";
+    }
+
+    # Git
+    {
+      key = "<leader>gg";
+      action = "<cmd>lua require('snacks').lazygit()<CR>";
+    }
+    {
+      key = "<leader>gs";
+      action = "<cmd>lua require('gitsigns').stage_hunk()<CR>";
+    }
+    {
+      key = "<leader>gs";
+      action = "<cmd>lua require('gitsigns').stage_hunk({ vim.fn.line('.'), vim.fn.line('v') })<CR>";
+      mode = "v";
+    }
+    {
+      key = "<leader>gr";
+      action = "<cmd>lua require('gitsigns').reset_hunk()<CR>";
+    }
+    {
+      key = "<leader>gr";
+      action = "<cmd>lua require('gitsigns').reset_hunk({ vim.fn.line('.'), vim.fn.line('v') })<CR>";
+      mode = "v";
+    }
+    {
+      key = "<leader>gv";
+      action = "<cmd>lua require('gitsigns').preview_hunk()<CR>";
+    }
+    {
+      key = "<leader>gb";
+      action = "<cmd>lua require('gitsigns').blame_line({ full = true })<CR>";
+    }
+
+    # Utility
+    {
+      key = "<Esc>";
+      action = "<cmd>nohlsearch<CR>";
+      mode = "n";
+    }
+    {
+      key = ">";
+      action = ">gv";
+      mode = "v";
+    }
+    {
+      key = "<";
+      action = "<gv";
+      mode = "v";
+    }
+
+    # Clipboard
+    {
+      key = "<leader>y";
+      action = ''"+y'';
+      mode = ["n" "v"];
+    }
+    {
+      key = "<leader>Y";
+      action = ''"+Y'';
+      mode = "n";
+    }
+    {
+      key = "<leader>p";
+      action = ''"+p'';
+      mode = ["n" "v"];
+    }
+    {
+      key = "<leader>P";
+      action = ''"+P'';
+      mode = ["n" "v"];
     }
   ];
 
@@ -73,6 +203,44 @@
   ];
 
   lsp = {
+    keymaps = [
+      {
+        key = "gd";
+        lspBufAction = "definition";
+      }
+      {
+        key = "gr";
+        lspBufAction = "references";
+      }
+      {
+        key = "gi";
+        lspBufAction = "implementation";
+      }
+      {
+        key = "K";
+        lspBufAction = "hover";
+      }
+      {
+        key = "<leader>lr";
+        lspBufAction = "rename";
+      }
+      {
+        key = "<leader>ls";
+        action = "<cmd>lua require('snacks').picker.lsp_symbols()<CR>";
+      }
+      {
+        key = "<leader>lx";
+        action = "<cmd>lua require('snacks').picker.diagnostics()<CR>";
+      }
+      {
+        key = "<leader>k";
+        action.__raw = "function() vim.diagnostic.jump({ count = -1, float = true }) end";
+      }
+      {
+        key = "<leader>j";
+        action.__raw = "function() vim.diagnostic.jump({ count = 1, float = true }) end";
+      }
+    ];
     servers = {
       # Web
       vtsls.enable = true;
@@ -112,9 +280,33 @@
     mdformat
   ];
 
+  extraConfigLua = ''
+    vim.diagnostic.config({
+      virtual_text = { prefix = "● ", spacing = 4 },
+      underline = true,
+      update_in_insert = false,
+      severity_sort = true,
+      float = { border = "rounded", source = "always" },
+    })
+  '';
+
   plugins = {
+    snacks = {
+      enable = true;
+      settings = {
+        notifier = {enabled = true;};
+        lazygit = {enabled = true;};
+        indent = {enabled = true;};
+        bigfile = {enabled = true;};
+        picker = {enabled = true;};
+        statuscolumn = {enabled = true;};
+        input = {enabled = true;};
+        terminal = {enabled = true;};
+      };
+    };
     lualine = {enable = true;};
     barbar = {enable = true;};
+    tmux-navigator.enable = true;
     neo-tree = {
       enable = true;
       settings = {
@@ -128,6 +320,52 @@
     };
 
     lspconfig.enable = true;
+
+    gitsigns.enable = true;
+
+    blink-cmp = {
+      enable = true;
+      settings = {
+        sources.default = ["lsp" "path" "snippets" "buffer"];
+        completion.documentation = {
+          auto_show = false;
+          auto_show_delay_ms = 500;
+        };
+      };
+    };
+
+    which-key = {
+      enable = true;
+      settings.spec = [
+        {
+          "__unkeyed-1" = "<leader>b";
+          group = "[B]uffer";
+        }
+        {
+          "__unkeyed-1" = "<leader>c";
+          group = "[C]ode";
+        }
+        {
+          "__unkeyed-1" = "<leader>g";
+          group = "[G]it";
+        }
+        {
+          "__unkeyed-1" = "<leader>l";
+          group = "[L]SP";
+        }
+        {
+          "__unkeyed-1" = "<leader>s";
+          group = "[S]earch";
+        }
+        {
+          "__unkeyed-1" = "<leader>t";
+          group = "[T]oggle/Tools";
+        }
+      ];
+    };
+
+    mini-pairs.enable = true;
+    mini-ai.enable = true;
 
     treesitter = {
       enable = true;
@@ -163,6 +401,26 @@
 
     conform-nvim = {
       enable = true;
+      settings = {
+        format_on_save = {
+          timeout_ms = 500;
+          lsp_fallback = true;
+        };
+        formatters_by_ft = {
+          lua = ["stylua"];
+          python = ["black"];
+          markdown = ["mdformat"];
+          nix = ["alejandra"];
+          javascript = ["biome"];
+          javascriptreact = ["biome"];
+          typescript = ["biome"];
+          typescriptreact = ["biome"];
+          json = ["biome"];
+          jsonc = ["biome"];
+          css = ["prettier"];
+          html = ["prettier"];
+        };
+      };
     };
   };
 }
