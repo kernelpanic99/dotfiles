@@ -51,6 +51,8 @@
       brave
       libreoffice-fresh
       seahorse
+      stress-ng
+      furmark
 
       # Media
       mpv
