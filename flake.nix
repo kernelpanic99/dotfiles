@@ -61,6 +61,7 @@
             noctalia.homeModules.default
             nix-flatpak.homeManagerModules.nix-flatpak
             inputs.nixvim.homeModules.nixvim
+            {programs.nixvim.nixpkgs.source = inputs.nixpkgs;}
           ];
           users.kp = ./nix/home.nix;
         };
