@@ -46,6 +46,8 @@
       libappindicator
       gobject-introspection
       mesa-demos
+      guvcview
+      telegram-desktop
 
       # Apps
       brave
