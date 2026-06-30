@@ -41,33 +41,33 @@ in {
       (section "System" "35")
       {
         type = "os";
-        key = "├─󱄅";
+        key = "󱄅";
         keyColor = "magenta";
       }
       {
         type = "kernel";
-        key = "├─";
+        key = "";
         format = "{1} {2}";
         keyColor = "magenta";
       }
       {
         type = "packages";
-        key = "├─󰮯";
+        key = "󰮯";
         keyColor = "magenta";
       }
       {
         type = "wm";
-        key = "├─󰧨";
+        key = "󰧨";
         keyColor = "magenta";
       }
       {
         type = "theme";
-        key = "├─󰉼";
+        key = "󰉼";
         keyColor = "magenta";
       }
       {
         type = "uptime";
-        key = "├─󰅐";
+        key = "󰅐";
         keyColor = "magenta";
       }
       (endsection "35")
@@ -77,17 +77,17 @@ in {
       (section "Shell" "32")
       {
         type = "terminal";
-        key = "├─";
+        key = "";
         keyColor = "green";
       }
       {
         type = "terminalfont";
-        key = "├─";
+        key = "";
         keyColor = "green";
       }
       {
         type = "shell";
-        key = "├─";
+        key = "";
         keyColor = "green";
       }
       (endsection "32")
@@ -97,34 +97,34 @@ in {
       (section "Hardware" "33")
       {
         type = "host";
-        key = "├─";
+        key = "";
         keyColor = "yellow";
       }
       {
         type = "cpu";
-        key = "├─󰍛";
+        key = "󰍛";
         keyColor = "yellow";
       }
       {
         type = "gpu";
-        key = "├─󰘚";
+        key = "󰘚";
         keyColor = "yellow";
         hideType = "integrated";
       }
       {
         type = "display";
-        key = "├─󰍹";
+        key = "󰍹";
         keyColor = "yellow";
         compactType = "original-with-refresh-rate";
       }
       {
         type = "memory";
-        key = "├─󰑭";
+        key = "󰑭";
         keyColor = "yellow";
       }
       {
         type = "disk";
-        key = "├─";
+        key = "";
         keyColor = "yellow";
       }
       (endsection "33")
