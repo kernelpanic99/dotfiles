@@ -7,6 +7,7 @@
   ];
 
   enable = true;
+  defaultEditor = true;
   nixpkgs.config.allowUnfree = true;
   colorschemes.catppuccin.enable = true;
 }
