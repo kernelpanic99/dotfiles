@@ -106,6 +106,13 @@
     nix-ld = {
       enable = true;
     };
+
+    steam = {
+      enable = true;
+      remotePlay.openFirewall = true;
+      dedicatedServer.openFirewall = true;
+      localNetworkGameTransfers.openFirewall = true;
+    };
   };
 
   virtualisation = {
@@ -161,7 +168,10 @@
     enableRedistributableFirmware = true;
     firmware = [pkgs.linux-firmware];
 
-    graphics.enable = true;
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+    };
 
     bluetooth = {
       enable = true;

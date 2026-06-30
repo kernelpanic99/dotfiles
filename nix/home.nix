@@ -46,8 +46,6 @@
       libappindicator
       gobject-introspection
       mesa-demos
-      guvcview
-      telegram-desktop
 
       # Apps
       brave
@@ -55,6 +53,9 @@
       seahorse
       stress-ng
       furmark
+      guvcview
+      telegram-desktop
+      chromium
 
       # Media
       mpv
