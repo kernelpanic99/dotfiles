@@ -67,15 +67,20 @@
       }
     ];
 
-    mkSystem = hostModule:
+    # Each host is a directory whose default.nix pulls in the host-specific
+    # modules it needs, composed on top of the shared base. `inputs` is threaded
+    # through specialArgs so a host module can reference any flake input; inputs
+    # a host never imports a module for stay unused on that host.
+    mkSystem = hostDir:
       nixpkgs.lib.nixosSystem {
         inherit system;
-        modules = baseModules ++ [hostModule];
+        specialArgs = {inherit inputs;};
+        modules = baseModules ++ [hostDir];
       };
   in {
     nixosConfigurations = {
-      laptop = mkSystem ./nix/hosts/laptop.nix;
-      desktop = mkSystem ./nix/hosts/desktop.nix;
+      laptop = mkSystem ./nix/hosts/laptop;
+      desktop = mkSystem ./nix/hosts/desktop;
     };
   };
 }

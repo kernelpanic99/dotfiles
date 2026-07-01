@@ -11,7 +11,11 @@
 # set -x RESTIC_REPOSITORY (cat ~/.local/share/restic/repository)
 # set -x RESTIC_PASSWORD_FILE ~/.local/share/restic/password
 # export (cat ~/.local/share/restic/env | xargs)  # or source it in bash
-{config, ...}: let
+{
+  config,
+  lib,
+  ...
+}: let
   secretsDir = "${config.home.homeDirectory}/.local/share/restic";
 in {
   services.restic.enable = true;
@@ -69,10 +73,10 @@ in {
       ".tmp"
     ];
 
-    timerConfig = {
-      OnCalendar = "21:00";
-      Persistent = true;
-    };
+    # No automatic timer by default: restic stays configured for on-demand
+    # backup and restore on every host. Hosts that back up on a schedule set
+    # a concrete timer via config/backup-schedule.nix, which overrides this.
+    timerConfig = lib.mkDefault null;
 
     pruneOpts = [
       "--keep-daily 7"
