@@ -1,4 +1,8 @@
 {...}: {
+  imports = [
+    ./disko.nix
+  ];
+
   networking.hostName = "laptop";
 
   services.xserver.videoDrivers = ["nvidia" "amdgpu"];

@@ -1,5 +1,6 @@
 {...}: {
   imports = [
+    ./disko.nix
     ./llm.nix
     ./backup-schedule.nix
     ./llm-agents.nix

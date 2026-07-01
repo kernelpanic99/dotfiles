@@ -6,8 +6,6 @@
   pkgs,
   ...
 }: {
-  imports = [./disko.nix];
-
   nix.settings = {
     experimental-features = ["flakes" "nix-command"];
 
