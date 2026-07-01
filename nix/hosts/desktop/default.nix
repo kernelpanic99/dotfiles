@@ -2,6 +2,7 @@
   imports = [
     ./llm.nix
     ./backup-schedule.nix
+    ./llm-agents.nix
   ];
 
   networking.hostName = "desktop";
