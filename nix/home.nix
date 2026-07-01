@@ -29,7 +29,6 @@
       claude-code
       lazygit
       nodejs
-      devenv
 
       # Terminal UX
       fzf
@@ -99,6 +98,11 @@
     nixvim.imports = [./config/nixvim/init.nix];
 
     fastfetch = import ./config/fastfetch.nix;
+
+    devenv = {
+      enable = true;
+      enableFishIntegration = true;
+    };
 
     obs-studio = {
       enable = true;
