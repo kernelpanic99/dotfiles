@@ -55,6 +55,7 @@
       guvcview
       telegram-desktop
       chromium
+      zathura
 
       # Media
       mpv

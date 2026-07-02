@@ -19,7 +19,7 @@
       {mime = "video/*"; use = ["mpv" "reveal"];}
       {mime = "application/{,g}zip"; use = ["extract"];}
       {mime = "application/x-{tar,bzip*,7z-compressed,xz,rar}"; use = ["extract"];}
-      {url = "*.pdf"; use = ["xournalpp"];}
+      {url = "*.pdf"; use = ["xournalpp" "zathura"];}
     ];
     plugin.prepend_previewers = [
       {mime = "application/{*zip,tar,bzip2,7z*,rar,xz,zstd,java-archive}"; run = "ouch";}
