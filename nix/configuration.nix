@@ -75,6 +75,7 @@
     gcc
     man-pages
     man-pages-posix
+    glib
     lshw
   ];
 
@@ -148,6 +149,7 @@
     upower.enable = true;
     udisks2.enable = true;
     power-profiles-daemon.enable = true;
+    gvfs.enable = true;
     greetd = {
       enable = true;
       settings = {
