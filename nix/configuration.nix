@@ -102,6 +102,18 @@
     fish.enable = true;
     xwayland.enable = true;
 
+    niri.enable = true;
+
+    regreet = {
+      enable = true;
+
+      theme.name = "Adwaita-dark";
+
+      settings = {
+        skip_selection = true;
+      };
+    };
+
     nix-ld = {
       enable = true;
     };
@@ -150,15 +162,6 @@
     udisks2.enable = true;
     power-profiles-daemon.enable = true;
     gvfs.enable = true;
-    greetd = {
-      enable = true;
-      settings = {
-        default_session = {
-          command = "${pkgs.tuigreet}/bin/tuigreet --time -r --cmd ${pkgs.niri}/bin/niri-session";
-          user = "greeter";
-        };
-      };
-    };
   };
 
   security.pam.services.login.enableGnomeKeyring = true;
