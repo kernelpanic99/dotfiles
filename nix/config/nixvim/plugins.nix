@@ -102,6 +102,8 @@
     mini-pairs.enable = true;
     mini-ai.enable = true;
 
+    render-markdown.enable = true;
+
     treesitter = {
       enable = true;
       highlight.enable = true;
@@ -130,6 +132,7 @@
         python
         astro
         terraform
+        latex
       ];
     };
 
