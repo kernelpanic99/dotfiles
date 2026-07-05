@@ -107,7 +107,23 @@
     regreet = {
       enable = true;
 
-      theme.name = "Adwaita-dark";
+      theme = {
+        name = "catppuccin-macchiato-peach-standard";
+        package = pkgs.catppuccin-gtk.override {
+          accents = ["peach"];
+          variant = "macchiato";
+        };
+      };
+
+      iconTheme = {
+        name = "Papirus-Dark";
+        package = pkgs.papirus-icon-theme;
+      };
+
+      cursorTheme = {
+        name = "Bibata-Modern-Classic";
+        package = pkgs.bibata-cursors;
+      };
 
       settings = {
         skip_selection = true;
