@@ -31,8 +31,6 @@
     nixvim = {
       url = "github:nix-community/nixvim";
     };
-
-    llm-agents.url = "github:numtide/llm-agents.nix";
   };
 
   outputs = inputs @ {

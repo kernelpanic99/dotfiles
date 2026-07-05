@@ -29,6 +29,9 @@
       claude-code
       lazygit
       nodejs
+      vtsls
+      rust-analyzer
+      nixd
 
       # Terminal UX
       fzf
@@ -82,6 +85,7 @@
     configFile = {
       "niri/config.kdl".source = ./config/niri/config.kdl;
       "xdg-desktop-portal-termfilechooser/config".source = ./config/termfilechooser.conf;
+      "crush/crush.json".text = builtins.toJSON (import ./config/crush.nix);
     };
   };
 

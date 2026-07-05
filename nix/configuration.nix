@@ -77,6 +77,7 @@
     man-pages-posix
     glib
     lshw
+    crush
   ];
 
   fonts = {
