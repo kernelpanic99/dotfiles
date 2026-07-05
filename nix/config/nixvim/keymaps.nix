@@ -154,5 +154,55 @@
       options.desc = "Paste before from clipboard";
       mode = ["n" "v"];
     }
+
+    # Sidekick CLI (crush)
+    {
+      key = "<leader>aa";
+      action = "<cmd>lua require('sidekick.cli').toggle({ name = 'crush' })<CR>";
+      options.desc = "Sidekick toggle crush";
+      mode = "n";
+    }
+    {
+      key = "<c-.>";
+      action = "<cmd>lua require('sidekick.cli').focus()<CR>";
+      options.desc = "Sidekick focus";
+      mode = ["n" "t" "i" "x"];
+    }
+    {
+      key = "<leader>at";
+      action = "<cmd>lua require('sidekick.cli').send({ msg = '{this}' })<CR>";
+      options.desc = "Sidekick send this";
+      mode = ["n" "x"];
+    }
+    {
+      key = "<leader>af";
+      action = "<cmd>lua require('sidekick.cli').send({ msg = '{file}' })<CR>";
+      options.desc = "Sidekick send file";
+      mode = "n";
+    }
+    {
+      key = "<leader>av";
+      action = "<cmd>lua require('sidekick.cli').send({ msg = '{selection}' })<CR>";
+      options.desc = "Sidekick send selection";
+      mode = "x";
+    }
+    {
+      key = "<leader>ap";
+      action = "<cmd>lua require('sidekick.cli').prompt()<CR>";
+      options.desc = "Sidekick select prompt";
+      mode = ["n" "x"];
+    }
+    {
+      key = "<leader>as";
+      action = "<cmd>lua require('sidekick.cli').select()<CR>";
+      options.desc = "Sidekick select CLI";
+      mode = "n";
+    }
+    {
+      key = "<leader>ad";
+      action = "<cmd>lua require('sidekick.cli').close()<CR>";
+      options.desc = "Sidekick detach CLI";
+      mode = "n";
+    }
   ];
 }

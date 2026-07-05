@@ -96,6 +96,10 @@
           "__unkeyed-1" = "<leader>s";
           group = "[S]earch";
         }
+        {
+          "__unkeyed-1" = "<leader>a";
+          group = "[A]I";
+        }
       ];
     };
 
@@ -103,6 +107,19 @@
     mini-ai.enable = true;
 
     render-markdown.enable = true;
+
+    # AI CLI integration. NES (Next Edit Suggestions) is disabled since it
+    # requires the Copilot language server; only the terminal CLI is used.
+    sidekick = {
+      enable = true;
+      settings = {
+        nes.enabled = false;
+        cli = {
+          watch = true;
+          tools.crush = {};
+        };
+      };
+    };
 
     treesitter = {
       enable = true;
