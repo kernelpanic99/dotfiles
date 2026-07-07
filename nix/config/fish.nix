@@ -48,6 +48,8 @@
     twc = "timew continue";
     twd = "timew delete";
 
+    nt = "t ~/Documents/Notes";
+
     nxr = "sudo nixos-rebuild switch --flake ~/dotfiles#(hostname)";
 
     ytaud = "yt-dlp --extract-audio --audio-format m4a --audio-quality best --embed-metadata";
