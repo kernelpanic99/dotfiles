@@ -150,18 +150,9 @@
   xdg.portal = {
     enable = true;
     config = {
-      common = {
-        default = [
-          "gtk"
-        ];
-        "org.freedesktop.impl.portal.FileChooser" = [
-          "termfilechooser"
-          "gtk"
-        ];
-        "org.freedesktop.impl.portal.ScreenCast" = [
-          "gnome"
-        ];
-      };
+      # Must live under `niri`, not `common`: xdg-desktop-portal uses
+      # niri-portals.conf and ignores portals.conf under XDG_CURRENT_DESKTOP=niri.
+      niri."org.freedesktop.impl.portal.FileChooser" = ["termfilechooser" "gtk"];
     };
 
     extraPortals = with pkgs; [
