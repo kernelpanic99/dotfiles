@@ -86,6 +86,10 @@
       "niri/config.kdl".source = ./config/niri/config.kdl;
       "xdg-desktop-portal-termfilechooser/config".source = ./config/termfilechooser.conf;
       "crush/crush.json".text = builtins.toJSON (import ./config/crush.nix);
+      "eilmeldung/save-article.sh" = {
+        source = ./config/save-article.sh;
+        executable = true;
+      };
     };
   };
 

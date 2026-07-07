@@ -20,6 +20,8 @@
       image = "*";
     };
 
-    input_config.mappings."/" = ["share markdown"];
+    input_config.mappings = {
+      "C-s" = ["pipe md null ~/.config/eilmeldung/save-article.sh \"{feed}\" \"{date}\" \"{title}\""];
+    };
   };
 }
