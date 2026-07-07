@@ -1,0 +1,15 @@
+id = "kernelpanic99/niri_windows"
+name = "Niri windows"
+version = "0.0.1"
+min_noctalia = "5.0.0"
+author = "Arthur Nikolaienko"
+license = "MIT"
+deprecated = false
+description = "Show all windows on current workspace (niri)"
+tags = ["windows", "niri"]
+dependencies = ["niri"]
+
+[[widget]]
+id = "windows"
+entry = "windows.luau"
+
