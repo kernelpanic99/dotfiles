@@ -56,7 +56,7 @@ function update()
     local labels = {}
 
     for _, win in ipairs(visible) do
-      local color = win.is_focused and 'primary' or 'on_surface'
+      local color = win.is_focused and 'tertiary' or 'on_surface'
 
       local icon
 
