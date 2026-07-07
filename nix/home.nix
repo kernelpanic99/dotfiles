@@ -58,6 +58,7 @@
       telegram-desktop
       chromium
       zathura
+      mdfried
 
       # Media
       mpv
