@@ -20,6 +20,7 @@
           padding = 6.0;
         }
       ];
+      start = ["launcher" "workspaces" "niri_windows"];
       center = ["timew" "group:g1" "group:g2"];
       end = [
         "tray"
@@ -33,12 +34,11 @@
       ];
       font_family = "ComicShannsMono Nerd Font";
       margin_ends = 5;
-      start = ["launcher" "workspaces"];
       thickness = 35;
     };
 
     plugins = {
-      enabled = ["kernelpanic99/timew"];
+      enabled = ["kernelpanic99/timew" "kernelpanic99/niri_windows"];
       source = [
         {
           kind = "git";
@@ -153,6 +153,9 @@
       };
       media = {
         album_art_only = true;
+      };
+      niri_windows = {
+        type = "kernelpanic99/niri_windows:niri_windows";
       };
     };
 

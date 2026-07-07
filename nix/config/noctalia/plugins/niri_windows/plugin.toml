@@ -10,6 +10,6 @@ tags = ["windows", "niri"]
 dependencies = ["niri"]
 
 [[widget]]
-id = "windows"
+id = "niri_windows"
 entry = "windows.luau"
 
