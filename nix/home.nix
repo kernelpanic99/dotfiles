@@ -251,4 +251,18 @@
 
     mpd-mpris.enable = true;
   };
+
+  systemd.user.services.eilmeldung-sync = {
+    Service.ExecStart = "${pkgs.eilmeldung}/bin/eilmeldung --sync";
+  };
+
+  systemd.user.timers.eilmeldung-sync-timer = {
+    Unit.Description = "Hourly eilmeldung sync";
+    Timer = {
+      OnCalendar = "hourly";
+      Persistent = true;
+      Unit = "eilmeldung-sync.service";
+    };
+    Install.WantedBy = ["timers.target"];
+  };
 }
