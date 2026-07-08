@@ -179,6 +179,7 @@
   hardware = {
     enableRedistributableFirmware = true;
     firmware = [pkgs.linux-firmware];
+    steam-hardware.enable = true;
 
     graphics = {
       enable = true;
