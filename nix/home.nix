@@ -103,7 +103,7 @@
     yazi = import ./config/yazi.nix {inherit pkgs;};
     rmpc = import ./config/rmpc.nix;
     satty = import ./config/satty.nix;
-    btop = import ./config/btop.nix;
+    btop = import ./config/btop.nix {inherit pkgs;};
     nixvim.imports = [./config/nixvim/init.nix];
 
     fastfetch = import ./config/fastfetch.nix;
