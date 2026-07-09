@@ -221,19 +221,11 @@
           name = "flathub";
           location = "https://dl.flathub.org/repo/flathub.flatpakrepo";
         }
-        {
-          name = "GeforceNOW";
-          location = "https://international.download.nvidia.com/GFNLinux/flatpak/geforcenow.flatpakrepo";
-        }
       ];
 
       packages = [
         "app.grayjay.Grayjay"
         "io.wavebox.Wavebox"
-        {
-          origin = "GeforceNOW";
-          appId = "com.nvidia.geforcenow";
-        }
       ];
 
       overrides.global."Session Bus Policy"."org.kde.StatusNotifierWatcher" = "talk";
