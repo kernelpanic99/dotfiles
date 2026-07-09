@@ -224,7 +224,6 @@
       ];
 
       packages = [
-        "app.grayjay.Grayjay"
         "io.wavebox.Wavebox"
       ];
 
