@@ -53,9 +53,29 @@
 
     neo-tree = {
       enable = true;
-      settings.filesystem.follow_current_file = {
-        enabled = true;
-        leave_dirs_open = false;
+      settings = {
+        filesystem = {
+          window = {
+            mappings = {
+              O = "system_open";
+            };
+          };
+          follow_current_file = {
+            enabled = true;
+            leave_dirs_open = false;
+          };
+        };
+
+        commands = {
+          system_open.__raw = ''
+            function(state)
+                local node = state.tree:get_node()
+                local path = node:get_id()
+
+                vim.fn.jobstart({ "xdg-open", path }, { detach = true })
+            end
+          '';
+        };
       };
     };
 
