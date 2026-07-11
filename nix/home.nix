@@ -92,6 +92,52 @@
         executable = true;
       };
     };
+
+    desktopEntries.nvim = {
+      name = "Neovim";
+      genericName = "Text Editor";
+      exec = "foot -e nvim %F";
+      terminal = false;
+      categories = ["TextEditor" "Development"];
+      mimeType = [
+        "text/plain"
+        "text/markdown"
+        "text/x-shellscript"
+        "text/x-c"
+        "text/x-c++"
+        "text/x-python"
+        "text/x-rust"
+        "text/x-javascript"
+        "text/x-nix"
+        "text/css"
+      ];
+    };
+
+    mimeApps = {
+      enable = true;
+
+      defaultApplications = {
+        "text/html" = "brave-browser.desktop";
+        "x-scheme-handler/http" = "brave-browser.desktop";
+        "x-scheme-handler/https" = "brave-browser.desktop";
+        "application/pdf" = "org.pwmt.zathura-pdf-mupdf.desktop";
+        "video/mp4" = "mpv.desktop";
+        "video/x-matroska" = "mpv.desktop";
+        "audio/mpeg" = "mpv.desktop";
+        "audio/flac" = "mpv.desktop";
+        "x-scheme-handler/telegram" = "telegram-desktop.desktop";
+        "text/plain" = "nvim.desktop";
+        "text/markdown" = "nvim.desktop";
+        "text/x-shellscript" = "nvim.desktop";
+        "text/x-c" = "nvim.desktop";
+        "text/x-c++" = "nvim.desktop";
+        "text/x-python" = "nvim.desktop";
+        "text/x-rust" = "nvim.desktop";
+        "text/x-javascript" = "nvim.desktop";
+        "text/x-nix" = "nvim.desktop";
+        "text/css" = "nvim.desktop";
+      };
+    };
   };
 
   programs = {
