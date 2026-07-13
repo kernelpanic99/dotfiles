@@ -2,6 +2,10 @@
   enable = true;
   enableFishIntegration = true;
 
+  extraPackages = [
+    pkgs.ripdrag
+  ];
+
   plugins = with pkgs.yaziPlugins; {
     inherit smart-enter smart-paste gvfs ouch;
   };
