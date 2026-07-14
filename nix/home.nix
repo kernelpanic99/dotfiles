@@ -32,6 +32,7 @@
       vtsls
       rust-analyzer
       nixd
+      flyctl
 
       # Terminal UX
       fzf
@@ -273,7 +274,10 @@
         "io.wavebox.Wavebox"
       ];
 
-      overrides.global."Session Bus Policy"."org.kde.StatusNotifierWatcher" = "talk";
+      overrides.global = {
+        "Session Bus Policy"."org.kde.StatusNotifierWatcher" = "talk";
+        Environment.TZ = "Europe/Athens";
+      };
     };
 
     mpd = {
