@@ -15,6 +15,7 @@
     mdformat
     gofumpt
     alejandra
+    typstyle
 
     # Rust editor tooling only; suffixed on PATH, so a project's
     # devenv toolchain (earlier on PATH) takes precedence when present.
@@ -128,6 +129,13 @@
 
     render-markdown.enable = true;
 
+    typst-preview = {
+      enable = true;
+      settings = {
+        open_cmd = "brave --app=%s --user-data-dir=/tmp/typst-preview --class=typst-preview";
+      };
+    };
+
     # AI CLI integration. NES (Next Edit Suggestions) is disabled since it
     # requires the Copilot language server; only the terminal CLI is used.
     sidekick = {
@@ -170,6 +178,7 @@
         astro
         terraform
         latex
+        typst
       ];
     };
 
@@ -198,6 +207,7 @@
           yaml = ["prettier"];
           rust = ["rustfmt"];
           go = ["gofumpt"];
+          typst = ["typstyle"];
         };
       };
     };

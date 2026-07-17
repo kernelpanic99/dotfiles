@@ -87,6 +87,7 @@
       noto-fonts-color-emoji
       nerd-fonts.jetbrains-mono
       nerd-fonts.comic-shanns-mono
+      maple-mono.NF
     ];
   };
 

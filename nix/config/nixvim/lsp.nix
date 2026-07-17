@@ -91,6 +91,7 @@
       fish_lsp.enable = true;
       bashls.enable = true;
       marksman.enable = true;
+      tinymist.enable = true;
     };
   };
 }
