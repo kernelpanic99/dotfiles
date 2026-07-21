@@ -1,5 +1,6 @@
 id = "kernelpanic99/niri_windows"
 name = "Niri windows"
+plugin_api = 4
 version = "0.0.1"
 min_noctalia = "5.0.0"
 author = "Arthur Nikolaienko"

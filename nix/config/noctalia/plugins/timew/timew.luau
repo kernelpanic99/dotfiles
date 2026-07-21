@@ -1,6 +1,6 @@
 -- vim: ft=lua
 
-local update_interval = barWidget.getConfig('update_interval')
+local update_interval = noctalia.getConfig('update_interval')
 
 noctalia.setUpdateInterval(update_interval * 1000)
 

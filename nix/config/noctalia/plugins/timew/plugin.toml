@@ -1,5 +1,6 @@
 id = "kernelpanic99/timew"
 name = "Timewarrior"
+plugin_api = 4
 version = "0.0.1"
 min_noctalia = "5.0.0"
 author = "Arthur Nikolaienko"
