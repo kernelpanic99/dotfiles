@@ -26,7 +26,6 @@
       gnumake
       python3
       bruno
-      claude-code
       lazygit
       nodejs
       vtsls
@@ -162,6 +161,18 @@
 
     obs-studio = {
       enable = true;
+    };
+
+    claude-code = {
+      enable = true;
+      enableMcpIntegration = false;
+
+      settings = {
+        includeCoAuthoredBy = false;
+        tui = "fullscreen";
+        theme = "dark";
+        model = "opus";
+      };
     };
 
     git = {
