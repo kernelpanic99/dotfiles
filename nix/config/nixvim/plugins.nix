@@ -170,6 +170,7 @@
         vimdoc
         xml
         typescript
+        javascript
         tsx
         rust
         go
