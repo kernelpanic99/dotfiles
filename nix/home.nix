@@ -32,6 +32,10 @@
       rust-analyzer
       nixd
       flyctl
+      go
+      gopls
+      awscli2
+      ssm-session-manager-plugin
 
       # Terminal UX
       fzf
@@ -172,6 +176,14 @@
         tui = "fullscreen";
         theme = "dark";
         model = "opus";
+      };
+
+      rules = {
+        code-style = ''
+          - no naked block statements: even single line block statements should have braces
+          - vertical spacing: separate different kind of statements and blocks with empty lines
+          - comments: do not comment unecessarily if the context is obvious from the code.
+        '';
       };
     };
 
