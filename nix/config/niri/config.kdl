@@ -155,6 +155,7 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     Mod+Return hotkey-overlay-title="Open a Terminal: Foot" { spawn "foot"; }
+    Mod+X hotkey-overlay-title="Open a Terminal: Foot" { spawn "foot"; }
     Mod+D hotkey-overlay-title="Application runner" { spawn-sh "noctalia msg panel-toggle launcher"; }
     Mod+Alt+L hotkey-overlay-title="Lock screen" { spawn-sh "noctalia msg session lock-and-suspend"; }
     Mod+Alt+K hotkey-overlay-title="Shutdown menu" { spawn-sh "noctalia msg panel-toggle session"; }
@@ -165,7 +166,7 @@ binds {
     Mod+Shift+W hotkey-overlay-title="Open a work Browser: Wavebox" { spawn-sh "flatpak run io.wavebox.Wavebox"; } 
 
     Mod+Apostrophe { spawn-sh "mpc toggle"; }
-    Mod+X { spawn "foot" "-T" "Rmpc" "-e" "rmpc"; }
+    Mod+M { spawn "foot" "-T" "Rmpc" "-e" "rmpc"; }
 
     Mod+E { spawn "foot" "-T" "Yazi" "-e" "yazi"; }
 
