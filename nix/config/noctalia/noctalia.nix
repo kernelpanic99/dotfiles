@@ -33,7 +33,11 @@
         "session"
       ];
       font_family = "ComicShannsMono Nerd Font";
-      margin_ends = 5;
+
+      margin_ends = 0;
+      radius_top_left = 0;
+      radius_top_right = 0;
+
       thickness = 35;
     };
 
