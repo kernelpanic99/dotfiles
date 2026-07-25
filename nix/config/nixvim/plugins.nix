@@ -180,6 +180,7 @@
         terraform
         latex
         typst
+        elixir
       ];
     };
 
@@ -209,6 +210,7 @@
           rust = ["rustfmt"];
           go = ["gofumpt"];
           typst = ["typstyle"];
+          elixir = ["mix"];
         };
       };
     };

@@ -36,6 +36,8 @@
       gopls
       awscli2
       ssm-session-manager-plugin
+      beamPackages.elixir
+      inotify-tools
 
       # Terminal UX
       fzf

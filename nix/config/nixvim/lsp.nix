@@ -79,6 +79,7 @@
       gopls.enable = true;
       lua_ls.enable = true;
       pyright.enable = true;
+      elixirls.enable = true;
 
       # Configs
       yamlls.enable = true;
