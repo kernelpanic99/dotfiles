@@ -181,6 +181,7 @@
         latex
         typst
         elixir
+        graphql
       ];
     };
 
