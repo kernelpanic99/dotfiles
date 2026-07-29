@@ -38,6 +38,7 @@
       ssm-session-manager-plugin
       beamPackages.elixir
       inotify-tools
+      cargo
 
       # Terminal UX
       fzf
