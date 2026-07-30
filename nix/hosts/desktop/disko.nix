@@ -2,7 +2,7 @@
   disko.devices = {
     disk = {
       main = {
-        device = "/dev/nvme0n1";
+        device = "/dev/disk/by-id/nvme-KINGSTON_SNV2S1000G_50026B7785946C11";
         type = "disk";
         content = {
           type = "gpt";
@@ -31,6 +31,32 @@
                   type = "filesystem";
                   format = "ext4";
                   mountpoint = "/";
+                };
+              };
+            };
+          };
+        };
+      };
+
+      data = {
+        device = "/dev/disk/by-id/nvme-KINGSTON_SNV3S2000G_50026B7687517ADA";
+        type = "disk";
+        content = {
+          type = "gpt";
+          partitions = {
+            data = {
+              size = "100%";
+              content = {
+                type = "luks";
+                name = "data";
+                settings = {
+                  allowDiscards = true;
+                };
+
+                content = {
+                  type = "filesystem";
+                  format = "ext4";
+                  mountpoint = "/home/kp/data";
                 };
               };
             };
