@@ -145,6 +145,7 @@
         cli = {
           watch = true;
           tools.crush = {};
+          tools.claude = {};
         };
       };
     };

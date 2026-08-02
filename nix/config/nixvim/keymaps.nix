@@ -163,6 +163,12 @@
       mode = "n";
     }
     {
+      key = "<leader>ac";
+      action = "<cmd>lua require('sidekick.cli').toggle({ name = 'claude' })<CR>";
+      options.desc = "Sidekick toggle claude";
+      mode = "n";
+    }
+    {
       key = "<c-.>";
       action = "<cmd>lua require('sidekick.cli').focus()<CR>";
       options.desc = "Sidekick focus";
