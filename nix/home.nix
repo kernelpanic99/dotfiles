@@ -182,6 +182,9 @@
       };
 
       rules = {
+        general = ''
+          - no em-dashes
+        '';
         code-style = ''
           - no naked block statements: even single line block statements should have braces
           - vertical spacing: separate different kind of statements and blocks with empty lines
