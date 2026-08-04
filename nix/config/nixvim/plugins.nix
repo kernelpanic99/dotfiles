@@ -183,6 +183,7 @@
         typst
         elixir
         graphql
+        sql
       ];
     };
 
