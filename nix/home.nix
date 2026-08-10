@@ -313,9 +313,16 @@
         "io.wavebox.Wavebox"
       ];
 
-      overrides.global = {
-        "Session Bus Policy"."org.kde.StatusNotifierWatcher" = "talk";
-        Environment.TZ = "Europe/Athens";
+      overrides = {
+        global = {
+          "Session Bus Policy"."org.kde.StatusNotifierWatcher" = "talk";
+          Environment.TZ = "Europe/Athens";
+        };
+
+        # Chromium names its tray item org.freedesktop.StatusNotifierItem-<pid>-<n>;
+        # flatpak wildcards only match on dot boundaries, so the namespace is the
+        # narrowest grant that covers it.
+        "io.wavebox.Wavebox"."Session Bus Policy"."org.freedesktop.*" = "own";
       };
     };
 
