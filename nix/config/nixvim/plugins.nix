@@ -38,7 +38,12 @@
         lazygit = {enabled = true;};
         indent = {enabled = true;};
         bigfile = {enabled = true;};
-        picker = {enabled = true;};
+        picker = {
+          enabled = true;
+          win = {
+            list = {wo = {wrap = true;};};
+          };
+        };
         statuscolumn = {enabled = true;};
         input = {enabled = true;};
         terminal = {enabled = true;};
