@@ -2,10 +2,25 @@
   pkgs,
   config,
   ...
-}: {
-  extraPlugins = with pkgs.vimPlugins; [
-    nvim-web-devicons
-  ];
+}: let
+  # Not packaged in nixvim or nixpkgs. Owns everything Ballerina: filetype
+  # detection, syntax highlighting, indent, LSP and `bal` subcommands.
+  ballerina-nvim = pkgs.vimUtils.buildVimPlugin {
+    pname = "ballerina.nvim";
+    version = "0.2.4";
+    src = pkgs.fetchFromGitHub {
+      owner = "redpierrot";
+      repo = "ballerina.nvim";
+      rev = "c7d3b63d70c3091cb922fb130a8f87c741b949a1";
+      hash = "sha256-p1Nbhh56/U/49LV6//gUjRBuB8LSCYv6TPuKE7AQAzU=";
+    };
+  };
+in {
+  extraPlugins =
+    (with pkgs.vimPlugins; [
+      nvim-web-devicons
+    ])
+    ++ [ballerina-nvim];
 
   extraPackages = with pkgs; [
     stylua
@@ -22,12 +37,18 @@
     rustc
     cargo
     rustfmt
+
+    ballerina
   ];
 
   # Give rust-analyzer a std source for untooled projects, but don't
   # clobber a value already provided by a project shell.
   extraConfigLua = ''
     vim.env.RUST_SRC_PATH = vim.env.RUST_SRC_PATH or "${pkgs.rustPlatform.rustLibSrc}"
+
+    require("ballerina").setup({
+      format_on_save = false,
+    })
   '';
 
   plugins = {

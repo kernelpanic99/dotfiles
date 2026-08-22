@@ -80,7 +80,6 @@
       lua_ls.enable = true;
       pyright.enable = true;
       elixirls.enable = true;
-      ballerina.enable = true;
 
       # Configs
       yamlls.enable = true;
