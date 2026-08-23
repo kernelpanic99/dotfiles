@@ -216,6 +216,18 @@ in {
     conform-nvim = {
       enable = true;
       settings = {
+        formatters = {
+          # `bal format` rewrites the file in place and ignores stdin, so
+          # conform hands it a temp file and reads the result back. The temp
+          # file lives outside the project because `bal format` refuses a
+          # single file that sits inside a Ballerina package.
+          balfmt = {
+            command = "bal";
+            args = ["format" "$FILENAME"];
+            stdin = false;
+            tmpfile_format.__raw = ''vim.fs.joinpath(vim.fn.stdpath("run"), "balfmt.$RANDOM.$FILENAME")'';
+          };
+        };
         lsp_format = "fallback";
         formatters_by_ft = {
           lua = ["stylua"];
@@ -240,6 +252,7 @@ in {
           go = ["gofumpt"];
           typst = ["typstyle"];
           elixir = ["mix"];
+          ballerina = ["balfmt"];
         };
       };
     };
