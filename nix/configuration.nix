@@ -106,32 +106,6 @@
 
     niri.enable = true;
 
-    regreet = {
-      enable = true;
-
-      theme = {
-        name = "catppuccin-macchiato-peach-standard";
-        package = pkgs.catppuccin-gtk.override {
-          accents = ["peach"];
-          variant = "macchiato";
-        };
-      };
-
-      iconTheme = {
-        name = "Papirus-Dark";
-        package = pkgs.papirus-icon-theme;
-      };
-
-      cursorTheme = {
-        name = "Bibata-Modern-Classic";
-        package = pkgs.bibata-cursors;
-      };
-
-      settings = {
-        skip_selection = true;
-      };
-    };
-
     nix-ld = {
       enable = true;
     };
@@ -172,6 +146,32 @@
     udisks2.enable = true;
     power-profiles-daemon.enable = true;
     gvfs.enable = true;
+
+    displayManager.regreet = {
+      enable = true;
+
+      theme = {
+        name = "catppuccin-macchiato-peach-standard";
+        package = pkgs.catppuccin-gtk.override {
+          accents = ["peach"];
+          variant = "macchiato";
+        };
+      };
+
+      iconTheme = {
+        name = "Papirus-Dark";
+        package = pkgs.papirus-icon-theme;
+      };
+
+      cursorTheme = {
+        name = "Bibata-Modern-Classic";
+        package = pkgs.bibata-cursors;
+      };
+
+      settings = {
+        skip_selection = true;
+      };
+    };
   };
 
   security.pam.services.login.enableGnomeKeyring = true;

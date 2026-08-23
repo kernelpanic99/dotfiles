@@ -58,7 +58,7 @@
 
       # Apps
       brave
-      libreoffice-fresh
+      libreoffice-stable
       seahorse
       stress-ng
       furmark
