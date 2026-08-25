@@ -17,10 +17,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    eilmeldung = {
-      url = "github:christo-auer/eilmeldung";
-    };
-
     noctalia = {
       url = "github:noctalia-dev/noctalia";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -39,7 +35,6 @@
     disko,
     alejandra,
     home-manager,
-    eilmeldung,
     noctalia,
     nix-flatpak,
     ...
@@ -51,13 +46,11 @@
       ./nix/configuration.nix
       home-manager.nixosModules.default
       {
-        nixpkgs.overlays = [eilmeldung.overlays.default];
         environment.systemPackages = [alejandra.defaultPackage.${system}];
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
           sharedModules = [
-            eilmeldung.homeManager.default
             noctalia.homeModules.default
             nix-flatpak.homeManagerModules.nix-flatpak
             inputs.nixvim.homeModules.nixvim
