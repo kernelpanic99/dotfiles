@@ -67,6 +67,7 @@
       chromium
       zathura
       mdfried
+      krita
 
       # Media
       mpv
