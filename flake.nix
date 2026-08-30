@@ -7,18 +7,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    alejandra = {
-      url = "github:kamadorueda/alejandra/4.0.0";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    noctalia = {
-      url = "github:noctalia-dev/noctalia";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -33,9 +23,7 @@
     self,
     nixpkgs,
     disko,
-    alejandra,
     home-manager,
-    noctalia,
     nix-flatpak,
     ...
   }: let
@@ -45,19 +33,18 @@
       disko.nixosModules.disko
       ./nix/configuration.nix
       home-manager.nixosModules.default
-      {
-        environment.systemPackages = [alejandra.defaultPackage.${system}];
+      ({pkgs, ...}: {
+        environment.systemPackages = [pkgs.alejandra];
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
           sharedModules = [
-            noctalia.homeModules.default
             nix-flatpak.homeManagerModules.nix-flatpak
             inputs.nixvim.homeModules.nixvim
           ];
           users.kp = ./nix/home.nix;
         };
-      }
+      })
     ];
 
     # Each host is a directory whose default.nix pulls in the host-specific
