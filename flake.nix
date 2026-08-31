@@ -1,6 +1,8 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
+    nixvim.url = "github:nix-community/nixvim";
 
     disko = {
       url = "github:nix-community/disko/latest";
@@ -10,12 +12,6 @@
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
-
-    nixvim = {
-      url = "github:nix-community/nixvim";
     };
   };
 
