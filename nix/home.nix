@@ -40,6 +40,7 @@
       inotify-tools
       cargo
       ballerina
+      pnpm
 
       # Terminal UX
       fzf
