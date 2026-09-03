@@ -6,7 +6,15 @@ return {
     opts = { flavour = "mocha" },
     config = function(_, opts)
       require("catppuccin").setup(opts)
-      vim.cmd.colorscheme("catppuccin")
     end,
   },
+  {
+      "e-ink-colorscheme/e-ink.nvim",
+      config = function ()
+          require("e-ink").setup()
+          vim.cmd.colorscheme("e-ink")
+
+          vim.opt.background = "light"
+      end,
+  }
 }
