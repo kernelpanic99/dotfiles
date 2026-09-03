@@ -1,0 +1,8 @@
+[user]
+	name = Arthur Nikolaienko
+
+[init]
+	defaultBranch = main
+
+[pull]
+	rebase = true

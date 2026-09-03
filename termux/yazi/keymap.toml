@@ -1,0 +1,14 @@
+[input]
+prepend_keymap = [
+  { on = "<Esc>", run = "close", desc = "Cancel input" },
+]
+
+[mgr]
+prepend_keymap = [
+  { on = "p", run = "plugin smart-paste", desc = "Paste into the hovered directory or CWD" },
+  { on = ["t", "h"], run = "tab_create ~/", desc = "Create new tab at home" },
+  { on = "y", run = [
+    'shell -- for p in "$@"; do printf "%s\n" "$p"; done | termux-clipboard-set',
+    "yank",
+  ], desc = "Copy path to clipboard" },
+]

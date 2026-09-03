@@ -1,0 +1,29 @@
+# Dependencies / build artifacts
+node_modules
+target
+dist
+build
+out
+.next
+.nuxt
+
+# Package manager caches
+.npm
+.yarn/cache
+.pnpm-store
+
+# Browser / app caches
+CacheStorage
+Cache
+cache2
+Code Cache
+GPUCache
+Crashpad
+crash_reports
+IndexedDB
+
+# Temp / logs
+*.log
+*.tmp
+.cache
+.tmp
