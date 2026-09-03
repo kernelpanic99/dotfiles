@@ -14,6 +14,12 @@ if status is-interactive
 
     alias nt   't ~/Documents/Notes'
 
+    # ssh-agent: on the desktop gnome-keyring did this via PAM. Termux has no
+    # keyring, so keychain keeps a single agent alive across shells and reboots.
+    if type -q keychain
+        keychain --quiet --eval | source
+    end
+
     if type -q zoxide
         zoxide init fish | source
     end

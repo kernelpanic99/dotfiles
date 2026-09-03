@@ -32,7 +32,7 @@ link() {
 info "installing packages"
 pkg install -y \
   fish tmux neovim yazi git lazygit zoxide fzf ripgrep fd bat \
-  restic timewarrior openssh termux-api \
+  restic timewarrior openssh keychain termux-api \
   nodejs python clang make tree-sitter \
   lua-language-server marksman taplo shfmt stylua ruff
 

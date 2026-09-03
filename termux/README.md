@@ -18,7 +18,7 @@ below into `~/.config`, and bootstraps fisher / lazy.nvim.
 
 | Area | Config | Notes |
 |---|---|---|
-| Shell | `fish/` | `t` session launcher, timewarrior aliases, `nt` |
+| Shell | `fish/` | `t` session launcher, timewarrior aliases, `nt`, keychain ssh-agent |
 | Multiplexer | `tmux/` | prefix `C-s`, vi mode, inline catppuccin status + vim-tmux-navigator (no tpm), `y` copies to Android clipboard |
 | Files | `yazi/` | smart-enter/paste, ouch previews, `y` copies path via `termux-clipboard-set` |
 | Editor | `nvim/` | lazy.nvim; ts/js, lua, python, bash, json/yaml/toml, markdown |
