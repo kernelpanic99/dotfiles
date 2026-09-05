@@ -10,10 +10,6 @@
       name = "hydro";
       src = hydro.src;
     }
-    {
-      name = "grc";
-      src = grc.src;
-    }
   ];
 
   functions = {
