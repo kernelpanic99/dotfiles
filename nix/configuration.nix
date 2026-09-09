@@ -179,6 +179,8 @@
     firmware = [pkgs.linux-firmware];
     steam-hardware.enable = true;
 
+    opentabletdriver.enable = true;
+
     graphics = {
       enable = true;
       enable32Bit = true;
