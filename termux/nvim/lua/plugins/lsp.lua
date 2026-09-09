@@ -44,6 +44,7 @@ return {
         jsonls = {},
         marksman = {},
         taplo = {},
+        rust_analyzer = {},
       }
 
       for name, cfg in pairs(servers) do
