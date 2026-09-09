@@ -3,7 +3,11 @@
   enableMcpIntegration = false;
 
   settings = {
-    includeCoAuthoredBy = false;
+    attribution = {
+      commit = "";
+      pr = "";
+      sessionUrl = false;
+    };
     tui = "fullscreen";
     theme = "dark";
     model = "opus";
