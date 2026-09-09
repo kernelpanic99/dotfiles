@@ -16,3 +16,7 @@
 - Corrections I make in chat are context for you, not content for the doc. Do not
   memorialize the decision path or rejected alternatives unless I explicitly ask for
   a "rationale" or "alternatives considered" section.
+
+# Runtime
+
+You are in termux on android tablet.
