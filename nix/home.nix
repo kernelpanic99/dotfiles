@@ -41,6 +41,7 @@
       cargo
       ballerina
       pnpm
+      dig
 
       # Terminal UX
       fzf
