@@ -73,6 +73,7 @@
       jsonls.enable = true;
       tailwindcss.enable = true;
       astro.enable = true;
+      svelte.enable = true;
 
       # Languages
       rust_analyzer.enable = true;

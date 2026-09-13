@@ -210,6 +210,7 @@ in {
         elixir
         graphql
         sql
+        svelte
       ];
     };
 
