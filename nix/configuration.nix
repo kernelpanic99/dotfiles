@@ -36,6 +36,11 @@
 
   networking = {
     networkmanager.enable = true;
+    networkmanager.plugins = with pkgs; [
+      networkmanager-openconnect
+      networkmanager-openvpn
+    ];
+
     firewall.enable = true;
   };
 
@@ -144,29 +149,18 @@
     power-profiles-daemon.enable = true;
     gvfs.enable = true;
 
-    displayManager.regreet = {
+    displayManager.noctalia-greeter = {
       enable = true;
 
-      theme = {
-        name = "catppuccin-macchiato-peach-standard";
-        package = pkgs.catppuccin-gtk.override {
-          accents = ["peach"];
-          variant = "macchiato";
-        };
-      };
-
-      iconTheme = {
-        name = "Papirus-Dark";
-        package = pkgs.papirus-icon-theme;
+      settings = {
+        cursor.size = 24;
+        keyboard.layout = "us";
+        user.default = "kp";
       };
 
       cursorTheme = {
-        name = "Bibata-Modern-Classic";
         package = pkgs.bibata-cursors;
-      };
-
-      settings = {
-        skip_selection = true;
+        name = "Bibata-Modern-Ice";
       };
     };
   };
