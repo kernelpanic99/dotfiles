@@ -70,6 +70,7 @@
       zathura
       mdfried
       krita
+      networkmanagerapplet
 
       # Media
       mpv
