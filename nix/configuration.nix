@@ -9,7 +9,7 @@
   nix.settings = {
     experimental-features = ["flakes" "nix-command"];
 
-    trusted-users = ["root" "@wheel" "kp"];
+    trusted-users = ["root" "@wheel" "kp" "networkmanager"];
   };
 
   nixpkgs.config.allowUnfree = true;
@@ -63,7 +63,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.kp = {
     isNormalUser = true;
-    extraGroups = ["wheel" "docker"]; # Enable ‘sudo’ for the user.
+    extraGroups = ["wheel" "docker" "networkmanager"]; # Enable ‘sudo’ for the user.
     createHome = true;
     shell = pkgs.fish;
   };
