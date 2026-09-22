@@ -26,7 +26,6 @@
         "tray"
         "keyboard_layout"
         "clipboard"
-        "network"
         "bluetooth"
         "volume"
         "battery"
