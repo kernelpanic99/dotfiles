@@ -25,7 +25,7 @@
             __direnv_export_eval
         end
 
-        if test -z "$DEVENV_ROOT"; and devenv hook-should-activate &>/dev/null
+        if test -z "$DEVENV_ROOT"; and test -n "$(devenv hook-should-activate 2>/dev/null)"
             if test "$_DEVENV_HOOK_ACTIVATED" = "$PWD"
                 set -e _T_EDITOR
             end
