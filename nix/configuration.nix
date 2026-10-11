@@ -17,6 +17,10 @@
 
   # Boot configuration.
   boot = {
+    extraModprobeConfig = ''
+      options hid_apple fnmode=2
+    '';
+
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
