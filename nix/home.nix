@@ -160,7 +160,6 @@
     tmux = import ./config/tmux.nix {inherit pkgs;};
     yazi = import ./config/yazi.nix {inherit pkgs;};
     rmpc = import ./config/rmpc.nix;
-    satty = import ./config/satty.nix;
     btop = import ./config/btop.nix {inherit pkgs;};
     nixvim.imports = [./config/nixvim/init.nix];
 

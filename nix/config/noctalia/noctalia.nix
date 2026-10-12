@@ -63,11 +63,19 @@
 
     location.address = "Odessa, Ukraine";
 
+    lockscreen = {
+      transition = [];
+      transition_duration = 100;
+    };
+
+    nightlight.enabled = true;
+
     shell = {
       font_family = "ComicShannsMono Nerd Font Mono";
+      clipboard_history_max_entries = 200;
+      polkit_agent = true;
       screenshot = {
-        pipe_command = "satty -f -";
-        pipe_to_command = true;
+        annotate = true;
         save_to_file = false;
       };
     };
@@ -76,12 +84,13 @@
       builtin = "Catppuccin";
       templates = {
         builtin_ids = ["foot" "gtk3" "gtk4" "niri"];
-        community_ids = ["yazi"];
+        community_ids = ["claude-code" "brave" "zathura" "yazi"];
       };
     };
 
     wallpaper = {
       directory = "~/Pictures/Wallpapers";
+      transition_duration = 500;
       automation = {
         enabled = true;
         interval_seconds = 600;
