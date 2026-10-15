@@ -274,6 +274,8 @@
     gtk.enable = true;
   };
 
+  home.file.".claude/keybindings.json".text = builtins.toJSON (import ./config/claude-keybindings.nix);
+
   services = {
     udiskie.enable = true;
 
