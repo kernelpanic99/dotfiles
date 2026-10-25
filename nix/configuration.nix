@@ -27,10 +27,8 @@
     };
 
     initrd = {
-      verbose = false;
       availableKernelModules = ["nvme" "xhci_pci" "ahci" "usbhid"];
       kernelModules = ["kvm-amd" "amdgpu"];
-      systemd.enable = true;
     };
 
     plymouth.enable = true;
