@@ -71,6 +71,7 @@
       mdfried
       krita
       networkmanagerapplet
+      firefox
 
       # Media
       mpv
