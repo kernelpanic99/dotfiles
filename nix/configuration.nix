@@ -82,6 +82,7 @@
     glib
     lshw
     crush
+    psmisc
   ];
 
   fonts = {
