@@ -76,6 +76,7 @@
       # Media
       mpv
       mpc
+      playerctl
       yt-dlp
 
       # Infra / backup
@@ -322,6 +323,8 @@
     };
 
     mpd-mpris.enable = true;
+
+    playerctld.enable = true;
   };
 
   systemd.user.services.eilmeldung-sync = {
