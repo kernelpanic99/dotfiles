@@ -1,6 +1,14 @@
-{pkgs}: {
+{pkgs}: let
+  medusa-agent-skills = pkgs.fetchFromGitHub {
+    owner = "medusajs";
+    repo = "medusa-agent-skills";
+    rev = "42b9afd28b22ee6077d3c0ea8b5444a8c9bee1bc";
+    hash = "sha256-y5ZlIcteaYjubJIenvF+VLe/ZS1pO6X8ZySjFs8oEOI=";
+  };
+in {
   enable = true;
   enableMcpIntegration = false;
+  mutableSettings = true;
 
   settings = {
     attribution = {
@@ -11,6 +19,12 @@
     tui = "fullscreen";
     theme = "dark";
     model = "opus";
+  };
+
+  plugins = {
+    medusa-dev = "${medusa-agent-skills}/plugins/medusa-dev";
+    learn-medusa = "${medusa-agent-skills}/plugins/learn-medusa";
+    ecommerce-storefront = "${medusa-agent-skills}/plugins/ecommerce-storefront";
   };
 
   lspServers = {
