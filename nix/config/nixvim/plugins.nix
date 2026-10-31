@@ -19,6 +19,7 @@ in {
   extraPlugins =
     (with pkgs.vimPlugins; [
       nvim-web-devicons
+      nvim-config-local
     ])
     ++ [ballerina-nvim];
 
@@ -49,6 +50,8 @@ in {
     require("ballerina").setup({
       format_on_save = false,
     })
+
+    require("config-local").setup({})
   '';
 
   plugins = {
