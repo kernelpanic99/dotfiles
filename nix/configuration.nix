@@ -46,6 +46,9 @@
     firewall.enable = true;
   };
 
+  # GoDaddy TLS Root CA - R1 is missing from the nss-cacert bundle.
+  security.pki.certificateFiles = [./certs/godaddy-tls-root-r1.pem];
+
   # Set your time zone.
   time.timeZone = "Europe/Athens";
 
@@ -83,6 +86,8 @@
     lshw
     crush
     psmisc
+    cacert
+    openssl
   ];
 
   fonts = {
