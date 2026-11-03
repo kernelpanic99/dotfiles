@@ -21,7 +21,7 @@
         }
       ];
       start = ["launcher" "workspaces" "niri_windows"];
-      center = ["timew" "dtek" "group:g1" "group:g2"];
+      center = ["timew" "group:g1" "group:g2" "dtek"];
       end = [
         "tray"
         "keyboard_layout"
@@ -77,6 +77,7 @@
       screenshot = {
         annotate = true;
         save_to_file = false;
+        pipe_to_command = false;
       };
     };
 
