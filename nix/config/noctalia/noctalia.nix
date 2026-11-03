@@ -5,7 +5,7 @@
     bar.default = {
       capsule_group = [
         {
-          fill = "surface_variant";
+          fill = "surface_container";
           id = "g1";
           members = ["clock" "notifications"];
           opacity = 1.0;
@@ -13,7 +13,7 @@
         }
 
         {
-          fill = "surface_variant";
+          fill = "surface_container";
           id = "g2";
           members = ["media" "audio_visualizer"];
           opacity = 1.0;
