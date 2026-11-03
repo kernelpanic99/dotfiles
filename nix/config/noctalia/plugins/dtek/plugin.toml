@@ -37,7 +37,7 @@ key = "update_interval"
 type = "int"
 label_key = "settings.update_interval.label"
 description_key = "settings.update_interval.description"
-default = 15
+default = 60
 min = 5
 max = 240
 
