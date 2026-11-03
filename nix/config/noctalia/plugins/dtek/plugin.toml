@@ -1,0 +1,59 @@
+id = "kernelpanic99/dtek"
+name = "DTEK shutdowns"
+plugin_api = 32
+version = "0.0.1"
+min_noctalia = "5.2.0"
+author = "Arthur Nikolaienko"
+license = "MIT"
+deprecated = false
+icon = "bolt"
+description = "Power outage schedule from DTEK Odesa Electric Networks"
+tags = ["power", "outages", "dtek", "ukraine"]
+dependencies = ["curl"]
+
+[[setting]]
+key = "city"
+type = "string"
+label_key = "settings.city.label"
+description_key = "settings.city.description"
+default = ""
+
+[[setting]]
+key = "street"
+type = "string"
+label_key = "settings.street.label"
+description_key = "settings.street.description"
+default = ""
+
+[[setting]]
+key = "house"
+type = "string"
+label_key = "settings.house.label"
+description_key = "settings.house.description"
+default = ""
+
+[[setting]]
+key = "update_interval"
+type = "int"
+label_key = "settings.update_interval.label"
+description_key = "settings.update_interval.description"
+default = 15
+min = 5
+max = 240
+
+[[service]]
+id = "fetcher"
+entry = "service.luau"
+
+[[widget]]
+id = "dtek"
+entry = "widget.luau"
+
+[[panel]]
+id = "panel"
+entry = "panel.luau"
+width = 540
+height = 320
+placement = "attached"
+position = "auto"
+open_near_click = true

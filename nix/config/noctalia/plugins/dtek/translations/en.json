@@ -1,0 +1,62 @@
+{
+    "title": "Power outages",
+    "loading": "Loading schedule...",
+    "refresh": "Refresh",
+    "no_data": "No schedule data",
+    "whole_street": "whole street",
+    "multiple_queues": "The building is fed by several lines, apartments may follow different schedules",
+    "settings": {
+        "city": {
+            "label": "City",
+            "description": "Settlement name as listed on dtek-oem.com.ua"
+        },
+        "street": {
+            "label": "Street",
+            "description": "Street name as listed on dtek-oem.com.ua. Partial names work when unambiguous"
+        },
+        "house": {
+            "label": "House",
+            "description": "House number, e.g. \"3\" or \"12/1\""
+        },
+        "update_interval": {
+            "label": "Update interval",
+            "description": "Minutes between schedule fetches (default: 15)"
+        }
+    },
+    "state": {
+        "on": "Power on",
+        "off": "No power",
+        "maybe": "Possible outage",
+        "unknown": "Unknown"
+    },
+    "tooltip": {
+        "address": "Address",
+        "queue": "Queue",
+        "now": "Now",
+        "until": "until {time}",
+        "no_outages": "no outages",
+        "updated": "Updated",
+        "error": "Error"
+    },
+    "outage": {
+        "planned": "Planned maintenance",
+        "reason": "Reason",
+        "start": "Started",
+        "finish": "Restore by",
+        "voluntarily": "Requested by the building association",
+        "none": "No outages recorded at this address"
+    },
+    "errors": {
+        "not_configured": "Set the city, street and house in the plugin settings",
+        "network": "Request failed: {detail}",
+        "read": "Failed to read response: {detail}",
+        "waf": "Blocked by the site firewall, retry later",
+        "json": "Invalid server response: {detail}",
+        "rejected": "Server rejected the request: {detail}",
+        "layout": "Page layout changed, csrf token or street list not found",
+        "city": "City not found",
+        "street": "Street not found",
+        "house": "House not found",
+        "candidates": "Did you mean"
+    }
+}

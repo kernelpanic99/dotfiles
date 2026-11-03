@@ -21,7 +21,7 @@
         }
       ];
       start = ["launcher" "workspaces" "niri_windows"];
-      center = ["timew" "group:g1" "group:g2"];
+      center = ["timew" "dtek" "group:g1" "group:g2"];
       end = [
         "tray"
         "keyboard_layout"
@@ -41,7 +41,7 @@
     };
 
     plugins = {
-      enabled = ["kernelpanic99/timew" "kernelpanic99/niri_windows"];
+      enabled = ["kernelpanic99/timew" "kernelpanic99/niri_windows" "kernelpanic99/dtek"];
       source = [
         {
           kind = "git";
@@ -117,6 +117,9 @@
       };
       niri_windows = {
         type = "kernelpanic99/niri_windows:niri_windows";
+      };
+      dtek = {
+        type = "kernelpanic99/dtek:dtek";
       };
     };
 
