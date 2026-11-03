@@ -32,18 +32,6 @@ local function tooltip(s, status)
     table.insert(rows, { key = noctalia.tr('outage.finish'), value = s.outage.finish })
   end
 
-  local queue = s.queues[1]
-
-  for _, day in ipairs(s.days) do
-    local slots = queue and day.slots[queue.id]
-
-    if slots then
-      local ranges = schedule.ranges(slots, day.ts, 'off')
-      local value = #ranges > 0 and table.concat(ranges, ', ') or noctalia.tr('tooltip.no_outages')
-      table.insert(rows, { key = schedule.fmtDay(day.ts), value = value })
-    end
-  end
-
   table.insert(rows, { key = noctalia.tr('tooltip.updated'), value = s.factUpdate ~= '' and s.factUpdate or s.updated })
 
   if data.error then

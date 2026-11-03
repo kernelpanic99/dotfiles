@@ -13,6 +13,7 @@ local CELL_W = 8
 local CELL_H = 18
 local HOUR_GAP = 2
 local DAY_LABEL_W = 44
+local PERIODS_W = 420
 
 local data = noctalia.state.get('dtek') or {}
 local opened = false
@@ -66,6 +67,18 @@ local function dayRow(label, slots, dayTs, now)
       ui.label({ text = label, fontSize = 12 }),
     }),
     ui.row({ gap = HOUR_GAP }, hours),
+  })
+end
+
+local function periodsRow(label, slots, dayTs)
+  local ranges = schedule.ranges(slots, dayTs, 'off')
+  local text = #ranges > 0 and table.concat(ranges, ', ') or noctalia.tr('tooltip.no_outages')
+
+  return ui.row({ gap = 8, align = 'start' }, {
+    ui.row({ width = DAY_LABEL_W, minWidth = DAY_LABEL_W }, {
+      ui.label({ text = label, fontSize = 12 }),
+    }),
+    ui.label({ text = text, fontSize = 12, color = #ranges > 0 and 'error' or 'on_surface_variant', maxWidth = PERIODS_W, maxLines = 4 }),
   })
 end
 
@@ -136,17 +149,21 @@ local function body()
   end
 
   local grid = { hourAxis() }
+  local periods = {}
 
   for _, queue in ipairs(s.queues) do
     if #s.queues > 1 then
       table.insert(grid, muted(queue.name))
+      table.insert(periods, muted(queue.name))
     end
 
     for _, day in ipairs(s.days) do
       local slots = day.slots[queue.id]
 
       if slots then
-        table.insert(grid, dayRow(schedule.fmtDay(day.ts), slots, day.ts, now))
+        local label = schedule.fmtDay(day.ts)
+        table.insert(grid, dayRow(label, slots, day.ts, now))
+        table.insert(periods, periodsRow(label, slots, day.ts))
       end
     end
   end
@@ -157,6 +174,11 @@ local function body()
 
   table.insert(children, ui.column({ gap = 4 }, grid))
   table.insert(children, legend())
+
+  if #periods > 0 then
+    table.insert(children, ui.column({ gap = 4 }, periods))
+  end
+
   table.insert(children, muted(`{noctalia.tr('tooltip.updated')}: {s.factUpdate ~= '' and s.factUpdate or s.updated}`))
 
   return children
