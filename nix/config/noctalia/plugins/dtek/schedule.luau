@@ -15,7 +15,10 @@ local function parseStamp(s)
     return nil
   end
 
-  return os.time({ year = Y + 0, month = M_ + 0, day = D + 0, hour = h + 0, min = m + 0, sec = 0 })
+  -- Luau's os.time reads the table as UTC, shift it back by the local offset
+  local t = os.time({ year = Y + 0, month = M_ + 0, day = D + 0, hour = h + 0, min = m + 0, sec = 0 })
+
+  return t - (os.time(os.date('*t', t)) - t)
 end
 
 function M.fmtTime(t)
