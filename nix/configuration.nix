@@ -88,6 +88,7 @@
     psmisc
     cacert
     openssl
+    csvlens
   ];
 
   fonts = {
