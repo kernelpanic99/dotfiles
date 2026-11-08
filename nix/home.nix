@@ -72,6 +72,7 @@
       krita
       networkmanagerapplet
       firefox
+      guvcview
 
       # Media
       mpv
