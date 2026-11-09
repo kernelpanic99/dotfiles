@@ -56,6 +56,7 @@
     ".next"
     ".nuxt"
     ".terraform"
+    ".sst"
 
     # Package manager caches
     ".npm"
