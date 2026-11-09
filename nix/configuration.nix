@@ -6,6 +6,8 @@
   pkgs,
   ...
 }: {
+  imports = [./config/syncthing.nix];
+
   nix.settings = {
     experimental-features = ["flakes" "nix-command"];
 
