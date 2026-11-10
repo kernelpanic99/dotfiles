@@ -33,6 +33,11 @@
     ssh = ".ssh";
     aws = ".aws";
     timewarrior = ".local/share/timewarrior";
+
+    # Claude Code sessions are keyed by absolute cwd, which matches across
+    # machines since home and project paths are identical.
+    claude-projects = ".claude/projects";
+    claude-file-history = ".claude/file-history";
   };
 
   # Syncthing applies the first matching pattern. (?d) lets it delete ignored
