@@ -6,7 +6,10 @@
   pkgs,
   ...
 }: {
-  imports = [./config/syncthing.nix];
+  imports = [
+    ./config/syncthing.nix
+    ./config/vpn-split.nix
+  ];
 
   nix.settings = {
     experimental-features = ["flakes" "nix-command"];

@@ -2,3 +2,4 @@
 ./yazi/.config/yazi/gvfs.private
 result
 *.qcow2
+nix/config/vpn-split-domains
