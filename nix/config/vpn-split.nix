@@ -12,11 +12,18 @@
 # The VPN connection runs as a split tunnel:
 #   nmcli c modify <connection> ipv4.never-default yes ipv6.never-default yes
 {
+  config,
   lib,
   pkgs,
   ...
 }: let
-  connection = "b5ab0f47-231c-4abf-89a2-3be7b6dfcc00";
+  # NetworkManager connection UUIDs are per machine.
+  connections = {
+    desktop = "b5ab0f47-231c-4abf-89a2-3be7b6dfcc00";
+    laptop = "8d0ed832-b90b-44e9-81b9-0fd361f3e3ac";
+  };
+
+  connection = connections.${config.networking.hostName};
 
   domainsFile = "/home/kp/dotfiles/nix/config/vpn-split-domains";
   dnsmasqConf = "/etc/NetworkManager/dnsmasq.d/vpn-split.conf";
