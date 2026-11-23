@@ -74,7 +74,7 @@
       firefox
       guvcview
       lutris
-      limo
+      protontricks
 
       # Media
       mpv
@@ -287,7 +287,6 @@
     flatpak = {
       enable = true;
       update.onActivation = true;
-      uninstallUnmanaged = true;
 
       remotes = [
         {
