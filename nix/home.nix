@@ -73,6 +73,8 @@
       networkmanagerapplet
       firefox
       guvcview
+      lutris
+      limo
 
       # Media
       mpv
