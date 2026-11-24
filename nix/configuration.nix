@@ -17,7 +17,12 @@
     trusted-users = ["root" "@wheel" "kp" "networkmanager"];
   };
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+
+    # ecoflow BLE auth (nix/pkgs/ecoflow): ECDH with a local device, timing side channel not exploitable
+    permittedInsecurePackages = ["python3.14-ecdsa-0.19.2"];
+  };
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
   # Boot configuration.

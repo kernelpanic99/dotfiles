@@ -1,0 +1,38 @@
+id = "kernelpanic99/ecoflow"
+name = "EcoFlow"
+plugin_api = 32
+version = "0.0.1"
+min_noctalia = "5.2.0"
+author = "Arthur Nikolaienko"
+license = "MIT"
+deprecated = false
+icon = "battery"
+description = "EcoFlow power station state and outlet toggles over Bluetooth"
+tags = ["power", "battery", "ecoflow", "bluetooth"]
+dependencies = ["ecoflow"]
+
+[[setting]]
+key = "update_interval"
+type = "int"
+label_key = "settings.update_interval.label"
+description_key = "settings.update_interval.description"
+default = 60
+min = 15
+max = 3600
+
+[[service]]
+id = "poller"
+entry = "service.luau"
+
+[[widget]]
+id = "ecoflow"
+entry = "widget.luau"
+
+[[panel]]
+id = "panel"
+entry = "panel.luau"
+width = 380
+height = 460
+placement = "attached"
+position = "auto"
+open_near_click = true

@@ -1,0 +1,47 @@
+{
+    "title": "EcoFlow",
+    "loading": "Connecting...",
+    "refresh": "Refresh",
+    "updated": "Updated",
+    "stale": "stale",
+    "error": "Error",
+    "unplugged": "unplugged",
+    "eta": {
+        "title": "Estimate",
+        "full": "full in {time}",
+        "empty": "empty in {time}"
+    },
+    "settings": {
+        "update_interval": {
+            "label": "Update interval",
+            "description": "Seconds between Bluetooth polls (default: 60). The EcoFlow app cannot connect while a poll runs"
+        }
+    },
+    "battery": {
+        "idle": "idle",
+        "charging": "charging {watts}",
+        "discharging": "discharging {watts}"
+    },
+    "power": {
+        "input": "Input",
+        "output": "Output",
+        "total": "Total",
+        "ac": "AC",
+        "solar": "Solar",
+        "usbc": "USB-C",
+        "usba": "USB-A",
+        "dc12v": "12V DC"
+    },
+    "toggles": {
+        "title": "Outputs",
+        "ac_ports": "AC outlets",
+        "usb_ports": "USB ports",
+        "dc_12v_port": "12V DC port"
+    },
+    "errors": {
+        "timeout": "ecoflow timed out",
+        "exit": "ecoflow failed with code {code}",
+        "json": "Invalid ecoflow output: {detail}",
+        "spawn": "Failed to start ecoflow, is it installed?"
+    }
+}

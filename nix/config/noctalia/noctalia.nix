@@ -19,9 +19,18 @@
           opacity = 1.0;
           padding = 6.0;
         }
+
+        {
+          fill = "surface_container";
+          id = "g3";
+          members = ["dtek" "ecoflow"];
+          opacity = 1.0;
+          padding = 6.0;
+          widget_spacing = 10;
+        }
       ];
       start = ["launcher" "workspaces" "niri_windows"];
-      center = ["timew" "group:g1" "group:g2" "dtek"];
+      center = ["timew" "group:g1" "group:g2" "group:g3"];
       end = [
         "tray"
         "keyboard_layout"
@@ -41,7 +50,7 @@
     };
 
     plugins = {
-      enabled = ["kernelpanic99/timew" "kernelpanic99/niri_windows" "kernelpanic99/dtek"];
+      enabled = ["kernelpanic99/timew" "kernelpanic99/niri_windows" "kernelpanic99/dtek" "kernelpanic99/ecoflow"];
       source = [
         {
           kind = "git";
@@ -121,6 +130,9 @@
       };
       dtek = {
         type = "kernelpanic99/dtek:dtek";
+      };
+      ecoflow = {
+        type = "kernelpanic99/ecoflow:ecoflow";
       };
     };
 

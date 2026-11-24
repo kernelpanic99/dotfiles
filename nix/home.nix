@@ -87,6 +87,7 @@
 
       # Personal workflow
       timewarrior
+      (callPackage ./pkgs/ecoflow {})
 
       # Security
       gnupg
