@@ -84,9 +84,10 @@ local function toggles(s)
     if available[key] then
       table.insert(
         rows,
-        ui.row({ align = 'center', gap = 12 }, {
+        ui.row({ key = key, align = 'center', gap = 12 }, {
           ui.label({ text = noctalia.tr('toggles.' .. key), flexGrow = 1 }),
           ui.toggle({
+            key = key .. '_toggle',
             checked = s.values[key] == true,
             enabled = not data.busy,
             onChange = function(value)
